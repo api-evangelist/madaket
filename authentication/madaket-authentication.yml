@@ -1,0 +1,68 @@
+generated: '2026-08-25'
+method: searched
+source: https://registry.npmjs.org/@madaket/provider-api-client-js (first-party README,
+  @madaket/provider-api-client-js@0.0.3) + openapi/madaket-provider-api.yml
+docs: https://www.npmjs.com/package/@madaket/provider-api-client-js#documentation-for-authentication
+note: >-
+  Madaket documents the Provider API authentication scheme verbatim in the README of its own
+  npm clients (@madaket/provider-api-client-js, @madaket/provider-api-client-ts) and ships a
+  standalone token generator (@madaket/api-token-generator). Both credentials travel as QUERY
+  STRING parameters, not headers. There is no OAuth 2.0 / OIDC surface, so scopes/ is not
+  applicable. Credentials are issued by Madaket on request — there is no self-service key
+  issuance.
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - query
+  oauth2: false
+  openid_connect: false
+  mtls: false
+  self_service_signup: false
+  credential_issuance: contact Madaket; no public developer signup
+schemes:
+- name: api_key
+  type: apiKey
+  in: query
+  parameter: api_key
+  description: Madaket-issued API key (UUID form). Issued on request; contact Madaket.
+  sources:
+  - openapi/madaket-provider-api.yml
+  - https://registry.npmjs.org/@madaket/provider-api-client-js
+- name: auth_token
+  type: apiKey
+  in: query
+  parameter: auth_token
+  description: >-
+    Time-windowed derived token. URL-safe Base64 of SHA-256(api_key + api_secret + timestamp),
+    where timestamp is the current GMT time formatted yyyy-mm-dd-HH-MM with the final character
+    removed, creating a rolling ten-minute window. Valid at least 10 and at most 20 minutes.
+  sources:
+  - openapi/madaket-provider-api.yml
+  - https://registry.npmjs.org/@madaket/api-token-generator
+token_derivation:
+  algorithm: SHA-256
+  cleartext: <api_key><api_secret><timestamp>
+  timestamp_format: 'GMT yyyy-mm-dd-HH-MM with the trailing character truncated (10-minute window)'
+  encoding: Base64, then URL-safe substitution (+ -> -, / -> _, trailing = stripped)
+  validity: at least 10 minutes, at most 20 minutes
+  reference_implementation: https://www.npmjs.com/package/@madaket/api-token-generator
+observations:
+- id: secret-never-transmitted
+  note: The API secret is never sent on the wire; only a time-bounded hash of it is. That is a
+    deliberate and defensible design for a 2018-era key scheme.
+- id: credentials-in-query-string
+  note: >-
+    Both api_key and auth_token are QUERY parameters, so they are written to access logs,
+    proxy logs and browser history in a way an Authorization header would not be. For an API
+    carrying provider PII (SSN, DOB, DEA numbers) this is the most significant weakness in the
+    scheme.
+- id: no-scopes
+  note: No OAuth 2.0, no scopes and no per-operation permission model are published. Every
+    credential appears to carry the full surface it is entitled to.
+- id: authorized-query-models
+  note: >-
+    The spec distinguishes plain (Board, Specialty, University) from *Authorized* query models
+    (AdverseActionAuthorizedSearchQuery, DeaLicenseAuthorizedFilterQuery, ...) on the
+    provider-sensitive resources, which implies an authorization tier is enforced server-side
+    on the resources carrying regulated data.

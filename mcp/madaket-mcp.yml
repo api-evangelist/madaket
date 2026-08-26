@@ -1,0 +1,76 @@
+generated: '2026-08-25'
+method: derived
+source: openapi/madaket-provider-api.yml
+status: candidate
+note: >-
+  Madaket ships NO MCP server. No hosted/remote endpoint, no stdio package, no mention of MCP
+  anywhere on madakethealth.com, in the Zendesk help center, in the GitHub organization or in
+  the npm scope. The tools below are a CANDIDATE surface derived from the reconstructed
+  OpenAPI so the shape of an agent-facing Madaket is on record — they are not implemented and
+  must not be read as an available agent surface.
+deployment:
+  mode: none
+  endpoint: null
+  install: null
+  package: null
+  auth: api-key
+  verified: derived
+searched:
+- surface: https://www.madakethealth.com/
+  result: no MCP reference
+- surface: https://github.com/madakethealth
+  result: 1 public repo (pjson), no MCP server
+- surface: 'npm scope @madaket'
+  result: 3 packages, none an MCP server
+- surface: https://madakethealth.zendesk.com/hc/en-us
+  result: 18 articles, no MCP reference
+candidate_tools:
+- name: search_providers
+  description: Search Madaket's provider database by name, NPI, license state, taxonomy or
+    provider type and return ranked matches.
+  backing_operations:
+  - providerSearch
+  - providerList
+  input_from: ProviderSearchQuery / ProviderFilterQuery / ProviderDataSourceQuery
+- name: get_provider
+  description: Load a provider record by its Madaket GUID, either basic or full context.
+  backing_operations:
+  - providerLoad
+  - providerLoadFullContext
+- name: lookup_nppes
+  description: Retrieve provider information from the federal NPPES registry through Madaket.
+  backing_operations:
+  - providerList1
+- name: list_provider_licenses
+  description: List a provider's professional, DEA and CDS licenses.
+  backing_operations:
+  - professionalLicenseList
+  - deaLicenseList
+  - cdsLicenseList
+- name: list_provider_education
+  description: List a provider's education, graduate education, internships, residencies and
+    fellowships.
+  backing_operations:
+  - educationList
+  - graduateEducationList
+  - internshipList
+  - residencyList
+  - fellowshipList
+- name: list_provider_sanctions
+  description: List adverse actions, criminal actions, liability actions, malpractice claims
+    and OIG exclusions attached to a provider.
+  backing_operations:
+  - adverseActionList
+  - criminalActionList
+  - liabilityActionList
+  - malpracticeClaimList
+  - oigExclusionCodeListAll
+  - oigExclusionCodeDescribe
+- name: refresh_provider_data
+  description: Request a refresh of a provider's data from available primary sources.
+  backing_operations:
+  - providerAggregateSources
+  consequence: write (enqueues a job); no reversal operation is published
+agent_readiness_note: >-
+  Even if a server existed, the live API host returns 503 (see lifecycle/madaket-lifecycle.yml),
+  so no agent could reach Madaket today.

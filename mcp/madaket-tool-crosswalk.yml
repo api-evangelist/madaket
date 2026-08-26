@@ -1,0 +1,144 @@
+generated: '2026-08-25'
+method: derived
+source: mcp/madaket-mcp.yml ; openapi/madaket-provider-api.yml
+note: >-
+  Crosswalk between the CANDIDATE MCP tool surface and the reconstructed OpenAPI. Madaket ships
+  no MCP server and no GraphQL surface, so every binding is derived and every confidence is
+  stated accordingly. rest_only[] is the interesting column here: it is large, because a
+  seven-tool agent surface covers only a fraction of a 211-operation contract.
+surfaces:
+  openapi:
+    path: openapi/madaket-provider-api.yml
+    operations: 211
+    gated: true
+    note: reconstructed from the first-party SDK; live host returns 503
+  graphql:
+    endpoint: null
+    gated: null
+    note: no GraphQL surface exists
+  mcp:
+    url: null
+    gated: null
+    note: no MCP server exists; tools are candidates only
+crosswalk:
+- tool: search_providers
+  category: discovery
+  rest:
+  - providerSearch
+  - providerList
+  binding: one-to-many
+  confidence: high
+  note: Direct binding; the tool would inherit ProviderSearchQuery / ProviderFilterQuery as its
+    inputSchema.
+- tool: get_provider
+  category: retrieval
+  rest:
+  - providerLoad
+  - providerLoadFullContext
+  binding: one-to-many
+  confidence: high
+- tool: lookup_nppes
+  category: discovery
+  rest:
+  - providerList1
+  binding: one-to-one
+  confidence: high
+  note: POST /api/v2.0/provider/query, summarised "Retrieve provider information from NPPES".
+- tool: list_provider_licenses
+  category: credentialing
+  rest:
+  - professionalLicenseList
+  - deaLicenseList
+  - cdsLicenseList
+  binding: composite
+  confidence: medium
+  note: Composes three separate REST list operations that an agent would otherwise call
+    individually.
+- tool: list_provider_education
+  category: credentialing
+  rest:
+  - educationList
+  - graduateEducationList
+  - internshipList
+  - residencyList
+  - fellowshipList
+  binding: composite
+  confidence: medium
+- tool: list_provider_sanctions
+  category: risk
+  rest:
+  - adverseActionList
+  - criminalActionList
+  - liabilityActionList
+  - malpracticeClaimList
+  - oigExclusionCodeListAll
+  - oigExclusionCodeDescribe
+  binding: composite
+  confidence: medium
+- tool: refresh_provider_data
+  category: mutation
+  rest:
+  - providerAggregateSources
+  binding: one-to-one
+  confidence: high
+mcp_only: []
+rest_only_summary:
+  count: 191
+  note: >-
+    191 of the 211 operations have no candidate tool. They are overwhelmingly the
+    load / filter / search triples for the 50-plus reference and detail resources (boards,
+    universities, degrees, ethnicities, spoken languages, staff categories, taxonomies,
+    insurance carriers, hospitals, practice departments, W9s, resumes, USMLE and ECFMG
+    records, W9 and file attachments, and so on). An agent surface that only exposed the seven
+    candidate tools would reach the provider graph but not the long tail of reference data.
+  families_uncovered:
+  - area-of-study
+  - board
+  - commercial-payer
+  - degree
+  - disclosure-statement
+  - drivers-license
+  - employment-gap
+  - ethnicity
+  - hospital
+  - hospital-privilege
+  - individual-npi-letter
+  - institution
+  - insurance-carrier
+  - license-authority
+  - medicaid-record
+  - medicare-record
+  - medical-degree
+  - military-record
+  - oig-exclusion-code
+  - other-professional-training
+  - personal-identification
+  - practice-department
+  - provider-certification
+  - provider-credentialing-contact
+  - provider-ecfmg
+  - provider-file-attachment
+  - provider-file-stub
+  - provider-insurance
+  - provider-person
+  - provider-practice
+  - provider-reference
+  - provider-specialty
+  - provider-usmle
+  - provider-w9
+  - race
+  - resume
+  - social-security-card
+  - specialty
+  - specialty-taxonomy
+  - spoken-language
+  - staff-category
+  - substance-abuse-record
+  - university
+  - work-entry
+coverage:
+  mcp_tools: 7
+  rest_operations: 211
+  rest_operations_bound: 20
+  rest_operations_unbound: 191
+  graphql_fields: 0

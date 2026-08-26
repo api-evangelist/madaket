@@ -1,0 +1,76 @@
+generated: '2026-08-25'
+method: probed
+source: live HTTPS probes of every Madaket host, 2026-08-25
+note: >-
+  Every /.well-known/ path probed returned 404 or 503 on every Madaket host. No pointer of
+  type WellKnown, APICatalog or SecurityTxt is emitted, because nothing was served. The 404s
+  on www.madakethealth.com are WordPress soft-404s (HTTP 404 with the full site HTML body) for
+  paths the theme handles, and hard nginx 404s for paths it does not. api.madakethealth.com,
+  provider.madakethealth.com and enrollment.madakethealth.com sit behind one AWS ELB
+  (prod-2017-lb-458151277.us-east-1.elb.amazonaws.com) which returns 503 for every route
+  except /services/* on the enrollment host.
+hosts:
+- host: www.madakethealth.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+  - path: /llms.txt
+    status: 404
+- host: api.madakethealth.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 503
+  - path: /.well-known/openid-configuration
+    status: 503
+  - path: /.well-known/oauth-authorization-server
+    status: 503
+  - path: /.well-known/api-catalog
+    status: 503
+  - path: /.well-known/ai-plugin.json
+    status: 503
+  - path: /.well-known/agent-card.json
+    status: 503
+  - path: /.well-known/agent.json
+    status: 503
+- host: provider.madakethealth.com
+  documents:
+  - path: /provider-services/api-spec/api-spec.json
+    status: 503
+  - path: /provider-services/api-docs/
+    status: 503
+- host: enrollment.madakethealth.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 503
+  - path: /.well-known/openid-configuration
+    status: 503
+  - path: /.well-known/oauth-authorization-server
+    status: 503
+  - path: /.well-known/api-catalog
+    status: 503
+  - path: /.well-known/agent-card.json
+    status: 503
+  - path: /.well-known/agent.json
+    status: 503
+  - path: /llms.txt
+    status: 503
+summary:
+  hits: 0
+  security_txt: false
+  api_catalog: false
+  agent_card: false
+  openid_configuration: false

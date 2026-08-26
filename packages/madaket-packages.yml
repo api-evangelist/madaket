@@ -1,0 +1,111 @@
+generated: '2026-08-25'
+method: searched
+source: https://registry.npmjs.org/-/v1/search?text=madaket (npm registry metadata, read
+  2026-08-25) + https://api.github.com/users/madakethealth/repos
+note: >-
+  Madaket publishes three first-party packages under the @madaket npm scope and one open data
+  format repository under its GitHub organization. npm is the ONLY registry carrying Madaket
+  packages — PyPI, RubyGems, crates.io, Packagist, NuGet and Maven Central all returned zero
+  results on 2026-08-25. Every published SDK is dated 2018; see `currency_finding` below.
+registries_searched:
+- registry: npm
+  query: madaket
+  hits: 3
+- registry: pypi
+  query: madaket
+  hits: 0
+- registry: rubygems
+  query: madaket
+  hits: 0
+- registry: crates.io
+  query: madaket
+  hits: 0
+- registry: packagist
+  query: madaket
+  hits: 0
+- registry: nuget
+  query: madaket
+  hits: 0
+- registry: maven-central
+  query: madaket
+  hits: 0
+packages:
+- name: '@madaket/provider-api-client-js'
+  registry: npm
+  url: https://www.npmjs.com/package/@madaket/provider-api-client-js
+  metadata_url: https://registry.npmjs.org/@madaket%2Fprovider-api-client-js
+  language: javascript
+  official: true
+  kind: sdk
+  version: 0.0.3
+  published: '2018-02-05'
+  first_published: '2018-01-26'
+  versions_published: 2
+  license: SEE LICENSE IN LICENSE.md
+  description: Madaket API Client for clean, high quality Provider Data
+  generated_by: swagger-codegen 2.2.3
+  covers: openapi/madaket-provider-api.yml
+  note: >-
+    Generated JavaScript client for the Madaket Provider API. Ships 57 Api classes, 186 model
+    classes and per-operation markdown docs. Its README names Madaket's Swagger UI
+    (https://provider.madakethealth.com/provider-services/api-docs/#/) and Swagger spec
+    (https://provider.madakethealth.com/provider-services/api-spec/api-spec.json) — both of
+    which returned HTTP 503 when probed on 2026-08-25. This package is the surviving public
+    record of that contract and is the source openapi/madaket-provider-api.yml was
+    reconstructed from.
+- name: '@madaket/provider-api-client-ts'
+  registry: npm
+  url: https://www.npmjs.com/package/@madaket/provider-api-client-ts
+  metadata_url: https://registry.npmjs.org/@madaket%2Fprovider-api-client-ts
+  language: typescript
+  official: true
+  kind: sdk
+  version: 0.0.3
+  published: '2018-02-05'
+  first_published: '2018-02-05'
+  versions_published: 1
+  license: SEE LICENSE IN LICENSE.md
+  description: Madaket API Client for clean, high quality Provider Data
+  generated_by: swagger-codegen 2.2.3
+  covers: openapi/madaket-provider-api.yml
+  note: TypeScript sibling of the JS client. A single version was ever published.
+- name: '@madaket/api-token-generator'
+  registry: npm
+  url: https://www.npmjs.com/package/@madaket/api-token-generator
+  metadata_url: https://registry.npmjs.org/@madaket%2Fapi-token-generator
+  language: javascript
+  official: true
+  kind: auth-helper
+  version: 1.1.0
+  published: '2018-09-17'
+  first_published: '2018-09-17'
+  versions_published: 5
+  license: MIT
+  description: Madaket API, Javascript Token Generator
+  note: >-
+    Standalone helper that computes the time-windowed auth_token from an api_key + api_secret.
+    The most recently published Madaket package of any kind. Its README is the authoritative
+    public description of the Madaket auth scheme; see authentication/madaket-authentication.yml.
+repositories:
+- name: madakethealth/pjson
+  url: https://github.com/madakethealth/pjson
+  kind: specification
+  official: true
+  description: ProviderJSON — an open JSON object format for representing US healthcare providers
+  version: 0.3.2 (ALPHA)
+  license: Public Domain (LICENSE.md)
+  last_pushed: '2016-06-10'
+  note: >-
+    The only public repository in Madaket's GitHub organization. Captured verbatim to
+    vocabulary/madaket-providerjson.md and vocabulary/madaket-providerjson-affiliations.md.
+currency_finding:
+  latest_release_any_package: '2018-09-17'
+  years_since_last_release: 7
+  api_version_wrapped: v2.0
+  summary: >-
+    Every first-party Madaket SDK is at least seven years old, and two of the three never moved
+    past 0.0.3. The company continues to market the platform actively (2026 blog posts, current
+    AWS Marketplace listing), so the SDKs have decayed away from a product that is still selling.
+    Combined with the HTTP 503 on both the documented API host (api.madakethealth.com) and the
+    published Swagger URL, the public developer surface appears unmaintained even though the
+    business is not.

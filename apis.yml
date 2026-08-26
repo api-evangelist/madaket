@@ -1,18 +1,63 @@
 aid: madaket
 name: Madaket
-description: 'Madaket is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: 'Madaket Health is a Cambridge, Massachusetts healthcare administration company
+  whose Provider Data Management (PDM) platform automates payer enrollment, EDI enrollment,
+  credentialing, licensing and provider directory data management between healthcare providers
+  and payers. Madaket maintains connections to thousands of US payers and publishes a REST
+  Provider API for clean, high-quality provider data — demographics, licensure, education,
+  sanctions, malpractice and payer records — alongside ProviderJSON, an open JSON format for
+  representing US healthcare providers derived from NPI/NPPES enumeration data.'
 url: https://raw.githubusercontent.com/api-evangelist/madaket/refs/heads/main/apis.yml
+image: https://www.madakethealth.com/wp-content/uploads/2022/02/Logo-Lockup-Reverse.svg
 x-type: company
 x-source: harvest:secondary-market
-x-tier: stub
-x-tier-reason: harvest
 specificationVersion: '0.20'
 created: '2026-08-25'
 modified: '2026-08-25'
 tags:
 - Company
-apis: []
+- Healthcare
+- Provider Data Management
+- Payer Enrollment
+- Credentialing
+- Provider Directory
+- EDI
+- Health Insurance
+- Licensing
+- Healthcare Administration
+apis:
+- aid: madaket:provider-api
+  name: Madaket Provider API
+  description: 'RESTful JSON endpoints published by Madaket Health for clean, high-quality US
+    healthcare provider data. 211 operations across 57 resource families covering provider
+    demographics, professional and DEA/CDS licensure, education and training, board
+    certifications, hospital privileges, malpractice and liability actions, OIG exclusions,
+    Medicare/Medicaid records, specialties and taxonomies. Authenticated with an issued API key
+    plus a time-windowed SHA-256 auth token.'
+  humanURL: https://www.madakethealth.com/platform/provider-directory-data-management
+  baseURL: https://provider.madakethealth.com/provider-services
+  tags:
+  - Provider Data
+  - Credentialing
+  - Licensing
+  - Healthcare
+  properties:
+  - type: OpenAPI
+    url: openapi/madaket-provider-api.yml
+  - type: Overlay
+    url: overlays/madaket-provider-api-overlay.yaml
+  - type: Authentication
+    url: authentication/madaket-authentication.yml
+  - type: Conventions
+    url: conventions/madaket-conventions.yml
+  - type: ErrorCatalog
+    url: errors/madaket-problem-types.yml
+  - type: DataModel
+    url: data-model/madaket-data-model.yml
+  - type: ToolCrosswalk
+    url: mcp/madaket-tool-crosswalk.yml
+  - type: AgentSkill
+    url: skills/_index.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -20,4 +65,45 @@ maintainers:
   email: info@apis.io
 common:
 - type: Website
-  url: https://forgeglobal.com/madaket_stock/
+  url: https://www.madakethealth.com/
+- type: Documentation
+  url: https://madakethealth.zendesk.com/hc/en-us/categories/360001173491-Documentation
+- type: Support
+  url: https://madakethealth.zendesk.com/hc/en-us
+- type: Blog
+  url: https://www.madakethealth.com/blogs
+- type: BlogRSS
+  url: https://www.madakethealth.com/feed
+- type: GitHubOrganization
+  url: https://github.com/madakethealth
+- type: Pricing
+  url: https://aws.amazon.com/marketplace/pp/prodview-octwyfc6hrf6o
+- type: Login
+  url: https://enrollment.madakethealth.com/services/login
+- type: TermsOfService
+  url: https://www.madakethealth.com/terms-of-use
+- type: PrivacyPolicy
+  url: https://www.madakethealth.com/privacy-policy
+- type: Vocabulary
+  url: vocabulary/madaket-providerjson.md
+- type: Packages
+  url: packages/madaket-packages.yml
+- type: SDKs
+  url: packages/madaket-packages.yml
+- type: Plans
+  url: plans/madaket-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/madaket-rate-limits.yml
+- type: Lifecycle
+  url: lifecycle/madaket-lifecycle.yml
+- type: Conformance
+  url: conformance/madaket-conformance.yml
+- type: DomainSecurity
+  url: security/madaket-domain-security.yml
+- type: LLMsTxt
+  url: llms/madaket-llms.txt
+x-enrichment:
+  date: '2026-08-25'
+  status: enriched
+  artifacts_added: 22
+  pass: local-v1

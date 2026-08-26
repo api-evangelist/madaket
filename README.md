@@ -64,5 +64,24 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Madaket is a company surfaced via the API Evangelist harvest backlog (source: secondary-market) and added to the network as a stub for full-pipeline profiling.
-- https://forgeglobal.com/madaket_stock/
+Madaket Health is a Cambridge, Massachusetts healthcare administration company whose Provider
+Data Management (PDM) platform automates payer enrollment, EDI enrollment, credentialing,
+licensing and provider directory data management between healthcare providers and payers.
+
+- Website: https://www.madakethealth.com/
+- Documentation: https://madakethealth.zendesk.com/hc/en-us/categories/360001173491-Documentation
+- GitHub: https://github.com/madakethealth
+- Pricing: https://aws.amazon.com/marketplace/pp/prodview-octwyfc6hrf6o
+
+## A note on this profile
+
+Madaket published a REST **Provider API** (211 operations, v2.0) and three first-party npm
+SDKs. As of **2026-08-25**, its documented API host (`api.madakethealth.com`), its Swagger UI
+and its published Swagger spec URL all return **HTTP 503**, and the newest first-party SDK was
+released in **September 2018** — while the business itself is plainly active.
+
+Because the provider-served spec was unreachable, `openapi/madaket-provider-api.yml` was
+**reconstructed** from Madaket's own npm client `@madaket/provider-api-client-js@0.0.3`
+(swagger-codegen output). It is marked as a reconstruction in its own `info.description` and
+in `overlays/`. **It is not a document Madaket serves.** See `lifecycle/madaket-lifecycle.yml`
+for the full liveness evidence.

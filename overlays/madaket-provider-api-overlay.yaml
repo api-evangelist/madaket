@@ -1,0 +1,84 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for the Madaket Provider API
+  version: 1.0.0
+x-provenance:
+  generated: '2026-08-25'
+  method: generated
+  source: openapi/madaket-provider-api.yml
+  note: >-
+    Captures API Evangelist's enhancements to the reconstructed Madaket Provider API contract
+    without mutating it. Because the underlying document is itself a reconstruction from
+    Madaket's first-party npm SDK (Madaket's own Swagger URL returns 503), this overlay is
+    deliberately conservative: it adds provenance, external documentation and machine-readable
+    warnings about the liveness and pagination gaps, and it does not invent semantics.
+  extends: openapi/madaket-provider-api.yml
+actions:
+- target: $.info
+  description: Record reconstruction provenance and the liveness warning on the document root.
+  update:
+    x-apievangelist-provenance:
+      reconstructed: true
+      reconstructed_from: '@madaket/provider-api-client-js@0.0.3 (npm, swagger-codegen 2.2.3)'
+      reconstructed_on: '2026-08-25'
+      provider_published_spec_url: https://provider.madakethealth.com/provider-services/api-spec/api-spec.json
+      provider_published_spec_status: 503
+      served_by_provider: false
+    x-apievangelist-liveness:
+      checked: '2026-08-25'
+      base_url_status: 503
+      reachable: false
+      note: The published base URL returned HTTP 503 on every path probed.
+- target: $.info
+  description: Point at the surviving public documentation for this contract.
+  update:
+    x-external-docs:
+      sdk_js: https://www.npmjs.com/package/@madaket/provider-api-client-js
+      sdk_ts: https://www.npmjs.com/package/@madaket/provider-api-client-ts
+      token_generator: https://www.npmjs.com/package/@madaket/api-token-generator
+      provider_json_format: https://github.com/madakethealth/pjson
+      product_page: https://www.madakethealth.com/platform/provider-directory-data-management
+- target: $.info
+  description: Flag the absence of pagination across the whole surface.
+  update:
+    x-apievangelist-conventions:
+      pagination: none
+      pagination_note: >-
+        No operation defines a cursor, offset, page or limit parameter. Callers can only cap a
+        single response with the maxResults field inside the query bodies and cannot walk a
+        result set. Responses must not be assumed complete.
+      idempotency: na
+      reversibility: na
+      write_surface: false
+      detail: conventions/madaket-conventions.yml
+- target: $.components.securitySchemes.auth_token
+  description: Make the token derivation machine-readable rather than prose-only.
+  update:
+    x-token-derivation:
+      algorithm: SHA-256
+      cleartext: <api_key><api_secret><timestamp>
+      timestamp_format: GMT yyyy-mm-dd-HH-MM with the trailing character truncated
+      encoding: base64url (padding stripped)
+      validity_minutes_min: 10
+      validity_minutes_max: 20
+      reference_implementation: https://www.npmjs.com/package/@madaket/api-token-generator
+- target: $.components.securitySchemes.api_key
+  description: Warn that credentials travel in the query string.
+  update:
+    x-credential-exposure:
+      location: query-string
+      risk: >-
+        Credentials are written to access logs, proxy logs and browser history. The API carries
+        provider PII including SSN, DOB and DEA registration numbers.
+      recommendation: Treat the full request URL as a secret; prefer server-side calls only.
+- target: $.paths['/api/v2.0/aggregation-request'].post
+  description: Mark the single non-read operation with its consequence class.
+  update:
+    x-agentic-access:
+      action_class: write
+      consequence: enqueues a primary-source data refresh job
+      reversible: false
+      reversal_operation: null
+      window: null
+      escalation: recommended
+      note: The only operation in the contract that is not a read. No cancel or rollback is published.

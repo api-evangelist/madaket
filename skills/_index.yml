@@ -1,0 +1,46 @@
+generated: '2026-08-25'
+method: generated
+source: openapi/madaket-provider-api.yml ; conventions/madaket-conventions.yml ;
+  authentication/madaket-authentication.yml
+note: >-
+  Packaged Agent Skills for the Madaket Provider API. Every operationId referenced in these
+  skills was verified to exist in openapi/madaket-provider-api.yml before the skill was
+  written. Madaket publishes no skills, no AGENTS.md and no agent guidance of its own — a
+  search of madakethealth.com, the GitHub organization and the npm scope found none.
+provider_published_skills: false
+skills:
+- name: madaket-provider-lookup
+  file: madaket-provider-lookup.md
+  summary: Find a provider and load their full record, name/NPI -> Madaket GUID -> full context.
+  operations:
+  - providerSearch
+  - providerList
+  - providerLoad
+  - providerLoadFullContext
+- name: madaket-credentialing-verification
+  file: madaket-credentialing-verification.md
+  summary: Assemble licensure, education, certifications, specialties and the sanctions record
+    for one provider GUID.
+  operations:
+  - professionalLicenseList
+  - deaLicenseList
+  - cdsLicenseList
+  - educationList
+  - graduateEducationList
+  - internshipList
+  - residencyList
+  - fellowshipList
+  - providerCertificationList
+  - providerSpecialtyList
+  - adverseActionList
+  - criminalActionList
+  - liabilityActionList
+  - malpracticeClaimList
+  - oigExclusionCodeListAll
+  - oigExclusionCodeDescribe
+- name: madaket-nppes-lookup
+  file: madaket-nppes-lookup.md
+  summary: Query the federal NPPES registry through Madaket and request a primary-source refresh.
+  operations:
+  - providerList1
+  - providerAggregateSources

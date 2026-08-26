@@ -1,0 +1,855 @@
+generated: '2026-08-25'
+method: derived
+source: openapi/madaket-provider-api.yml
+note: Entity-relationship graph derived from the reconstructed Madaket Provider API OpenAPI. Relationships
+  come from component $ref links (has_one / has_many) and from *Guid / *Id reference fields (belongs_to).
+  The provider-facing companion format is ProviderJSON (vocabulary/madaket-providerjson.md), Madaket's
+  own open JSON representation of a US healthcare provider.
+root_entity: Provider
+identifier_scheme:
+  internal: Madaket GUID (string) exposed as `id` on every entity and as `providerGuid` on child entities
+  external:
+  - NPI (National Provider Identifier, NPPES)
+  - UPIN
+  - SSN / TIN
+  - DEA registration number
+  - State professional license number
+  - CAQH (via credentialing workflows)
+counts:
+  entities: 72
+  schemas_total: 186
+  operations: 211
+entities:
+- name: Address
+  field_count: 19
+  enumerated_fields:
+  - country
+  - preferredCorrespondence
+  - state
+- name: AdverseAction
+  field_count: 16
+  enumerated_fields:
+  - actionAuthority
+  relationships:
+  - kind: has_one
+    target: ProviderFileStub
+    via: actionDocument
+  - kind: belongs_to
+    target: Provider
+    via: providerGuid
+- name: AggregationRequest
+  field_count: 4
+  enumerated_fields:
+  - status
+  relationships:
+  - kind: belongs_to
+    target: Provider
+    via: providerGuid
+- name: AreaOfStudy
+  field_count: 3
+- name: Board
+  field_count: 4
+  relationships:
+  - kind: has_one
+    target: ReferenceAddress
+    via: address
+- name: CdsLicense
+  field_count: 16
+  enumerated_fields:
+  - cdsStatus
+  - licenseStatus
+  - state
+  relationships:
+  - kind: has_one
+    target: ProviderFileStub
+    via: certificate
+  - kind: belongs_to
+    target: Provider
+    via: providerGuid
+- name: CommercialPayer
+  field_count: 8
+  relationships:
+  - kind: belongs_to
+    target: Provider
+    via: providerGuid
+  - kind: belongs_to
+    target: payer
+    via: payerGuid
+  - kind: belongs_to
+    target: practiceLocation
+    via: practiceLocationGuid
+- name: Contact
+  field_count: 24
+  enumerated_fields:
+  - country
+  - preferredCorrespondence
+  - state
+- name: CriminalAction
+  field_count: 16
+  relationships:
+  - kind: belongs_to
+    target: Provider
+    via: providerGuid
+- name: DeaLicense
+  field_count: 16
+  enumerated_fields:
+  - licenseStatus
+  - state
+  relationships:
+  - kind: has_one
+    target: ProviderFileStub
+    via: certificate
+  - kind: belongs_to
+    target: Provider
+    via: providerGuid
+- name: Degree
+  field_count: 3
+- name: Disclosure
+  field_count: 8
+  relationships:
+  - kind: has_one
+    target: DisclosureStatement
+    via: statement
+  - kind: belongs_to
+    target: Provider
+    via: providerGuid
+- name: DisclosureStatement
+  field_count: 6
+  enumerated_fields:
+  - category
+- name: DriversLicense
+  field_count: 6
+  relationships:
+  - kind: has_one
+    target: ProviderFileStub
+    via: driversLicense
+  - kind: belongs_to
+    target: Provider
+    via: providerGuid
+- name: Education
+  field_count: 23
+  relationships:
+  - kind: has_one
+    target: University
+    via: university
+  - kind: has_one
+    target: Degree
+    via: degree
+  - kind: has_one
+    target: ProviderFileStub
+    via: diploma
+  - kind: belongs_to
+    target: Provider
+    via: providerGuid
+- name: EmploymentGap
+  field_count: 8
+  relationships:
+  - kind: belongs_to
+    target: Provider
+    via: providerGuid
+- name: Ethnicity
+  field_count: 3
+- name: Fellowship
+  field_count: 19
+  enumerated_fields:
+  - programType
+  - specialty
+  relationships:
+  - kind: has_one
+    target: Institution
+    via: institution
+  - kind: has_one
+    target: University
+    via: affiliatedUniversity
+  - kind: has_one
+    target: ProviderFileStub
+    via: trainingCertificate
+  - kind: has_one
+    target: Address
+    via: trainingAddress
+  - kind: belongs_to
+    target: Provider
+    via: providerGuid
+- name: GraduateEducation
+  field_count: 24
+  enumerated_fields:
+  - graduateType
+  relationships:
+  - kind: has_one
+    target: University
+    via: university
+  - kind: has_one
+    target: Degree
+    via: degree
+  - kind: has_one
+    target: ProviderFileStub
+    via: diploma
+  - kind: belongs_to
+    target: Provider
+    via: providerGuid
+- name: Hospital
+  field_count: 8
+  enumerated_fields:
+  - enrollmentDeliveryMethod
+  relationships:
+  - kind: has_one
+    target: ReferenceAddress
+    via: address
+  - kind: has_one
+    target: Contact
+    via: enrollmentContact
+- name: HospitalPrivilege
+  field_count: 33
+  enumerated_fields:
+  - affiliationReasonForDiscontinuance
+  - affiliationStatus
+  - arrangementStatus
+  - arrangementType
+  - privilegeReasonForDiscontinuance
+  - privilegeStatus
+  - privilegeType
+  relationships:
+  - kind: has_one
+    target: Hospital
+    via: hospital
+  - kind: belongs_to
+    target: Provider
+    via: providerGuid
+- name: IndividualNpiLetter
+  field_count: 6
+  relationships:
+  - kind: has_one
+    target: ProviderFileStub
+    via: individualNpiLetter
+  - kind: belongs_to
+    target: Provider
+    via: providerGuid
+- name: Institution
+  field_count: 7
+  enumerated_fields:
+  - type
+  relationships:
+  - kind: has_one
+    target: ReferenceAddress
+    via: address
+  - kind: belongs_to
+    target: original
+    via: originalId
+- name: InsuranceCarrier
+  field_count: 4
+  relationships:
+  - kind: has_one
+    target: ReferenceAddress
+    via: address
+- name: Internship
+  field_count: 19
+  enumerated_fields:
+  - programType
+  - specialty
+  relationships:
+  - kind: has_one
+    target: Institution
+    via: institution
+  - kind: has_one
+    target: University
+    via: affiliatedUniversity
+  - kind: has_one
+    target: ProviderFileStub
+    via: trainingCertificate
+  - kind: has_one
+    target: Address
+    via: trainingAddress
+  - kind: belongs_to
+    target: Provider
+    via: providerGuid
+- name: LiabilityAction
+  field_count: 10
+  relationships:
+  - kind: has_one
+    target: InsuranceCarrier
+    via: carrier
+  - kind: belongs_to
+    target: Provider
+    via: providerGuid
+- name: LicenseAuthority
+  field_count: 3
+- name: MalpracticeClaim
+  field_count: 14
+  relationships:
+  - kind: belongs_to
+    target: Provider
+    via: providerGuid
+- name: MedicaidRecord
+  field_count: 9
+  enumerated_fields:
+  - state
+  relationships:
+  - kind: belongs_to
+    target: Provider
+    via: providerGuid
+  - kind: belongs_to
+    target: practiceLocation
+    via: practiceLocationGuid
+- name: MedicalDegree
+  field_count: 23
+  relationships:
+  - kind: has_one
+    target: University
+    via: university
+  - kind: has_one
+    target: Degree
+    via: degree
+  - kind: has_one
+    target: ProviderFileStub
+    via: diploma
+  - kind: belongs_to
+    target: Provider
+    via: providerGuid
+- name: MedicareRecord
+  field_count: 9
+  enumerated_fields:
+  - state
+  relationships:
+  - kind: belongs_to
+    target: Provider
+    via: providerGuid
+  - kind: belongs_to
+    target: practiceLocation
+    via: practiceLocationGuid
+- name: MilitaryRecord
+  field_count: 16
+  relationships:
+  - kind: has_one
+    target: Address
+    via: lastLocation
+  - kind: belongs_to
+    target: Provider
+    via: providerGuid
+- name: NppesRecord
+  field_count: 331
+- name: OigExclusion
+  field_count: 4
+- name: OtherProfessionalTraining
+  field_count: 20
+  enumerated_fields:
+  - programType
+  - specialty
+  - type
+  relationships:
+  - kind: has_one
+    target: Institution
+    via: institution
+  - kind: has_one
+    target: University
+    via: affiliatedUniversity
+  - kind: has_one
+    target: ProviderFileStub
+    via: trainingCertificate
+  - kind: has_one
+    target: Address
+    via: trainingAddress
+  - kind: belongs_to
+    target: Provider
+    via: providerGuid
+- name: PersonalIdentification
+  field_count: 11
+  enumerated_fields:
+  - fninCountryofIssue
+  relationships:
+  - kind: belongs_to
+    target: Provider
+    via: providerGuid
+- name: PracticeDepartment
+  field_count: 3
+- name: ProfessionalLicense
+  field_count: 19
+  enumerated_fields:
+  - licenseStatus
+  - licenseType
+  - state
+  relationships:
+  - kind: has_one
+    target: ProviderFileStub
+    via: licenseApplication
+  - kind: has_one
+    target: ProviderFileStub
+    via: licenseAttachment
+  - kind: belongs_to
+    target: Provider
+    via: providerGuid
+- name: Provider
+  field_count: 8
+  enumerated_fields:
+  - providerType
+- name: ProviderCertification
+  field_count: 12
+  enumerated_fields:
+  - certificationType
+  - state
+  relationships:
+  - kind: belongs_to
+    target: Provider
+    via: providerGuid
+  - kind: belongs_to
+    target: certification
+    via: certificationId
+- name: ProviderContext
+  field_count: 44
+  relationships:
+  - kind: has_one
+    target: Provider
+    via: provider
+  - kind: has_many
+    target: AdverseAction
+    via: adverseActionList
+  - kind: has_many
+    target: CdsLicense
+    via: cdsLicenseList
+  - kind: has_many
+    target: CommercialPayer
+    via: commercialPayerList
+  - kind: has_many
+    target: CriminalAction
+    via: criminalActionList
+  - kind: has_many
+    target: DeaLicense
+    via: deaLicenseList
+  - kind: has_many
+    target: Disclosure
+    via: disclosureList
+  - kind: has_many
+    target: DriversLicense
+    via: driversLicenseList
+  - kind: has_many
+    target: Education
+    via: educationList
+  - kind: has_many
+    target: EmploymentGap
+    via: employmentGapList
+  - kind: has_many
+    target: Fellowship
+    via: fellowshipList
+  - kind: has_many
+    target: GraduateEducation
+    via: graduateEducationList
+  - kind: has_many
+    target: HospitalPrivilege
+    via: hospitalPrivilegeList
+  - kind: has_many
+    target: IndividualNpiLetter
+    via: individualNpiLetterList
+  - kind: has_many
+    target: Internship
+    via: internshipList
+  - kind: has_many
+    target: LiabilityAction
+    via: liabilityActionList
+  - kind: has_many
+    target: MalpracticeClaim
+    via: malpracticeClaimList
+  - kind: has_many
+    target: MedicaidRecord
+    via: medicaidRecordList
+  - kind: has_many
+    target: MedicalDegree
+    via: medicalDegreeList
+  - kind: has_many
+    target: MedicareRecord
+    via: medicareRecordList
+  - kind: has_many
+    target: MilitaryRecord
+    via: militaryRecordList
+  - kind: has_many
+    target: OtherProfessionalTraining
+    via: otherProfessionalTrainingList
+  - kind: has_many
+    target: PersonalIdentification
+    via: personalIdentificationList
+  - kind: has_many
+    target: ProfessionalLicense
+    via: professionalLicenseList
+  - kind: has_many
+    target: ProviderCertification
+    via: providerCertificationList
+  - kind: has_many
+    target: ProviderCredentialingContact
+    via: providerCredentialingContactList
+  - kind: has_many
+    target: ProviderEcfmg
+    via: providerEcfmgList
+  - kind: has_many
+    target: ProviderFileAttachment
+    via: providerFileAttachmentList
+  - kind: has_many
+    target: ProviderFileStub
+    via: providerFileStubList
+  - kind: has_many
+    target: ProviderInsurance
+    via: providerInsuranceList
+  - kind: has_many
+    target: ProviderPerson
+    via: providerPersonList
+  - kind: has_many
+    target: ProviderPersonalData
+    via: providerPersonalDataList
+  - kind: has_many
+    target: ProviderPractice
+    via: providerPracticeList
+  - kind: has_many
+    target: ProviderReference
+    via: providerReferenceList
+  - kind: has_many
+    target: ProviderSpecialty
+    via: providerSpecialtyList
+  - kind: has_many
+    target: ProviderUsmle
+    via: providerUsmleList
+  - kind: has_many
+    target: ProviderW9
+    via: providerW9List
+  - kind: has_many
+    target: ReleaseAuthorization
+    via: releaseAuthorizationList
+  - kind: has_many
+    target: Residency
+    via: residencyList
+  - kind: has_many
+    target: Resume
+    via: resumeList
+  - kind: has_many
+    target: SocialSecurityCard
+    via: socialSecurityCardList
+  - kind: has_many
+    target: SubstanceAbuseRecord
+    via: substanceAbuseRecordList
+  - kind: has_many
+    target: WorkEntry
+    via: workEntryList
+  - kind: has_many
+    target: WorkforceDiversity
+    via: workforceDiversityList
+- name: ProviderCredentialingContact
+  field_count: 9
+  enumerated_fields:
+  - locationType
+  relationships:
+  - kind: has_one
+    target: Contact
+    via: contact
+  - kind: belongs_to
+    target: Provider
+    via: providerGuid
+- name: ProviderEcfmg
+  field_count: 10
+  relationships:
+  - kind: has_one
+    target: ProviderFileStub
+    via: certificate
+  - kind: belongs_to
+    target: Provider
+    via: providerGuid
+  - kind: belongs_to
+    target: ecfmg
+    via: ecfmgId
+- name: ProviderFileAttachment
+  field_count: 11
+  enumerated_fields:
+  - documentStatus
+  - state
+  relationships:
+  - kind: has_one
+    target: ProviderFileStub
+    via: attachment
+  - kind: belongs_to
+    target: Provider
+    via: providerGuid
+- name: ProviderInsurance
+  field_count: 29
+  enumerated_fields:
+  - coverageTypes
+  relationships:
+  - kind: has_one
+    target: InsuranceCarrier
+    via: carrier
+  - kind: has_one
+    target: ProviderFileStub
+    via: providerFileStub
+  - kind: has_one
+    target: Contact
+    via: agent
+  - kind: belongs_to
+    target: Provider
+    via: providerGuid
+- name: ProviderLicenseSummary
+  field_count: 3
+  enumerated_fields:
+  - state
+- name: ProviderMatchCandidate
+  field_count: 8
+  enumerated_fields:
+  - matchLabel
+  relationships:
+  - kind: has_one
+    target: Provider
+    via: provider
+  - kind: has_many
+    target: ProviderLicenseSummary
+    via: licenses
+  - kind: has_many
+    target: ProviderSpecialtySummary
+    via: specialties
+  - kind: has_one
+    target: Contact
+    via: contact
+- name: ProviderPerson
+  field_count: 12
+  relationships:
+  - kind: belongs_to
+    target: Provider
+    via: providerGuid
+- name: ProviderPersonalData
+  field_count: 27
+  enumerated_fields:
+  - birthCountry
+  - birthState
+  - country
+  - gender
+  - visaType
+  relationships:
+  - kind: has_one
+    target: ProviderFileStub
+    via: iapFile
+  - kind: has_one
+    target: Contact
+    via: contact
+  - kind: has_many
+    target: SpokenLanguage
+    via: spokenLanguages
+  - kind: belongs_to
+    target: Provider
+    via: providerGuid
+  - kind: belongs_to
+    target: physicians
+    via: physiciansId
+  - kind: belongs_to
+    target: caqh
+    via: caqhId
+- name: ProviderPractice
+  field_count: 10
+  relationships:
+  - kind: has_one
+    target: ProviderPracticeGeneralInformation
+    via: providerPracticeGeneralInformation
+  - kind: has_one
+    target: ProviderPracticeHours
+    via: providerPracticeHours
+  - kind: has_one
+    target: ProviderPracticeCoverageContact
+    via: providerPracticeCoverageContact
+  - kind: has_one
+    target: ProviderPracticeLimitation
+    via: providerPracticeLimitation
+  - kind: belongs_to
+    target: Provider
+    via: providerGuid
+  - kind: belongs_to
+    target: practiceLocation
+    via: practiceLocationGuid
+- name: ProviderPracticeCoverageContact
+  field_count: 16
+  enumerated_fields:
+  - colleagueType
+  - coveringColleaguesProviderType
+  - providerType
+  - specialty
+  relationships:
+  - kind: belongs_to
+    target: practice
+    via: practiceGuid
+- name: ProviderPracticeGeneralInformation
+  field_count: 5
+  enumerated_fields:
+  - practiceLocationAffiliation
+  relationships:
+  - kind: has_one
+    target: PracticeDepartment
+    via: practiceDepartment
+- name: ProviderPracticeHours
+  field_count: 24
+  enumerated_fields:
+  - fridayEndTime
+  - fridayStartTime
+  - mondayEndTime
+  - mondayStartTime
+  - saturdayEndTime
+  - saturdayStartTime
+  - sundayEndTime
+  - sundayStartTime
+  - thursdayEndTime
+  - thursdayStartTime
+  - tuesdayEndTime
+  - tuesdayStartTime
+  - wednesdayEndTime
+  - wednesdayStartTime
+  relationships:
+  - kind: belongs_to
+    target: practice
+    via: practiceGuid
+- name: ProviderPracticeLimitation
+  field_count: 8
+  relationships:
+  - kind: belongs_to
+    target: practice
+    via: practiceGuid
+- name: ProviderReference
+  field_count: 10
+  enumerated_fields:
+  - providerType
+  relationships:
+  - kind: has_one
+    target: Institution
+    via: institution
+  - kind: has_one
+    target: Contact
+    via: contact
+  - kind: belongs_to
+    target: Provider
+    via: providerGuid
+  - kind: belongs_to
+    target: referenceProvider
+    via: referenceProviderGuid
+- name: ProviderSpecialty
+  field_count: 22
+  enumerated_fields:
+  - specialty
+  - state
+  - type
+  relationships:
+  - kind: has_one
+    target: Board
+    via: board
+  - kind: has_one
+    target: ProviderFileStub
+    via: boardCertificationLetter
+  - kind: belongs_to
+    target: Provider
+    via: providerGuid
+- name: ProviderSpecialtySummary
+  field_count: 2
+  enumerated_fields:
+  - taxonomy
+- name: ProviderUsmle
+  field_count: 11
+  relationships:
+  - kind: belongs_to
+    target: Provider
+    via: providerGuid
+  - kind: belongs_to
+    target: usmle
+    via: usmleId
+- name: ProviderW9
+  field_count: 6
+  relationships:
+  - kind: has_one
+    target: ProviderFileStub
+    via: w9
+  - kind: belongs_to
+    target: Provider
+    via: providerGuid
+- name: Race
+  field_count: 3
+- name: ReferenceAddress
+  field_count: 17
+  enumerated_fields:
+  - country
+  - preferredCorrespondence
+  - state
+- name: ReleaseAuthorization
+  field_count: 7
+  relationships:
+  - kind: belongs_to
+    target: Provider
+    via: providerGuid
+- name: Residency
+  field_count: 19
+  enumerated_fields:
+  - programType
+  - specialty
+  relationships:
+  - kind: has_one
+    target: Institution
+    via: institution
+  - kind: has_one
+    target: University
+    via: affiliatedUniversity
+  - kind: has_one
+    target: ProviderFileStub
+    via: trainingCertificate
+  - kind: has_one
+    target: Address
+    via: trainingAddress
+  - kind: belongs_to
+    target: Provider
+    via: providerGuid
+- name: Resume
+  field_count: 6
+  relationships:
+  - kind: has_one
+    target: ProviderFileStub
+    via: resume
+  - kind: belongs_to
+    target: Provider
+    via: providerGuid
+- name: SocialSecurityCard
+  field_count: 6
+  relationships:
+  - kind: has_one
+    target: ProviderFileStub
+    via: socialSecurityCard
+  - kind: belongs_to
+    target: Provider
+    via: providerGuid
+- name: Specialty
+  field_count: 4
+- name: SpokenLanguage
+  field_count: 4
+- name: StaffCategory
+  field_count: 3
+- name: SubstanceAbuseRecord
+  field_count: 11
+  relationships:
+  - kind: has_one
+    target: Contact
+    via: monitoringContact
+  - kind: belongs_to
+    target: Provider
+    via: providerGuid
+- name: University
+  field_count: 4
+  relationships:
+  - kind: has_one
+    target: ReferenceAddress
+    via: address
+- name: WorkEntry
+  field_count: 18
+  relationships:
+  - kind: has_one
+    target: Institution
+    via: institution
+  - kind: has_one
+    target: PracticeDepartment
+    via: department
+  - kind: has_one
+    target: Contact
+    via: contact
+  - kind: belongs_to
+    target: Provider
+    via: providerGuid
+- name: WorkforceDiversity
+  field_count: 13
+  enumerated_fields:
+  - gender
+  relationships:
+  - kind: belongs_to
+    target: Provider
+    via: providerGuid

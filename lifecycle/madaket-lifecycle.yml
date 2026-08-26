@@ -1,0 +1,66 @@
+generated: '2026-08-25'
+method: probed
+source: live probes of api.madakethealth.com, provider.madakethealth.com and
+  enrollment.madakethealth.com (2026-08-25) + https://registry.npmjs.org/@madaket/provider-api-client-js
+note: >-
+  Madaket publishes no versioning policy, no deprecation policy, no Sunset/Deprecation header
+  commitment, no SLA and no status page. The lifecycle evidence that does exist is negative and
+  it is significant: the company's own documented API host is down.
+versioning:
+  scheme: URI path version
+  current: v2.0
+  evidence: every one of the 211 operations is mounted under /api/v2.0/
+  policy_published: false
+  policy_url: null
+deprecation:
+  policy_published: false
+  sunset_header: false
+  deprecation_header: false
+  rfc8594: false
+  deprecated_operations: []
+  note: >-
+    No operation in the reconstructed contract is flagged deprecated, and no deprecation policy
+    is published anywhere on Madaket's public surface.
+sla:
+  published: false
+status_page:
+  published: false
+  probed:
+  - url: https://status.madakethealth.com/
+    status: 503
+    note: subdomain resolves to the same AWS ELB as the API hosts and returns 503; it is not a
+      status page
+host_liveness:
+  checked: '2026-08-25'
+  findings:
+  - host: api.madakethealth.com
+    status: 503
+    scope: every path probed (23 paths including /, /openapi.json, /swagger.json, /v1.0/, /services/)
+    note: >-
+      This is the host Madaket's own public material names as the API documentation site
+      ("api.madakethealth.com ... describes the messages and data elements available for
+      communication through the Madaket API"). It resolves to
+      prod-2017-lb-458151277.us-east-1.elb.amazonaws.com and the load balancer returns 503 for
+      every route, which is what an ELB does when a target group has no healthy targets.
+  - host: provider.madakethealth.com
+    status: 503
+    scope: /, /provider-services/, /provider-services/api-docs/, /provider-services/api-spec/api-spec.json
+    note: The Swagger UI and Swagger spec URLs named in Madaket's own npm SDK READMEs both 503.
+  - host: enrollment.madakethealth.com
+    status: 200 on /services/*, 503 elsewhere
+    note: >-
+      The only reachable application. /services/login serves a Java/Spring server-rendered
+      login page (nginx 1.26.3, JSESSIONID scoped to /services, CSRF token, X-Frame-Options
+      DENY). This is the customer enrollment portal, behind authentication — not an API.
+  - host: www.madakethealth.com
+    status: 200
+    note: WordPress marketing site (Avada theme). Actively maintained; carries 2026-dated blog posts.
+assessment:
+  api_marketed: true
+  api_contract_publicly_reachable: false
+  summary: >-
+    The business is live and selling — current AWS Marketplace listing, 2026 blog posts, an
+    operating customer portal — while the entire public developer surface has decayed. The
+    documented API host, the Swagger UI and the machine-readable spec all return 503, and the
+    newest first-party SDK was published in September 2018. This is decay of the developer
+    surface, not of the company.

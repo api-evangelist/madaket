@@ -1,0 +1,26 @@
+generated: '2026-08-25'
+method: searched
+source: https://registry.npmjs.org/@madaket/provider-api-client-js ; https://madakethealth.zendesk.com/api/v2/help_center/en-us/articles.json
+note: >-
+  Madaket publishes no rate limits. The first-party SDK READMEs, the generated per-operation
+  docs (211 operations), the Zendesk help center (18 articles, none technical beyond EDI
+  guides) and the marketing site contain no request quota, no window, no burst allowance and
+  no documented 429 behaviour. No RateLimit-* or X-RateLimit-* response headers could be
+  observed because the API host returns HTTP 503 to unauthenticated probes, so nothing was
+  observable at runtime either. The only throughput-shaped control found anywhere in the
+  contract is the `maxResults` field on the search/query request bodies, which is a
+  caller-supplied result cap, not a rate limit.
+limit_count: 0
+headers_documented: []
+status_code_on_exhaustion: null
+retry_after: null
+observed_at_runtime: false
+runtime_probe:
+  url: https://provider.madakethealth.com/provider-services
+  status: 503
+  note: host returned 503 on every path; no live headers observable
+related_controls:
+- name: maxResults
+  kind: caller-supplied result cap
+  where: request body of the *Search / *Query operations (e.g. ProviderDataSourceQuery.maxResults)
+  note: Caps rows returned per call. Not a rate limit and not enforced against the caller over time.

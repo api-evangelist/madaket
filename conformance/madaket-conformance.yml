@@ -1,0 +1,116 @@
+generated: '2026-08-25'
+method: derived
+source: openapi/madaket-provider-api.yml ; vocabulary/madaket-providerjson.md ;
+  https://github.com/madakethealth/pjson ;
+  https://madakethealth.zendesk.com/hc/en-us/categories/360001173491-Documentation
+note: >-
+  Conformance assertions for the Madaket Provider API and the Madaket PDM platform. Cross-cutting
+  web-API standards are almost entirely absent — this is a 2018-era Swagger 2.0 contract with
+  query-string key auth. The domain standards, by contrast, are strong and are declared inside
+  the contract itself.
+standards:
+- id: oauth2
+  conforms: false
+  evidence: No oauth2 securityScheme in the contract and no OAuth documentation anywhere on
+    Madaket's public surface. Authentication is two apiKey schemes in the query string.
+- id: oidc
+  conforms: false
+  evidence: /.well-known/openid-configuration returns 404 on www and 503 on every API host.
+- id: rfc9457
+  conforms: false
+  evidence: No application/problem+json media type appears in the contract; errors are not
+    modelled as problem details.
+- id: rfc9116
+  conforms: false
+  evidence: /.well-known/security.txt returns 404 on www.madakethealth.com.
+- id: rfc8594
+  conforms: false
+  evidence: No Sunset or Deprecation header commitment is published.
+- id: json:api
+  conforms: false
+  evidence: Responses are bare JSON objects and arrays; no JSON:API document structure.
+- id: odata
+  conforms: false
+  evidence: No $metadata surface and no OData query options; filtering is done by POSTing
+    typed *FilterQuery / *SearchQuery bodies.
+- id: pagination
+  conforms: false
+  evidence: >-
+    No cursor, offset, page or Link-header pagination is defined on any of the 211 operations.
+    The only result control is a caller-supplied `maxResults` integer on the query bodies, which
+    caps a single response and cannot walk a result set. This is a real gap for an API over a
+    national provider database.
+- id: idempotency
+  conforms: false
+  evidence: No Idempotency-Key header or equivalent is defined. See conventions/madaket-conventions.yml.
+- id: fhir
+  conforms: false
+  evidence: >-
+    No FHIR resources, no /Practitioner or /PractitionerRole endpoints, no fhir+json media
+    type. Madaket models providers with its own ProviderJSON/Provider schema rather than FHIR
+    R4 Practitioner. Notable because FHIR PractitionerRole plus the Da Vinci PDEX Plan-Net
+    directory profile is the standard the US payer-directory market converged on after this
+    contract was written.
+- id: hipaa
+  conforms: claimed
+  evidence: >-
+    Madaket operates as a healthcare administrative intermediary handling PHI/PII (SSN, DOB,
+    DEA numbers, license data) and markets No Surprises Act compliance. No trust center, SOC 2
+    report, HITRUST certification or compliance page was found on the public site
+    (probe-security-programs.py found no trust center and no vulnerability disclosure program),
+    so this is a market-position inference, not a published certification.
+domain_standards:
+- id: npi-nppes
+  name: National Provider Identifier / NPPES
+  conforms: true
+  evidence: >-
+    Declared in the contract itself. `npi` is a first-class field on Provider,
+    ProviderDataSourceQuery, ProviderSearchQuery and ProviderFilterQuery; the contract ships
+    dedicated NppesRecord and NppesPocProviderQuery schemas; and operation
+    `providerList_0` (POST /api/v2.0/provider/query) is summarised "Retrieve provider
+    information from NPPES". ProviderJSON is explicitly "based on fields currently collected
+    to receive or maintain a National Provider Identifier (or NPI)".
+  spec_location: components.schemas.NppesRecord ; components.schemas.Provider.npi ;
+    paths./api/v2.0/provider/query
+- id: nucc-taxonomy
+  name: NUCC Health Care Provider Taxonomy Code Set
+  conforms: true
+  evidence: >-
+    The contract carries Specialty, SpecialtyTaxonomy and SpecialtyTaxonomyApi resources and a
+    `taxonomies` array on the provider query models. ProviderJSON requires at least one
+    taxonomy per provider with exactly one marked primary — the NUCC taxonomy rule that NPPES
+    enforces.
+  spec_location: components.schemas.SpecialtyTaxonomy ; paths./api/v2.0/specialty-taxonomy/*
+- id: hpid-oeid
+  name: HPID / OEID enumeration (HIPAA administrative simplification)
+  conforms: true
+  evidence: ProviderJSON declares `enumeration_type` as the switch across NPI-1, NPI-2, OEID
+    and HPID and states requirement sets for each.
+  spec_location: vocabulary/madaket-providerjson.md
+- id: x12-edi
+  name: ASC X12 EDI enrollment transactions
+  conforms: claimed
+  evidence: >-
+    Madaket's EDI Enrollment product automates payer enrollment for EDI transaction sets, and
+    its published customer documentation includes an "EDI Customer Guide", an "EDI Enrollment
+    Overview" and an "EDI Rejection Codes" reference in the Zendesk Documentation category.
+    The transaction set numbers themselves are not published publicly — the guides are
+    attachment-only and their bodies are empty over the Help Center API — so this is asserted
+    from Madaket's own documentation titles rather than read out of a contract.
+  spec_location: https://madakethealth.zendesk.com/hc/en-us/categories/360001173491-Documentation
+- id: oig-leie
+  name: OIG List of Excluded Individuals and Entities
+  conforms: true
+  evidence: The contract ships OigExclusion and OigExclusionCodeApi resources, binding provider
+    records to federal exclusion screening.
+  spec_location: components.schemas.OigExclusion ; paths./api/v2.0/oig-exclusion-code/*
+- id: dea-registration
+  name: DEA / CDS controlled substance registration
+  conforms: true
+  evidence: Dedicated DeaLicense and CdsLicense resources with their own authorized query
+    models and four operations each.
+  spec_location: components.schemas.DeaLicense ; components.schemas.CdsLicense
+summary:
+  cross_cutting_conformant: 0
+  domain_standards_conformant: 5
+  domain_standards_claimed: 1

@@ -1,0 +1,47 @@
+generated: '2026-08-25'
+method: searched
+source: https://aws.amazon.com/marketplace/pp/prodview-octwyfc6hrf6o
+note: >-
+  Madaket publishes no pricing on madakethealth.com — the site's only commercial call to
+  action is "Schedule a Demo". The one place Madaket does publish dollar figures publicly is
+  its AWS Marketplace listing, which lists three fixed-price annual contract tiers for the
+  Provider Data Management platform. These are PLATFORM contract prices, not API plans:
+  Madaket publishes no per-call, per-seat or metered API pricing anywhere, and there is no
+  self-service signup or free tier for the Provider API.
+currency: USD
+billing_period: 12 months (24- and 36-month contracts also offered)
+pricing_model: fixed-price annual contract
+self_service: false
+free_tier: false
+plan_count: 3
+plans:
+- name: Tier 1
+  segment: Small
+  price: 50000
+  currency: USD
+  period: 12 months
+  included: Provider Profile Management, Payer Enrollment, Credentialing, Licensing, Analytics
+    & Insights
+  overage: not published
+  limits: not published
+- name: Tier 2
+  segment: Medium
+  price: 100000
+  currency: USD
+  period: 12 months
+  included: Provider Profile Management, Payer Enrollment, Credentialing, Licensing, Analytics
+    & Insights
+  overage: not published
+  limits: not published
+- name: Tier 3
+  segment: Enterprise
+  price: 150000
+  currency: USD
+  period: 12 months
+  included: Provider Profile Management, Payer Enrollment, Credentialing, Licensing, Analytics
+    & Insights
+  overage: not published
+  limits: not published
+contacts:
+  support: pesupport@madakethealth.com
+  custom_pricing: rob@madakethealth.com

@@ -1,0 +1,50 @@
+generated: '2026-08-25'
+method: derived
+source: openapi/madaket-provider-api.yml ; https://registry.npmjs.org/@madaket/provider-api-client-js
+note: >-
+  Madaket publishes NO error reference for the Provider API. The swagger-codegen output the
+  contract was reconstructed from carries no per-operation error responses beyond the success
+  case, and neither the SDK READMEs nor the Zendesk help center document an error envelope,
+  an error code registry or retry guidance. The entries below are the statuses an integrator
+  can rely on from the transport and the auth scheme; they are marked `documented: false`
+  because Madaket does not publish them. Nothing here is invented beyond what the auth model
+  and the load-balancer behaviour make certain.
+format: unspecified
+rfc9457: false
+problem_json: false
+error_envelope_documented: false
+error_code_registry_published: false
+problem_types:
+- status: 401
+  title: Authentication failed
+  documented: false
+  cause: >-
+    Missing api_key, missing auth_token, or an auth_token computed outside its rolling
+    ten-minute GMT window (the most common integration failure with this scheme, since it
+    depends on correct GMT formatting and truncation).
+  remediation: Recompute the auth_token from api_key + api_secret + the current truncated GMT
+    timestamp. See authentication/madaket-authentication.yml.
+- status: 404
+  title: Resource not found
+  documented: false
+  cause: Unknown Madaket GUID on a load operation, or an unknown providerGuid on a list operation.
+  remediation: Resolve the entity first via the corresponding search or filter operation.
+- status: 503
+  title: Service unavailable
+  documented: false
+  observed: true
+  cause: >-
+    Observed on 2026-08-25 across every path of api.madakethealth.com and
+    provider.madakethealth.com. The hosts sit behind an AWS ELB
+    (prod-2017-lb-458151277.us-east-1.elb.amazonaws.com) that returns a 564-byte nginx 503
+    page when its target group has no healthy targets. An integrator hitting the published
+    base URL today receives this, not an API response.
+  remediation: None available to the caller. Contact Madaket. See lifecycle/madaket-lifecycle.yml.
+gaps:
+- No 400 validation-error shape is documented for the typed *FilterQuery / *SearchQuery bodies,
+  which is where a caller is most likely to make a mistake.
+- No rate-limit / 429 semantics are documented. See rate-limits/madaket-rate-limits.yml.
+- Madaket DOES publish an "EDI Rejection Codes" reference for its EDI enrollment product at
+  https://madakethealth.zendesk.com/hc/en-us/articles/360019777751-EDI-Rejection-Codes but the
+  article body is empty over the Help Center API (the content is an attachment), so the codes
+  could not be captured. That reference belongs to the EDI enrollment workflow, not to this API.

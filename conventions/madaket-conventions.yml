@@ -1,0 +1,124 @@
+generated: '2026-08-25'
+method: derived
+source: openapi/madaket-provider-api.yml ; https://registry.npmjs.org/@madaket/provider-api-client-js
+note: >-
+  Cross-cutting runtime semantics for the Madaket Provider API. The contract is a 2018-era
+  Swagger 2.0 surface: 211 operations, 99 GET and 112 POST, of which 110 of the POSTs are
+  query-by-POST (filter / search / query). There is exactly ONE operation that is not a read.
+interface_style: REST-ish JSON over HTTPS, query-by-POST for all filtering
+media_types:
+  request: application/json
+  response: application/json
+authentication:
+  style: two apiKey values in the QUERY STRING (api_key + derived auth_token)
+  detail: authentication/madaket-authentication.yml
+versioning:
+  style: URI path
+  current: /api/v2.0/
+  negotiation: none (no Accept-Version or version header)
+  detail: lifecycle/madaket-lifecycle.yml
+operation_shape:
+  pattern: >-
+    Every resource family repeats the same four-operation template: load (GET
+    /<resource>/{id}), list (GET /api/v2.0/provider/{providerGuid}/<resource>), filter (POST
+    /<resource>/filter) and search (POST /<resource>/search). 57 resource families follow it
+    almost without exception, which makes the surface unusually predictable for an agent.
+  counts:
+    load: 55
+    filter: 54
+    search: 53
+    list: 41
+    other: 8
+  filter_vs_search: >-
+    `filter` takes a *FilterQuery / *AuthorizedFilterQuery body and returns matching rows;
+    `search` takes a *SearchQuery / *AuthorizedSearchQuery body and returns RANKED results
+    (the Provider search summary says "search available Providers, returning ranked results").
+pagination:
+  supported: false
+  style: none
+  params: []
+  response_fields: []
+  note: >-
+    No cursor, offset, page or limit parameter exists on any of the 211 operations, and no
+    Link header or envelope with a next token is defined. The only result control is the
+    caller-supplied `maxResults` integer inside the query bodies, which truncates one response
+    and cannot walk a result set. For an API over a national provider database this is the
+    most consequential missing convention.
+field_expansion:
+  supported: partial
+  note: >-
+    Not a generic ?expand= mechanism, but the Provider resource ships two explicit depths:
+    GET /api/v2.0/provider/{id} returns basic info and GET /api/v2.0/provider/{id}/full
+    returns the full ProviderContext. Related resources are otherwise fetched by their own
+    endpoints keyed on providerGuid.
+sparse_fields:
+  supported: false
+metadata:
+  supported: false
+  note: No customer-extensible metadata bag on any entity.
+request_id_tracing:
+  supported: false
+  note: No X-Request-Id / correlation identifier is documented or defined in the contract.
+error_envelope:
+  documented: false
+  format: unspecified
+  detail: errors/madaket-problem-types.yml
+rate_limit_signaling:
+  documented: false
+  detail: rate-limits/madaket-rate-limits.yml
+idempotency:
+  grade: na
+  supported: false
+  header: null
+  scope: null
+  retention: null
+  note: >-
+    NOT A GAP, AND NOT CREDIT EITHER — graded `na`. The API has no data-mutating write surface:
+    99 GETs plus 110 query-by-POST reads. The single non-read operation
+    (POST /api/v2.0/aggregation-request, providerAggregateSources) requests a refresh of
+    provider data from primary sources and returns an AggregationRequest job record. No
+    Idempotency-Key header or equivalent is defined for it, so a retried refresh request would
+    create a second job; the consequence is duplicated work, not duplicated money or duplicated
+    records. No `type: Idempotency` pointer is emitted for this provider.
+dry_run_mode:
+  grade: na
+  supported: false
+  note: No sandbox, no test mode and no dry-run parameter. With no write surface there is
+    nothing to rehearse.
+reversibility:
+  grade: na
+  write_surface: false
+  operations: []
+  note: >-
+    Graded `na`, honestly and not as a zero. The Madaket Provider API is a read/query API over
+    provider reference data — there is no create, update or delete operation anywhere in the
+    211-operation surface, so there is no action for an agent to take back and no window to
+    document. The one job-trigger operation is described below.
+  job_trigger_operations:
+  - operationId: providerAggregateSources
+    method: POST
+    path: /api/v2.0/aggregation-request
+    summary: request refresh of Provider data from available primary sources
+    reversal_operation: null
+    window: null
+    note: >-
+      Enqueues an aggregation job against Madaket's primary-source pipeline and returns an
+      AggregationRequest. Madaket publishes no cancel, abort or rollback operation for it, and
+      states no window in which one could be issued. Recorded as an absence — no window is
+      asserted here because Madaket states none.
+  caveat: >-
+    Madaket's WRITE surface — submitting and maintaining payer enrollments, which is the
+    product that actually changes state at a payer — is not part of this contract. It is
+    delivered through the authenticated enrollment portal at
+    https://enrollment.madakethealth.com/services/ and, per Madaket's marketing, through
+    partner integrations such as the PNC Healthcare portal. Whatever reversibility that
+    surface has is not publicly documented, so it is unmeasured rather than absent.
+agent_notes:
+- The four-operation template repeated across 57 resource families means an agent that learns
+  load/list/filter/search once can address the whole API.
+- Credentials go in the query string, so any agent framework that logs request URLs will log
+  Madaket credentials. Treat the URL as a secret.
+- The auth_token expires on a rolling 10-minute window and must be recomputed, not cached
+  long-term.
+- Without pagination, an agent cannot exhaustively enumerate a result set; it must narrow the
+  query instead and must not assume a response is complete.
