@@ -26,26 +26,16 @@ tags:
 - Licensing
 - Healthcare Administration
 apis:
-- aid: madaket:provider-api
-  name: Madaket Provider API
-  description: 'RESTful JSON endpoints published by Madaket Health for clean, high-quality US
-    healthcare provider data. 211 operations across 57 resource families covering provider
-    demographics, professional and DEA/CDS licensure, education and training, board
-    certifications, hospital privileges, malpractice and liability actions, OIG exclusions,
-    Medicare/Medicaid records, specialties and taxonomies. Authenticated with an issued API key
-    plus a time-windowed SHA-256 auth token.'
+- aid: madaket:madaket-adverseaction-api
+  name: Madaket Adverse Action API
+  description: The AdverseAction API from Madaket — 4 operation(s) for adverseaction.
   humanURL: https://www.madakethealth.com/platform/provider-directory-data-management
   baseURL: https://provider.madakethealth.com/provider-services
   tags:
-  - Provider Data
-  - Credentialing
-  - Licensing
-  - Healthcare
+  - AdverseAction
   properties:
   - type: OpenAPI
-    url: openapi/madaket-provider-api.yml
-  - type: Overlay
-    url: overlays/madaket-provider-api-overlay.yaml
+    url: openapi/madaket-adverseaction-api-openapi.yml
   - type: Authentication
     url: authentication/madaket-authentication.yml
   - type: Conventions
@@ -56,14 +46,1138 @@ apis:
     url: data-model/madaket-data-model.yml
   - type: ToolCrosswalk
     url: mcp/madaket-tool-crosswalk.yml
-  - type: AgentSkill
-    url: skills/_index.yml
+- aid: madaket:madaket-areaofstudy-api
+  name: Madaket Area Of Study API
+  description: The AreaOfStudy API from Madaket — 3 operation(s) for areaofstudy.
+  humanURL: https://www.madakethealth.com/platform/provider-directory-data-management
+  baseURL: https://provider.madakethealth.com/provider-services
+  tags:
+  - AreaOfStudy
+  properties:
+  - type: OpenAPI
+    url: openapi/madaket-areaofstudy-api-openapi.yml
+  - type: Authentication
+    url: authentication/madaket-authentication.yml
+  - type: Conventions
+    url: conventions/madaket-conventions.yml
+  - type: ErrorCatalog
+    url: errors/madaket-problem-types.yml
+  - type: DataModel
+    url: data-model/madaket-data-model.yml
+  - type: ToolCrosswalk
+    url: mcp/madaket-tool-crosswalk.yml
+- aid: madaket:madaket-board-api
+  name: Madaket Board API
+  description: The Board API from Madaket — 3 operation(s) for board.
+  humanURL: https://www.madakethealth.com/platform/provider-directory-data-management
+  baseURL: https://provider.madakethealth.com/provider-services
+  tags:
+  - Board
+  properties:
+  - type: OpenAPI
+    url: openapi/madaket-board-api-openapi.yml
+  - type: Authentication
+    url: authentication/madaket-authentication.yml
+  - type: Conventions
+    url: conventions/madaket-conventions.yml
+  - type: ErrorCatalog
+    url: errors/madaket-problem-types.yml
+  - type: DataModel
+    url: data-model/madaket-data-model.yml
+  - type: ToolCrosswalk
+    url: mcp/madaket-tool-crosswalk.yml
+- aid: madaket:madaket-cdslicense-api
+  name: Madaket Cds License API
+  description: The CdsLicense API from Madaket — 4 operation(s) for cdslicense.
+  humanURL: https://www.madakethealth.com/platform/provider-directory-data-management
+  baseURL: https://provider.madakethealth.com/provider-services
+  tags:
+  - CdsLicense
+  properties:
+  - type: OpenAPI
+    url: openapi/madaket-cdslicense-api-openapi.yml
+  - type: Authentication
+    url: authentication/madaket-authentication.yml
+  - type: Conventions
+    url: conventions/madaket-conventions.yml
+  - type: ErrorCatalog
+    url: errors/madaket-problem-types.yml
+  - type: DataModel
+    url: data-model/madaket-data-model.yml
+  - type: ToolCrosswalk
+    url: mcp/madaket-tool-crosswalk.yml
+- aid: madaket:madaket-commercialpayer-api
+  name: Madaket Commercial Payer API
+  description: The CommercialPayer API from Madaket — 4 operation(s) for commercialpayer.
+  humanURL: https://www.madakethealth.com/platform/provider-directory-data-management
+  baseURL: https://provider.madakethealth.com/provider-services
+  tags:
+  - CommercialPayer
+  properties:
+  - type: OpenAPI
+    url: openapi/madaket-commercialpayer-api-openapi.yml
+  - type: Authentication
+    url: authentication/madaket-authentication.yml
+  - type: Conventions
+    url: conventions/madaket-conventions.yml
+  - type: ErrorCatalog
+    url: errors/madaket-problem-types.yml
+  - type: DataModel
+    url: data-model/madaket-data-model.yml
+  - type: ToolCrosswalk
+    url: mcp/madaket-tool-crosswalk.yml
+- aid: madaket:madaket-criminalaction-api
+  name: Madaket Criminal Action API
+  description: The CriminalAction API from Madaket — 4 operation(s) for criminalaction.
+  humanURL: https://www.madakethealth.com/platform/provider-directory-data-management
+  baseURL: https://provider.madakethealth.com/provider-services
+  tags:
+  - CriminalAction
+  properties:
+  - type: OpenAPI
+    url: openapi/madaket-criminalaction-api-openapi.yml
+  - type: Authentication
+    url: authentication/madaket-authentication.yml
+  - type: Conventions
+    url: conventions/madaket-conventions.yml
+  - type: ErrorCatalog
+    url: errors/madaket-problem-types.yml
+  - type: DataModel
+    url: data-model/madaket-data-model.yml
+  - type: ToolCrosswalk
+    url: mcp/madaket-tool-crosswalk.yml
+- aid: madaket:madaket-dealicense-api
+  name: Madaket Dea License API
+  description: The DeaLicense API from Madaket — 4 operation(s) for dealicense.
+  humanURL: https://www.madakethealth.com/platform/provider-directory-data-management
+  baseURL: https://provider.madakethealth.com/provider-services
+  tags:
+  - DeaLicense
+  properties:
+  - type: OpenAPI
+    url: openapi/madaket-dealicense-api-openapi.yml
+  - type: Authentication
+    url: authentication/madaket-authentication.yml
+  - type: Conventions
+    url: conventions/madaket-conventions.yml
+  - type: ErrorCatalog
+    url: errors/madaket-problem-types.yml
+  - type: DataModel
+    url: data-model/madaket-data-model.yml
+  - type: ToolCrosswalk
+    url: mcp/madaket-tool-crosswalk.yml
+- aid: madaket:madaket-degree-api
+  name: Madaket Degree API
+  description: The Degree API from Madaket — 3 operation(s) for degree.
+  humanURL: https://www.madakethealth.com/platform/provider-directory-data-management
+  baseURL: https://provider.madakethealth.com/provider-services
+  tags:
+  - Degree
+  properties:
+  - type: OpenAPI
+    url: openapi/madaket-degree-api-openapi.yml
+  - type: Authentication
+    url: authentication/madaket-authentication.yml
+  - type: Conventions
+    url: conventions/madaket-conventions.yml
+  - type: ErrorCatalog
+    url: errors/madaket-problem-types.yml
+  - type: DataModel
+    url: data-model/madaket-data-model.yml
+  - type: ToolCrosswalk
+    url: mcp/madaket-tool-crosswalk.yml
+- aid: madaket:madaket-disclosurestatement-api
+  name: Madaket Disclosure Statement API
+  description: The DisclosureStatement API from Madaket — 3 operation(s) for disclosurestatement.
+  humanURL: https://www.madakethealth.com/platform/provider-directory-data-management
+  baseURL: https://provider.madakethealth.com/provider-services
+  tags:
+  - DisclosureStatement
+  properties:
+  - type: OpenAPI
+    url: openapi/madaket-disclosurestatement-api-openapi.yml
+  - type: Authentication
+    url: authentication/madaket-authentication.yml
+  - type: Conventions
+    url: conventions/madaket-conventions.yml
+  - type: ErrorCatalog
+    url: errors/madaket-problem-types.yml
+  - type: DataModel
+    url: data-model/madaket-data-model.yml
+  - type: ToolCrosswalk
+    url: mcp/madaket-tool-crosswalk.yml
+- aid: madaket:madaket-driverslicense-api
+  name: Madaket Drivers License API
+  description: The DriversLicense API from Madaket — 4 operation(s) for driverslicense.
+  humanURL: https://www.madakethealth.com/platform/provider-directory-data-management
+  baseURL: https://provider.madakethealth.com/provider-services
+  tags:
+  - DriversLicense
+  properties:
+  - type: OpenAPI
+    url: openapi/madaket-driverslicense-api-openapi.yml
+  - type: Authentication
+    url: authentication/madaket-authentication.yml
+  - type: Conventions
+    url: conventions/madaket-conventions.yml
+  - type: ErrorCatalog
+    url: errors/madaket-problem-types.yml
+  - type: DataModel
+    url: data-model/madaket-data-model.yml
+  - type: ToolCrosswalk
+    url: mcp/madaket-tool-crosswalk.yml
+- aid: madaket:madaket-education-api
+  name: Madaket Education API
+  description: The Education API from Madaket — 4 operation(s) for education.
+  humanURL: https://www.madakethealth.com/platform/provider-directory-data-management
+  baseURL: https://provider.madakethealth.com/provider-services
+  tags:
+  - Education
+  properties:
+  - type: OpenAPI
+    url: openapi/madaket-education-api-openapi.yml
+  - type: Authentication
+    url: authentication/madaket-authentication.yml
+  - type: Conventions
+    url: conventions/madaket-conventions.yml
+  - type: ErrorCatalog
+    url: errors/madaket-problem-types.yml
+  - type: DataModel
+    url: data-model/madaket-data-model.yml
+  - type: ToolCrosswalk
+    url: mcp/madaket-tool-crosswalk.yml
+- aid: madaket:madaket-employmentgap-api
+  name: Madaket Employment Gap API
+  description: The EmploymentGap API from Madaket — 4 operation(s) for employmentgap.
+  humanURL: https://www.madakethealth.com/platform/provider-directory-data-management
+  baseURL: https://provider.madakethealth.com/provider-services
+  tags:
+  - EmploymentGap
+  properties:
+  - type: OpenAPI
+    url: openapi/madaket-employmentgap-api-openapi.yml
+  - type: Authentication
+    url: authentication/madaket-authentication.yml
+  - type: Conventions
+    url: conventions/madaket-conventions.yml
+  - type: ErrorCatalog
+    url: errors/madaket-problem-types.yml
+  - type: DataModel
+    url: data-model/madaket-data-model.yml
+  - type: ToolCrosswalk
+    url: mcp/madaket-tool-crosswalk.yml
+- aid: madaket:madaket-ethnicity-api
+  name: Madaket Ethnicity API
+  description: The Ethnicity API from Madaket — 3 operation(s) for ethnicity.
+  humanURL: https://www.madakethealth.com/platform/provider-directory-data-management
+  baseURL: https://provider.madakethealth.com/provider-services
+  tags:
+  - Ethnicity
+  properties:
+  - type: OpenAPI
+    url: openapi/madaket-ethnicity-api-openapi.yml
+  - type: Authentication
+    url: authentication/madaket-authentication.yml
+  - type: Conventions
+    url: conventions/madaket-conventions.yml
+  - type: ErrorCatalog
+    url: errors/madaket-problem-types.yml
+  - type: DataModel
+    url: data-model/madaket-data-model.yml
+  - type: ToolCrosswalk
+    url: mcp/madaket-tool-crosswalk.yml
+- aid: madaket:madaket-fellowship-api
+  name: Madaket Fellowship API
+  description: The Fellowship API from Madaket — 4 operation(s) for fellowship.
+  humanURL: https://www.madakethealth.com/platform/provider-directory-data-management
+  baseURL: https://provider.madakethealth.com/provider-services
+  tags:
+  - Fellowship
+  properties:
+  - type: OpenAPI
+    url: openapi/madaket-fellowship-api-openapi.yml
+  - type: Authentication
+    url: authentication/madaket-authentication.yml
+  - type: Conventions
+    url: conventions/madaket-conventions.yml
+  - type: ErrorCatalog
+    url: errors/madaket-problem-types.yml
+  - type: DataModel
+    url: data-model/madaket-data-model.yml
+  - type: ToolCrosswalk
+    url: mcp/madaket-tool-crosswalk.yml
+- aid: madaket:madaket-graduateeducation-api
+  name: Madaket Graduate Education API
+  description: The GraduateEducation API from Madaket — 4 operation(s) for graduateeducation.
+  humanURL: https://www.madakethealth.com/platform/provider-directory-data-management
+  baseURL: https://provider.madakethealth.com/provider-services
+  tags:
+  - GraduateEducation
+  properties:
+  - type: OpenAPI
+    url: openapi/madaket-graduateeducation-api-openapi.yml
+  - type: Authentication
+    url: authentication/madaket-authentication.yml
+  - type: Conventions
+    url: conventions/madaket-conventions.yml
+  - type: ErrorCatalog
+    url: errors/madaket-problem-types.yml
+  - type: DataModel
+    url: data-model/madaket-data-model.yml
+  - type: ToolCrosswalk
+    url: mcp/madaket-tool-crosswalk.yml
+- aid: madaket:madaket-hospital-api
+  name: Madaket Hospital API
+  description: The Hospital API from Madaket — 3 operation(s) for hospital.
+  humanURL: https://www.madakethealth.com/platform/provider-directory-data-management
+  baseURL: https://provider.madakethealth.com/provider-services
+  tags:
+  - Hospital
+  properties:
+  - type: OpenAPI
+    url: openapi/madaket-hospital-api-openapi.yml
+  - type: Authentication
+    url: authentication/madaket-authentication.yml
+  - type: Conventions
+    url: conventions/madaket-conventions.yml
+  - type: ErrorCatalog
+    url: errors/madaket-problem-types.yml
+  - type: DataModel
+    url: data-model/madaket-data-model.yml
+  - type: ToolCrosswalk
+    url: mcp/madaket-tool-crosswalk.yml
+- aid: madaket:madaket-hospitalprivilege-api
+  name: Madaket Hospital Privilege API
+  description: The HospitalPrivilege API from Madaket — 4 operation(s) for hospitalprivilege.
+  humanURL: https://www.madakethealth.com/platform/provider-directory-data-management
+  baseURL: https://provider.madakethealth.com/provider-services
+  tags:
+  - HospitalPrivilege
+  properties:
+  - type: OpenAPI
+    url: openapi/madaket-hospitalprivilege-api-openapi.yml
+  - type: Authentication
+    url: authentication/madaket-authentication.yml
+  - type: Conventions
+    url: conventions/madaket-conventions.yml
+  - type: ErrorCatalog
+    url: errors/madaket-problem-types.yml
+  - type: DataModel
+    url: data-model/madaket-data-model.yml
+  - type: ToolCrosswalk
+    url: mcp/madaket-tool-crosswalk.yml
+- aid: madaket:madaket-individualnpiletter-api
+  name: Madaket Individual Npi Letter API
+  description: The IndividualNpiLetter API from Madaket — 4 operation(s) for individualnpiletter.
+  humanURL: https://www.madakethealth.com/platform/provider-directory-data-management
+  baseURL: https://provider.madakethealth.com/provider-services
+  tags:
+  - IndividualNpiLetter
+  properties:
+  - type: OpenAPI
+    url: openapi/madaket-individualnpiletter-api-openapi.yml
+  - type: Authentication
+    url: authentication/madaket-authentication.yml
+  - type: Conventions
+    url: conventions/madaket-conventions.yml
+  - type: ErrorCatalog
+    url: errors/madaket-problem-types.yml
+  - type: DataModel
+    url: data-model/madaket-data-model.yml
+  - type: ToolCrosswalk
+    url: mcp/madaket-tool-crosswalk.yml
+- aid: madaket:madaket-institution-api
+  name: Madaket Institution API
+  description: The Institution API from Madaket — 3 operation(s) for institution.
+  humanURL: https://www.madakethealth.com/platform/provider-directory-data-management
+  baseURL: https://provider.madakethealth.com/provider-services
+  tags:
+  - Institution
+  properties:
+  - type: OpenAPI
+    url: openapi/madaket-institution-api-openapi.yml
+  - type: Authentication
+    url: authentication/madaket-authentication.yml
+  - type: Conventions
+    url: conventions/madaket-conventions.yml
+  - type: ErrorCatalog
+    url: errors/madaket-problem-types.yml
+  - type: DataModel
+    url: data-model/madaket-data-model.yml
+  - type: ToolCrosswalk
+    url: mcp/madaket-tool-crosswalk.yml
+- aid: madaket:madaket-insurancecarrier-api
+  name: Madaket Insurance Carrier API
+  description: The InsuranceCarrier API from Madaket — 3 operation(s) for insurancecarrier.
+  humanURL: https://www.madakethealth.com/platform/provider-directory-data-management
+  baseURL: https://provider.madakethealth.com/provider-services
+  tags:
+  - InsuranceCarrier
+  properties:
+  - type: OpenAPI
+    url: openapi/madaket-insurancecarrier-api-openapi.yml
+  - type: Authentication
+    url: authentication/madaket-authentication.yml
+  - type: Conventions
+    url: conventions/madaket-conventions.yml
+  - type: ErrorCatalog
+    url: errors/madaket-problem-types.yml
+  - type: DataModel
+    url: data-model/madaket-data-model.yml
+  - type: ToolCrosswalk
+    url: mcp/madaket-tool-crosswalk.yml
+- aid: madaket:madaket-internship-api
+  name: Madaket Internship API
+  description: The Internship API from Madaket — 4 operation(s) for internship.
+  humanURL: https://www.madakethealth.com/platform/provider-directory-data-management
+  baseURL: https://provider.madakethealth.com/provider-services
+  tags:
+  - Internship
+  properties:
+  - type: OpenAPI
+    url: openapi/madaket-internship-api-openapi.yml
+  - type: Authentication
+    url: authentication/madaket-authentication.yml
+  - type: Conventions
+    url: conventions/madaket-conventions.yml
+  - type: ErrorCatalog
+    url: errors/madaket-problem-types.yml
+  - type: DataModel
+    url: data-model/madaket-data-model.yml
+  - type: ToolCrosswalk
+    url: mcp/madaket-tool-crosswalk.yml
+- aid: madaket:madaket-liabilityaction-api
+  name: Madaket Liability Action API
+  description: The LiabilityAction API from Madaket — 4 operation(s) for liabilityaction.
+  humanURL: https://www.madakethealth.com/platform/provider-directory-data-management
+  baseURL: https://provider.madakethealth.com/provider-services
+  tags:
+  - LiabilityAction
+  properties:
+  - type: OpenAPI
+    url: openapi/madaket-liabilityaction-api-openapi.yml
+  - type: Authentication
+    url: authentication/madaket-authentication.yml
+  - type: Conventions
+    url: conventions/madaket-conventions.yml
+  - type: ErrorCatalog
+    url: errors/madaket-problem-types.yml
+  - type: DataModel
+    url: data-model/madaket-data-model.yml
+  - type: ToolCrosswalk
+    url: mcp/madaket-tool-crosswalk.yml
+- aid: madaket:madaket-licenseauthority-api
+  name: Madaket License Authority API
+  description: The LicenseAuthority API from Madaket — 3 operation(s) for licenseauthority.
+  humanURL: https://www.madakethealth.com/platform/provider-directory-data-management
+  baseURL: https://provider.madakethealth.com/provider-services
+  tags:
+  - LicenseAuthority
+  properties:
+  - type: OpenAPI
+    url: openapi/madaket-licenseauthority-api-openapi.yml
+  - type: Authentication
+    url: authentication/madaket-authentication.yml
+  - type: Conventions
+    url: conventions/madaket-conventions.yml
+  - type: ErrorCatalog
+    url: errors/madaket-problem-types.yml
+  - type: DataModel
+    url: data-model/madaket-data-model.yml
+  - type: ToolCrosswalk
+    url: mcp/madaket-tool-crosswalk.yml
+- aid: madaket:madaket-malpracticeclaim-api
+  name: Madaket Malpractice Claim API
+  description: The MalpracticeClaim API from Madaket — 4 operation(s) for malpracticeclaim.
+  humanURL: https://www.madakethealth.com/platform/provider-directory-data-management
+  baseURL: https://provider.madakethealth.com/provider-services
+  tags:
+  - MalpracticeClaim
+  properties:
+  - type: OpenAPI
+    url: openapi/madaket-malpracticeclaim-api-openapi.yml
+  - type: Authentication
+    url: authentication/madaket-authentication.yml
+  - type: Conventions
+    url: conventions/madaket-conventions.yml
+  - type: ErrorCatalog
+    url: errors/madaket-problem-types.yml
+  - type: DataModel
+    url: data-model/madaket-data-model.yml
+  - type: ToolCrosswalk
+    url: mcp/madaket-tool-crosswalk.yml
+- aid: madaket:madaket-medicaidrecord-api
+  name: Madaket Medicaid Record API
+  description: The MedicaidRecord API from Madaket — 4 operation(s) for medicaidrecord.
+  humanURL: https://www.madakethealth.com/platform/provider-directory-data-management
+  baseURL: https://provider.madakethealth.com/provider-services
+  tags:
+  - MedicaidRecord
+  properties:
+  - type: OpenAPI
+    url: openapi/madaket-medicaidrecord-api-openapi.yml
+  - type: Authentication
+    url: authentication/madaket-authentication.yml
+  - type: Conventions
+    url: conventions/madaket-conventions.yml
+  - type: ErrorCatalog
+    url: errors/madaket-problem-types.yml
+  - type: DataModel
+    url: data-model/madaket-data-model.yml
+  - type: ToolCrosswalk
+    url: mcp/madaket-tool-crosswalk.yml
+- aid: madaket:madaket-medicaldegree-api
+  name: Madaket Medical Degree API
+  description: The MedicalDegree API from Madaket — 4 operation(s) for medicaldegree.
+  humanURL: https://www.madakethealth.com/platform/provider-directory-data-management
+  baseURL: https://provider.madakethealth.com/provider-services
+  tags:
+  - MedicalDegree
+  properties:
+  - type: OpenAPI
+    url: openapi/madaket-medicaldegree-api-openapi.yml
+  - type: Authentication
+    url: authentication/madaket-authentication.yml
+  - type: Conventions
+    url: conventions/madaket-conventions.yml
+  - type: ErrorCatalog
+    url: errors/madaket-problem-types.yml
+  - type: DataModel
+    url: data-model/madaket-data-model.yml
+  - type: ToolCrosswalk
+    url: mcp/madaket-tool-crosswalk.yml
+- aid: madaket:madaket-medicarerecord-api
+  name: Madaket Medicare Record API
+  description: The MedicareRecord API from Madaket — 4 operation(s) for medicarerecord.
+  humanURL: https://www.madakethealth.com/platform/provider-directory-data-management
+  baseURL: https://provider.madakethealth.com/provider-services
+  tags:
+  - MedicareRecord
+  properties:
+  - type: OpenAPI
+    url: openapi/madaket-medicarerecord-api-openapi.yml
+  - type: Authentication
+    url: authentication/madaket-authentication.yml
+  - type: Conventions
+    url: conventions/madaket-conventions.yml
+  - type: ErrorCatalog
+    url: errors/madaket-problem-types.yml
+  - type: DataModel
+    url: data-model/madaket-data-model.yml
+  - type: ToolCrosswalk
+    url: mcp/madaket-tool-crosswalk.yml
+- aid: madaket:madaket-militaryrecord-api
+  name: Madaket Military Record API
+  description: The MilitaryRecord API from Madaket — 4 operation(s) for militaryrecord.
+  humanURL: https://www.madakethealth.com/platform/provider-directory-data-management
+  baseURL: https://provider.madakethealth.com/provider-services
+  tags:
+  - MilitaryRecord
+  properties:
+  - type: OpenAPI
+    url: openapi/madaket-militaryrecord-api-openapi.yml
+  - type: Authentication
+    url: authentication/madaket-authentication.yml
+  - type: Conventions
+    url: conventions/madaket-conventions.yml
+  - type: ErrorCatalog
+    url: errors/madaket-problem-types.yml
+  - type: DataModel
+    url: data-model/madaket-data-model.yml
+  - type: ToolCrosswalk
+    url: mcp/madaket-tool-crosswalk.yml
+- aid: madaket:madaket-oigexclusioncode-api
+  name: Madaket Oig Exclusion Code API
+  description: The OigExclusionCode API from Madaket — 2 operation(s) for oigexclusioncode.
+  humanURL: https://www.madakethealth.com/platform/provider-directory-data-management
+  baseURL: https://provider.madakethealth.com/provider-services
+  tags:
+  - OigExclusionCode
+  properties:
+  - type: OpenAPI
+    url: openapi/madaket-oigexclusioncode-api-openapi.yml
+  - type: Authentication
+    url: authentication/madaket-authentication.yml
+  - type: Conventions
+    url: conventions/madaket-conventions.yml
+  - type: ErrorCatalog
+    url: errors/madaket-problem-types.yml
+  - type: DataModel
+    url: data-model/madaket-data-model.yml
+  - type: ToolCrosswalk
+    url: mcp/madaket-tool-crosswalk.yml
+- aid: madaket:madaket-otherprofessionaltraining-api
+  name: Madaket Other Professional Training API
+  description: >-
+    The OtherProfessionalTraining API from Madaket — 4 operation(s) for otherprofessionaltraining.
+  humanURL: https://www.madakethealth.com/platform/provider-directory-data-management
+  baseURL: https://provider.madakethealth.com/provider-services
+  tags:
+  - OtherProfessionalTraining
+  properties:
+  - type: OpenAPI
+    url: openapi/madaket-otherprofessionaltraining-api-openapi.yml
+  - type: Authentication
+    url: authentication/madaket-authentication.yml
+  - type: Conventions
+    url: conventions/madaket-conventions.yml
+  - type: ErrorCatalog
+    url: errors/madaket-problem-types.yml
+  - type: DataModel
+    url: data-model/madaket-data-model.yml
+  - type: ToolCrosswalk
+    url: mcp/madaket-tool-crosswalk.yml
+- aid: madaket:madaket-personalidentification-api
+  name: Madaket Personal Identification API
+  description: The PersonalIdentification API from Madaket — 4 operation(s) for personalidentification.
+  humanURL: https://www.madakethealth.com/platform/provider-directory-data-management
+  baseURL: https://provider.madakethealth.com/provider-services
+  tags:
+  - PersonalIdentification
+  properties:
+  - type: OpenAPI
+    url: openapi/madaket-personalidentification-api-openapi.yml
+  - type: Authentication
+    url: authentication/madaket-authentication.yml
+  - type: Conventions
+    url: conventions/madaket-conventions.yml
+  - type: ErrorCatalog
+    url: errors/madaket-problem-types.yml
+  - type: DataModel
+    url: data-model/madaket-data-model.yml
+  - type: ToolCrosswalk
+    url: mcp/madaket-tool-crosswalk.yml
+- aid: madaket:madaket-practicedepartment-api
+  name: Madaket Practice Department API
+  description: The PracticeDepartment API from Madaket — 3 operation(s) for practicedepartment.
+  humanURL: https://www.madakethealth.com/platform/provider-directory-data-management
+  baseURL: https://provider.madakethealth.com/provider-services
+  tags:
+  - PracticeDepartment
+  properties:
+  - type: OpenAPI
+    url: openapi/madaket-practicedepartment-api-openapi.yml
+  - type: Authentication
+    url: authentication/madaket-authentication.yml
+  - type: Conventions
+    url: conventions/madaket-conventions.yml
+  - type: ErrorCatalog
+    url: errors/madaket-problem-types.yml
+  - type: DataModel
+    url: data-model/madaket-data-model.yml
+  - type: ToolCrosswalk
+    url: mcp/madaket-tool-crosswalk.yml
+- aid: madaket:madaket-professionallicense-api
+  name: Madaket Professional License API
+  description: The ProfessionalLicense API from Madaket — 4 operation(s) for professionallicense.
+  humanURL: https://www.madakethealth.com/platform/provider-directory-data-management
+  baseURL: https://provider.madakethealth.com/provider-services
+  tags:
+  - ProfessionalLicense
+  properties:
+  - type: OpenAPI
+    url: openapi/madaket-professionallicense-api-openapi.yml
+  - type: Authentication
+    url: authentication/madaket-authentication.yml
+  - type: Conventions
+    url: conventions/madaket-conventions.yml
+  - type: ErrorCatalog
+    url: errors/madaket-problem-types.yml
+  - type: DataModel
+    url: data-model/madaket-data-model.yml
+  - type: ToolCrosswalk
+    url: mcp/madaket-tool-crosswalk.yml
+- aid: madaket:madaket-provider-api
+  name: Madaket Provider API
+  description: The Provider API from Madaket — 6 operation(s) for provider.
+  humanURL: https://www.madakethealth.com/platform/provider-directory-data-management
+  baseURL: https://provider.madakethealth.com/provider-services
+  tags:
+  - Provider
+  properties:
+  - type: OpenAPI
+    url: openapi/madaket-provider-api-openapi.yml
+  - type: Authentication
+    url: authentication/madaket-authentication.yml
+  - type: Conventions
+    url: conventions/madaket-conventions.yml
+  - type: ErrorCatalog
+    url: errors/madaket-problem-types.yml
+  - type: DataModel
+    url: data-model/madaket-data-model.yml
+  - type: ToolCrosswalk
+    url: mcp/madaket-tool-crosswalk.yml
+- aid: madaket:madaket-providercertification-api
+  name: Madaket Provider Certification API
+  description: The ProviderCertification API from Madaket — 4 operation(s) for providercertification.
+  humanURL: https://www.madakethealth.com/platform/provider-directory-data-management
+  baseURL: https://provider.madakethealth.com/provider-services
+  tags:
+  - ProviderCertification
+  properties:
+  - type: OpenAPI
+    url: openapi/madaket-providercertification-api-openapi.yml
+  - type: Authentication
+    url: authentication/madaket-authentication.yml
+  - type: Conventions
+    url: conventions/madaket-conventions.yml
+  - type: ErrorCatalog
+    url: errors/madaket-problem-types.yml
+  - type: DataModel
+    url: data-model/madaket-data-model.yml
+  - type: ToolCrosswalk
+    url: mcp/madaket-tool-crosswalk.yml
+- aid: madaket:madaket-providercredentialingcontact-api
+  name: Madaket Provider Credentialing Contact API
+  description: >-
+    The ProviderCredentialingContact API from Madaket — 4 operation(s) for providercredentialingcontact.
+  humanURL: https://www.madakethealth.com/platform/provider-directory-data-management
+  baseURL: https://provider.madakethealth.com/provider-services
+  tags:
+  - ProviderCredentialingContact
+  properties:
+  - type: OpenAPI
+    url: openapi/madaket-providercredentialingcontact-api-openapi.yml
+  - type: Authentication
+    url: authentication/madaket-authentication.yml
+  - type: Conventions
+    url: conventions/madaket-conventions.yml
+  - type: ErrorCatalog
+    url: errors/madaket-problem-types.yml
+  - type: DataModel
+    url: data-model/madaket-data-model.yml
+  - type: ToolCrosswalk
+    url: mcp/madaket-tool-crosswalk.yml
+- aid: madaket:madaket-providerecfmg-api
+  name: Madaket Provider Ecfmg API
+  description: The ProviderEcfmg API from Madaket — 4 operation(s) for providerecfmg.
+  humanURL: https://www.madakethealth.com/platform/provider-directory-data-management
+  baseURL: https://provider.madakethealth.com/provider-services
+  tags:
+  - ProviderEcfmg
+  properties:
+  - type: OpenAPI
+    url: openapi/madaket-providerecfmg-api-openapi.yml
+  - type: Authentication
+    url: authentication/madaket-authentication.yml
+  - type: Conventions
+    url: conventions/madaket-conventions.yml
+  - type: ErrorCatalog
+    url: errors/madaket-problem-types.yml
+  - type: DataModel
+    url: data-model/madaket-data-model.yml
+  - type: ToolCrosswalk
+    url: mcp/madaket-tool-crosswalk.yml
+- aid: madaket:madaket-providerfileattachment-api
+  name: Madaket Provider File Attachment API
+  description: The ProviderFileAttachment API from Madaket — 4 operation(s) for providerfileattachment.
+  humanURL: https://www.madakethealth.com/platform/provider-directory-data-management
+  baseURL: https://provider.madakethealth.com/provider-services
+  tags:
+  - ProviderFileAttachment
+  properties:
+  - type: OpenAPI
+    url: openapi/madaket-providerfileattachment-api-openapi.yml
+  - type: Authentication
+    url: authentication/madaket-authentication.yml
+  - type: Conventions
+    url: conventions/madaket-conventions.yml
+  - type: ErrorCatalog
+    url: errors/madaket-problem-types.yml
+  - type: DataModel
+    url: data-model/madaket-data-model.yml
+  - type: ToolCrosswalk
+    url: mcp/madaket-tool-crosswalk.yml
+- aid: madaket:madaket-providerfilestub-api
+  name: Madaket Provider File Stub API
+  description: The ProviderFileStub API from Madaket — 4 operation(s) for providerfilestub.
+  humanURL: https://www.madakethealth.com/platform/provider-directory-data-management
+  baseURL: https://provider.madakethealth.com/provider-services
+  tags:
+  - ProviderFileStub
+  properties:
+  - type: OpenAPI
+    url: openapi/madaket-providerfilestub-api-openapi.yml
+  - type: Authentication
+    url: authentication/madaket-authentication.yml
+  - type: Conventions
+    url: conventions/madaket-conventions.yml
+  - type: ErrorCatalog
+    url: errors/madaket-problem-types.yml
+  - type: DataModel
+    url: data-model/madaket-data-model.yml
+  - type: ToolCrosswalk
+    url: mcp/madaket-tool-crosswalk.yml
+- aid: madaket:madaket-providerinsurance-api
+  name: Madaket Provider Insurance API
+  description: The ProviderInsurance API from Madaket — 4 operation(s) for providerinsurance.
+  humanURL: https://www.madakethealth.com/platform/provider-directory-data-management
+  baseURL: https://provider.madakethealth.com/provider-services
+  tags:
+  - ProviderInsurance
+  properties:
+  - type: OpenAPI
+    url: openapi/madaket-providerinsurance-api-openapi.yml
+  - type: Authentication
+    url: authentication/madaket-authentication.yml
+  - type: Conventions
+    url: conventions/madaket-conventions.yml
+  - type: ErrorCatalog
+    url: errors/madaket-problem-types.yml
+  - type: DataModel
+    url: data-model/madaket-data-model.yml
+  - type: ToolCrosswalk
+    url: mcp/madaket-tool-crosswalk.yml
+- aid: madaket:madaket-providerperson-api
+  name: Madaket Provider Person API
+  description: The ProviderPerson API from Madaket — 4 operation(s) for providerperson.
+  humanURL: https://www.madakethealth.com/platform/provider-directory-data-management
+  baseURL: https://provider.madakethealth.com/provider-services
+  tags:
+  - ProviderPerson
+  properties:
+  - type: OpenAPI
+    url: openapi/madaket-providerperson-api-openapi.yml
+  - type: Authentication
+    url: authentication/madaket-authentication.yml
+  - type: Conventions
+    url: conventions/madaket-conventions.yml
+  - type: ErrorCatalog
+    url: errors/madaket-problem-types.yml
+  - type: DataModel
+    url: data-model/madaket-data-model.yml
+  - type: ToolCrosswalk
+    url: mcp/madaket-tool-crosswalk.yml
+- aid: madaket:madaket-providerpractice-api
+  name: Madaket Provider Practice API
+  description: The ProviderPractice API from Madaket — 4 operation(s) for providerpractice.
+  humanURL: https://www.madakethealth.com/platform/provider-directory-data-management
+  baseURL: https://provider.madakethealth.com/provider-services
+  tags:
+  - ProviderPractice
+  properties:
+  - type: OpenAPI
+    url: openapi/madaket-providerpractice-api-openapi.yml
+  - type: Authentication
+    url: authentication/madaket-authentication.yml
+  - type: Conventions
+    url: conventions/madaket-conventions.yml
+  - type: ErrorCatalog
+    url: errors/madaket-problem-types.yml
+  - type: DataModel
+    url: data-model/madaket-data-model.yml
+  - type: ToolCrosswalk
+    url: mcp/madaket-tool-crosswalk.yml
+- aid: madaket:madaket-providerreference-api
+  name: Madaket Provider Reference API
+  description: The ProviderReference API from Madaket — 4 operation(s) for providerreference.
+  humanURL: https://www.madakethealth.com/platform/provider-directory-data-management
+  baseURL: https://provider.madakethealth.com/provider-services
+  tags:
+  - ProviderReference
+  properties:
+  - type: OpenAPI
+    url: openapi/madaket-providerreference-api-openapi.yml
+  - type: Authentication
+    url: authentication/madaket-authentication.yml
+  - type: Conventions
+    url: conventions/madaket-conventions.yml
+  - type: ErrorCatalog
+    url: errors/madaket-problem-types.yml
+  - type: DataModel
+    url: data-model/madaket-data-model.yml
+  - type: ToolCrosswalk
+    url: mcp/madaket-tool-crosswalk.yml
+- aid: madaket:madaket-providerspecialty-api
+  name: Madaket Provider Specialty API
+  description: The ProviderSpecialty API from Madaket — 4 operation(s) for providerspecialty.
+  humanURL: https://www.madakethealth.com/platform/provider-directory-data-management
+  baseURL: https://provider.madakethealth.com/provider-services
+  tags:
+  - ProviderSpecialty
+  properties:
+  - type: OpenAPI
+    url: openapi/madaket-providerspecialty-api-openapi.yml
+  - type: Authentication
+    url: authentication/madaket-authentication.yml
+  - type: Conventions
+    url: conventions/madaket-conventions.yml
+  - type: ErrorCatalog
+    url: errors/madaket-problem-types.yml
+  - type: DataModel
+    url: data-model/madaket-data-model.yml
+  - type: ToolCrosswalk
+    url: mcp/madaket-tool-crosswalk.yml
+- aid: madaket:madaket-providerusmle-api
+  name: Madaket Provider Usmle API
+  description: The ProviderUsmle API from Madaket — 4 operation(s) for providerusmle.
+  humanURL: https://www.madakethealth.com/platform/provider-directory-data-management
+  baseURL: https://provider.madakethealth.com/provider-services
+  tags:
+  - ProviderUsmle
+  properties:
+  - type: OpenAPI
+    url: openapi/madaket-providerusmle-api-openapi.yml
+  - type: Authentication
+    url: authentication/madaket-authentication.yml
+  - type: Conventions
+    url: conventions/madaket-conventions.yml
+  - type: ErrorCatalog
+    url: errors/madaket-problem-types.yml
+  - type: DataModel
+    url: data-model/madaket-data-model.yml
+  - type: ToolCrosswalk
+    url: mcp/madaket-tool-crosswalk.yml
+- aid: madaket:madaket-providerw9-api
+  name: Madaket Provider W9 API
+  description: The ProviderW9 API from Madaket — 4 operation(s) for providerw9.
+  humanURL: https://www.madakethealth.com/platform/provider-directory-data-management
+  baseURL: https://provider.madakethealth.com/provider-services
+  tags:
+  - ProviderW9
+  properties:
+  - type: OpenAPI
+    url: openapi/madaket-providerw9-api-openapi.yml
+  - type: Authentication
+    url: authentication/madaket-authentication.yml
+  - type: Conventions
+    url: conventions/madaket-conventions.yml
+  - type: ErrorCatalog
+    url: errors/madaket-problem-types.yml
+  - type: DataModel
+    url: data-model/madaket-data-model.yml
+  - type: ToolCrosswalk
+    url: mcp/madaket-tool-crosswalk.yml
+- aid: madaket:madaket-race-api
+  name: Madaket Race API
+  description: The Race API from Madaket — 3 operation(s) for race.
+  humanURL: https://www.madakethealth.com/platform/provider-directory-data-management
+  baseURL: https://provider.madakethealth.com/provider-services
+  tags:
+  - Race
+  properties:
+  - type: OpenAPI
+    url: openapi/madaket-race-api-openapi.yml
+  - type: Authentication
+    url: authentication/madaket-authentication.yml
+  - type: Conventions
+    url: conventions/madaket-conventions.yml
+  - type: ErrorCatalog
+    url: errors/madaket-problem-types.yml
+  - type: DataModel
+    url: data-model/madaket-data-model.yml
+  - type: ToolCrosswalk
+    url: mcp/madaket-tool-crosswalk.yml
+- aid: madaket:madaket-residency-api
+  name: Madaket Residency API
+  description: The Residency API from Madaket — 4 operation(s) for residency.
+  humanURL: https://www.madakethealth.com/platform/provider-directory-data-management
+  baseURL: https://provider.madakethealth.com/provider-services
+  tags:
+  - Residency
+  properties:
+  - type: OpenAPI
+    url: openapi/madaket-residency-api-openapi.yml
+  - type: Authentication
+    url: authentication/madaket-authentication.yml
+  - type: Conventions
+    url: conventions/madaket-conventions.yml
+  - type: ErrorCatalog
+    url: errors/madaket-problem-types.yml
+  - type: DataModel
+    url: data-model/madaket-data-model.yml
+  - type: ToolCrosswalk
+    url: mcp/madaket-tool-crosswalk.yml
+- aid: madaket:madaket-resume-api
+  name: Madaket Resume API
+  description: The Resume API from Madaket — 4 operation(s) for resume.
+  humanURL: https://www.madakethealth.com/platform/provider-directory-data-management
+  baseURL: https://provider.madakethealth.com/provider-services
+  tags:
+  - Resume
+  properties:
+  - type: OpenAPI
+    url: openapi/madaket-resume-api-openapi.yml
+  - type: Authentication
+    url: authentication/madaket-authentication.yml
+  - type: Conventions
+    url: conventions/madaket-conventions.yml
+  - type: ErrorCatalog
+    url: errors/madaket-problem-types.yml
+  - type: DataModel
+    url: data-model/madaket-data-model.yml
+  - type: ToolCrosswalk
+    url: mcp/madaket-tool-crosswalk.yml
+- aid: madaket:madaket-socialsecuritycard-api
+  name: Madaket Social Security Card API
+  description: The SocialSecurityCard API from Madaket — 4 operation(s) for socialsecuritycard.
+  humanURL: https://www.madakethealth.com/platform/provider-directory-data-management
+  baseURL: https://provider.madakethealth.com/provider-services
+  tags:
+  - SocialSecurityCard
+  properties:
+  - type: OpenAPI
+    url: openapi/madaket-socialsecuritycard-api-openapi.yml
+  - type: Authentication
+    url: authentication/madaket-authentication.yml
+  - type: Conventions
+    url: conventions/madaket-conventions.yml
+  - type: ErrorCatalog
+    url: errors/madaket-problem-types.yml
+  - type: DataModel
+    url: data-model/madaket-data-model.yml
+  - type: ToolCrosswalk
+    url: mcp/madaket-tool-crosswalk.yml
+- aid: madaket:madaket-specialty-api
+  name: Madaket Specialty API
+  description: The Specialty API from Madaket — 3 operation(s) for specialty.
+  humanURL: https://www.madakethealth.com/platform/provider-directory-data-management
+  baseURL: https://provider.madakethealth.com/provider-services
+  tags:
+  - Specialty
+  properties:
+  - type: OpenAPI
+    url: openapi/madaket-specialty-api-openapi.yml
+  - type: Authentication
+    url: authentication/madaket-authentication.yml
+  - type: Conventions
+    url: conventions/madaket-conventions.yml
+  - type: ErrorCatalog
+    url: errors/madaket-problem-types.yml
+  - type: DataModel
+    url: data-model/madaket-data-model.yml
+  - type: ToolCrosswalk
+    url: mcp/madaket-tool-crosswalk.yml
+- aid: madaket:madaket-specialtytaxonomy-api
+  name: Madaket Specialty Taxonomy API
+  description: The SpecialtyTaxonomy API from Madaket — 2 operation(s) for specialtytaxonomy.
+  humanURL: https://www.madakethealth.com/platform/provider-directory-data-management
+  baseURL: https://provider.madakethealth.com/provider-services
+  tags:
+  - SpecialtyTaxonomy
+  properties:
+  - type: OpenAPI
+    url: openapi/madaket-specialtytaxonomy-api-openapi.yml
+  - type: Authentication
+    url: authentication/madaket-authentication.yml
+  - type: Conventions
+    url: conventions/madaket-conventions.yml
+  - type: ErrorCatalog
+    url: errors/madaket-problem-types.yml
+  - type: DataModel
+    url: data-model/madaket-data-model.yml
+  - type: ToolCrosswalk
+    url: mcp/madaket-tool-crosswalk.yml
+- aid: madaket:madaket-spokenlanguage-api
+  name: Madaket Spoken Language API
+  description: The SpokenLanguage API from Madaket — 3 operation(s) for spokenlanguage.
+  humanURL: https://www.madakethealth.com/platform/provider-directory-data-management
+  baseURL: https://provider.madakethealth.com/provider-services
+  tags:
+  - SpokenLanguage
+  properties:
+  - type: OpenAPI
+    url: openapi/madaket-spokenlanguage-api-openapi.yml
+  - type: Authentication
+    url: authentication/madaket-authentication.yml
+  - type: Conventions
+    url: conventions/madaket-conventions.yml
+  - type: ErrorCatalog
+    url: errors/madaket-problem-types.yml
+  - type: DataModel
+    url: data-model/madaket-data-model.yml
+  - type: ToolCrosswalk
+    url: mcp/madaket-tool-crosswalk.yml
+- aid: madaket:madaket-staffcategory-api
+  name: Madaket Staff Category API
+  description: The StaffCategory API from Madaket — 3 operation(s) for staffcategory.
+  humanURL: https://www.madakethealth.com/platform/provider-directory-data-management
+  baseURL: https://provider.madakethealth.com/provider-services
+  tags:
+  - StaffCategory
+  properties:
+  - type: OpenAPI
+    url: openapi/madaket-staffcategory-api-openapi.yml
+  - type: Authentication
+    url: authentication/madaket-authentication.yml
+  - type: Conventions
+    url: conventions/madaket-conventions.yml
+  - type: ErrorCatalog
+    url: errors/madaket-problem-types.yml
+  - type: DataModel
+    url: data-model/madaket-data-model.yml
+  - type: ToolCrosswalk
+    url: mcp/madaket-tool-crosswalk.yml
+- aid: madaket:madaket-substanceabuserecord-api
+  name: Madaket Substance Abuse Record API
+  description: The SubstanceAbuseRecord API from Madaket — 4 operation(s) for substanceabuserecord.
+  humanURL: https://www.madakethealth.com/platform/provider-directory-data-management
+  baseURL: https://provider.madakethealth.com/provider-services
+  tags:
+  - SubstanceAbuseRecord
+  properties:
+  - type: OpenAPI
+    url: openapi/madaket-substanceabuserecord-api-openapi.yml
+  - type: Authentication
+    url: authentication/madaket-authentication.yml
+  - type: Conventions
+    url: conventions/madaket-conventions.yml
+  - type: ErrorCatalog
+    url: errors/madaket-problem-types.yml
+  - type: DataModel
+    url: data-model/madaket-data-model.yml
+  - type: ToolCrosswalk
+    url: mcp/madaket-tool-crosswalk.yml
+- aid: madaket:madaket-university-api
+  name: Madaket University API
+  description: The University API from Madaket — 3 operation(s) for university.
+  humanURL: https://www.madakethealth.com/platform/provider-directory-data-management
+  baseURL: https://provider.madakethealth.com/provider-services
+  tags:
+  - University
+  properties:
+  - type: OpenAPI
+    url: openapi/madaket-university-api-openapi.yml
+  - type: Authentication
+    url: authentication/madaket-authentication.yml
+  - type: Conventions
+    url: conventions/madaket-conventions.yml
+  - type: ErrorCatalog
+    url: errors/madaket-problem-types.yml
+  - type: DataModel
+    url: data-model/madaket-data-model.yml
+  - type: ToolCrosswalk
+    url: mcp/madaket-tool-crosswalk.yml
+- aid: madaket:madaket-workentry-api
+  name: Madaket Work Entry API
+  description: The WorkEntry API from Madaket — 4 operation(s) for workentry.
+  humanURL: https://www.madakethealth.com/platform/provider-directory-data-management
+  baseURL: https://provider.madakethealth.com/provider-services
+  tags:
+  - WorkEntry
+  properties:
+  - type: OpenAPI
+    url: openapi/madaket-workentry-api-openapi.yml
+  - type: Authentication
+    url: authentication/madaket-authentication.yml
+  - type: Conventions
+    url: conventions/madaket-conventions.yml
+  - type: ErrorCatalog
+    url: errors/madaket-problem-types.yml
+  - type: DataModel
+    url: data-model/madaket-data-model.yml
+  - type: ToolCrosswalk
+    url: mcp/madaket-tool-crosswalk.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: Overlay
+  url: overlays/madaket-provider-api-overlay.yaml
+- type: AgentSkill
+  url: skills/_index.yml
 - type: Website
   url: https://www.madakethealth.com/
 - type: Documentation
