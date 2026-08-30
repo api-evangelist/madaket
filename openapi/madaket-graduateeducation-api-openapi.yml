@@ -1,0 +1,701 @@
+openapi: 3.2.0
+info:
+  title: Madaket Health Provider Graduate Education API
+  version: '2.0'
+  description: 'RESTful JSON endpoints published by Madaket Health for clean, high-quality US healthcare provider data — provider demographics, licensure, credentialing, education, sanctions and payer records.
+
+
+    PROVENANCE: this description was RECONSTRUCTED by API Evangelist from Madaket''s own first-party npm client @madaket/provider-api-client-js@0.0.3 (swagger-codegen 2.2.3 output), because Madaket''s published Swagger URL https://provider.madakethealth.com/provider-services/api-spec/api-spec.json returned HTTP 503 when probed on 2026-08-25. Paths, verbs, summaries, parameters, request/response models and security schemes are taken verbatim from that generated client. operationIds were normalized to <tag><Operation> because swagger-codegen namespaces them per API class and they are not globally unique in the generated output. This is NOT a document Madaket serves.'
+  contact:
+    name: Madaket Health
+    url: https://www.madakethealth.com/
+servers:
+- url: https://provider.madakethealth.com/provider-services
+  description: 'Production (probed 2026-08-25: HTTP 503)'
+security:
+- api_key: []
+  auth_token: []
+tags:
+- name: GraduateEducation
+paths:
+  /api/v2.0/graduate-education/filter:
+    post:
+      tags:
+      - GraduateEducation
+      summary: list all GraduateEducation resources using the given filter criteria
+      operationId: graduateEducationFilter
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/GraduateEducation'
+        '401':
+          description: Authentication failed - missing or invalid api_key / auth_token
+        '404':
+          description: Resource not found
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GraduateEducationAuthorizedFilterQuery'
+  /api/v2.0/provider/{providerGuid}/graduate-education:
+    get:
+      tags:
+      - GraduateEducation
+      summary: list all GraduateEducation resources that belong to the given Provider
+      operationId: graduateEducationList
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/GraduateEducation'
+        '401':
+          description: Authentication failed - missing or invalid api_key / auth_token
+        '404':
+          description: Resource not found
+      parameters:
+      - name: providerGuid
+        in: path
+        required: true
+        schema:
+          type: string
+  /api/v2.0/graduate-education/{id}:
+    get:
+      tags:
+      - GraduateEducation
+      summary: get a specific GraduateEducation using its unique ID
+      operationId: graduateEducationLoad
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GraduateEducation'
+        '401':
+          description: Authentication failed - missing or invalid api_key / auth_token
+        '404':
+          description: Resource not found
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+  /api/v2.0/graduate-education/search:
+    post:
+      tags:
+      - GraduateEducation
+      summary: search through all GraduateEducation resources using the given search criteria
+      operationId: graduateEducationSearch
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/GraduateEducation'
+        '401':
+          description: Authentication failed - missing or invalid api_key / auth_token
+        '404':
+          description: Resource not found
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GraduateEducationAuthorizedSearchQuery'
+components:
+  schemas:
+    ProviderFileStub:
+      type: object
+      properties:
+        id:
+          type: string
+        createdTime:
+          type: string
+          format: date-time
+        name:
+          type: string
+        extension:
+          type: string
+        mimeType:
+          type: string
+        size:
+          type: number
+        fileAttachmentGuid:
+          type: string
+        documentType:
+          type: string
+          enum:
+          - AdverseAction
+          - Application
+          - Application_Release
+          - Application_Report_Csv
+          - Application_Report_Txt
+          - Board_Certification
+          - CAQH_UPLOAD
+          - CDS
+          - CLIA_Certification
+          - Certificate_for_Conducting_Xray_and_or_Laboratory_Services
+          - Certificate_of_Advanced_Nurse_Practitioners
+          - Certificate_or_Letter_Certifying_Formal_Post_Graduate_Training
+          - Certificates_of_Completion
+          - Chemical_Substances_or_Alcohol_Abuse
+          - Correspondence
+          - Criminal_Actions
+          - DD214__Record_of_Military_Service
+          - DEA
+          - DEA_Waiver
+          - DPS
+          - Diploma
+          - Diplomate_of_National_Board_of_Medical_Examiners_Certificate
+          - Disclosure
+          - Disclosure_of_Ownership
+          - Drivers_License
+          - ECFMG
+          - Exam_Certification
+          - Graduate_Diploma
+          - Hospital_Letter__Verification_of_Hospital_Credentialing__or_Alternative_Pathways
+          - Individual_Npi_Letter
+          - Letter_of_Self_Insurance_Explanation_of_No_Insurance
+          - Liability_Insurance
+          - License_Application
+          - License_Attachment
+          - Malpractice_Claim_Information_Document_for_Nevada_State
+          - Malpractice_Explanation
+          - Malpractice_Insurance
+          - Maryland_State_License_Certificate
+          - Medical_Condition
+          - Medical_Degree
+          - National_Provider_Identification_Certificate
+          - Opt_Out
+          - Other
+          - Other_Certificate
+          - Photo
+          - Problem_Resolution_System_Letter
+          - Professional_Liability_Actions
+          - Professional_Liability_Insurance
+          - Radiology_Certification
+          - Reference_Letter
+          - Resume
+          - Schedule_AP1
+          - Schedule_B_Professional_Liability_Claims_Information_Form_for_Georgia_State
+          - Schedule_C_Regulation_Acknowledgement
+          - Scholar_Visa_IAP_66
+          - Section_D___Attestation_Questions
+          - Social_Security_Card
+          - State_Application_Addendum
+          - State_Authorization
+          - State_License
+          - State_License_MD
+          - State_Release
+          - TB_Skin_Test
+          - Therapeutic_Diagnostic_Pharmaceutical_Agents_License
+          - Visa_Document
+          - W_9
+          - Workers_Compensation_Certificate_of_Coverage
+    GraduateEducationAuthorizedSearchQuery:
+      type: object
+      properties:
+        id:
+          type: array
+          items:
+            type: string
+        maxResults:
+          type: number
+        firstResult:
+          type: number
+        sortField:
+          type: string
+        sortOrder:
+          type: string
+          enum:
+          - ASC
+          - DESC
+    GraduateEducation:
+      type: object
+      properties:
+        id:
+          type: string
+        createdTime:
+          type: string
+          format: date-time
+        providerGuid:
+          type: string
+        source:
+          type: string
+        sourceTimestamp:
+          type: string
+          format: date-time
+        graduateType:
+          type: string
+          enum:
+          - FIFTH_PATHWAY
+          - NON_US_CANADA
+          - UNKNOWN
+          - US_CANADA
+        university:
+          $ref: '#/components/schemas/University'
+        degree:
+          $ref: '#/components/schemas/Degree'
+        startDate:
+          type: string
+          format: date-time
+        endDate:
+          type: string
+          format: date-time
+        diploma:
+          $ref: '#/components/schemas/ProviderFileStub'
+        areaOfStudy:
+          type: string
+        completed:
+          type: boolean
+        incompleteReason:
+          type: string
+        programTrainingTitle:
+          type: string
+        certificateAwarded:
+          type: string
+        teachingPosition:
+          type: string
+        programDirectorName:
+          type: string
+        currentProgramDirectorName:
+          type: string
+        programDirectorDegree:
+          type: string
+        disciplinaryAction:
+          type: boolean
+        disciplinaryActionReason:
+          type: string
+        rotating:
+          type: boolean
+        additionalTrainingDescription:
+          type: string
+    ReferenceAddress:
+      type: object
+      properties:
+        street1:
+          type: string
+        street2:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+          enum:
+          - AK
+          - AL
+          - AR
+          - AS
+          - AZ
+          - CA
+          - CO
+          - CT
+          - DC
+          - DE
+          - FL
+          - FM
+          - GA
+          - GU
+          - HI
+          - IA
+          - ID
+          - IL
+          - IN
+          - KS
+          - KY
+          - LA
+          - MA
+          - MD
+          - ME
+          - MH
+          - MI
+          - MN
+          - MO
+          - MP
+          - MS
+          - MT
+          - NC
+          - ND
+          - NE
+          - NH
+          - NJ
+          - NM
+          - NV
+          - NY
+          - OH
+          - OK
+          - OR
+          - PA
+          - PR
+          - PW
+          - RI
+          - SC
+          - SD
+          - TN
+          - TX
+          - UNKNOWN
+          - UT
+          - VA
+          - VI
+          - VT
+          - WA
+          - WI
+          - WV
+          - WY
+        zip:
+          type: string
+        zipExtension:
+          type: string
+        county:
+          type: string
+        province:
+          type: string
+        country:
+          type: string
+          enum:
+          - AD
+          - AE
+          - AF
+          - AG
+          - AI
+          - AL
+          - AM
+          - AO
+          - AQ
+          - AR
+          - AS
+          - AT
+          - AU
+          - AW
+          - AZ
+          - BA
+          - BB
+          - BD
+          - BE
+          - BF
+          - BG
+          - BH
+          - BI
+          - BJ
+          - BL
+          - BM
+          - BN
+          - BO
+          - BQ
+          - BR
+          - BS
+          - BT
+          - BV
+          - BW
+          - BY
+          - BZ
+          - CA
+          - CC
+          - CD
+          - CF
+          - CG
+          - CH
+          - CI
+          - CK
+          - CL
+          - CM
+          - CN
+          - CO
+          - CR
+          - CU
+          - CV
+          - CW
+          - CX
+          - CY
+          - CZ
+          - DE
+          - DJ
+          - DK
+          - DM
+          - DO
+          - DZ
+          - EC
+          - EE
+          - EG
+          - EH
+          - ER
+          - ES
+          - ET
+          - FI
+          - FJ
+          - FK
+          - FM
+          - FO
+          - FR
+          - GA
+          - GB
+          - GD
+          - GE
+          - GF
+          - GG
+          - GH
+          - GI
+          - GL
+          - GM
+          - GN
+          - GP
+          - GQ
+          - GR
+          - GS
+          - GT
+          - GU
+          - GW
+          - GY
+          - HK
+          - HM
+          - HN
+          - HR
+          - HT
+          - HU
+          - ID
+          - IE
+          - IL
+          - IM
+          - IN
+          - IO
+          - IQ
+          - IR
+          - IS
+          - IT
+          - JE
+          - JM
+          - JO
+          - JP
+          - KE
+          - KG
+          - KH
+          - KI
+          - KM
+          - KN
+          - KP
+          - KR
+          - KW
+          - KY
+          - KZ
+          - LA
+          - LB
+          - LC
+          - LI
+          - LK
+          - LR
+          - LS
+          - LT
+          - LU
+          - LV
+          - LY
+          - MA
+          - MC
+          - MD
+          - ME
+          - MF
+          - MG
+          - MH
+          - MK
+          - ML
+          - MM
+          - MN
+          - MO
+          - MP
+          - MQ
+          - MR
+          - MS
+          - MT
+          - MU
+          - MV
+          - MW
+          - MX
+          - MY
+          - MZ
+          - NA
+          - NC
+          - NE
+          - NF
+          - NG
+          - NI
+          - NL
+          - 'NO'
+          - NP
+          - NR
+          - NU
+          - NZ
+          - OM
+          - PA
+          - PE
+          - PF
+          - PG
+          - PH
+          - PK
+          - PL
+          - PM
+          - PN
+          - PR
+          - PS
+          - PT
+          - PW
+          - PY
+          - QA
+          - RE
+          - RO
+          - RS
+          - RU
+          - RW
+          - SA
+          - SB
+          - SC
+          - SD
+          - SE
+          - SG
+          - SH
+          - SI
+          - SJ
+          - SK
+          - SL
+          - SM
+          - SN
+          - SO
+          - SR
+          - SS
+          - ST
+          - SV
+          - SX
+          - SY
+          - SZ
+          - TC
+          - TD
+          - TF
+          - TG
+          - TH
+          - TJ
+          - TK
+          - TL
+          - TM
+          - TN
+          - TO
+          - TR
+          - TT
+          - TV
+          - TW
+          - TZ
+          - UA
+          - UG
+          - UM
+          - US
+          - UY
+          - UZ
+          - VA
+          - VC
+          - VE
+          - VG
+          - VI
+          - VN
+          - VU
+          - WF
+          - WS
+          - XK
+          - YE
+          - YT
+          - ZA
+          - ZM
+          - ZW
+        phone:
+          type: string
+        phoneExtension:
+          type: string
+        phoneAfterHours:
+          type: string
+        phoneExtensionAfterHours:
+          type: string
+        fax:
+          type: string
+        email:
+          type: string
+        pager:
+          type: string
+        preferredCorrespondence:
+          type: string
+          enum:
+          - EMAIL
+          - FAX
+          - MAIL
+          - PHONE
+          - UNSPECIFIED
+    GraduateEducationAuthorizedFilterQuery:
+      type: object
+      properties:
+        id:
+          type: array
+          items:
+            type: string
+        maxResults:
+          type: number
+        firstResult:
+          type: number
+        sortField:
+          type: string
+        sortOrder:
+          type: string
+          enum:
+          - ASC
+          - DESC
+        degree:
+          type: array
+          items:
+            $ref: '#/components/schemas/Degree'
+        providerGuid:
+          type: array
+          items:
+            type: string
+        university:
+          type: array
+          items:
+            $ref: '#/components/schemas/University'
+    University:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        address:
+          $ref: '#/components/schemas/ReferenceAddress'
+        description:
+          type: string
+    Degree:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+  securitySchemes:
+    api_key:
+      type: apiKey
+      in: query
+      name: api_key
+      description: Madaket-issued API key. Issued on request; contact Madaket.
+    auth_token:
+      type: apiKey
+      in: query
+      name: auth_token
+      description: URL-safe Base64 of SHA-256(api_key + api_secret + yyyy-mm-dd-HH-M GMT window). Valid up to 10 minutes.

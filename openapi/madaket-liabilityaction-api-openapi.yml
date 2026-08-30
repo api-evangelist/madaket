@@ -1,0 +1,567 @@
+openapi: 3.2.0
+info:
+  title: Madaket Health Provider Liability Action API
+  version: '2.0'
+  description: 'RESTful JSON endpoints published by Madaket Health for clean, high-quality US healthcare provider data — provider demographics, licensure, credentialing, education, sanctions and payer records.
+
+
+    PROVENANCE: this description was RECONSTRUCTED by API Evangelist from Madaket''s own first-party npm client @madaket/provider-api-client-js@0.0.3 (swagger-codegen 2.2.3 output), because Madaket''s published Swagger URL https://provider.madakethealth.com/provider-services/api-spec/api-spec.json returned HTTP 503 when probed on 2026-08-25. Paths, verbs, summaries, parameters, request/response models and security schemes are taken verbatim from that generated client. operationIds were normalized to <tag><Operation> because swagger-codegen namespaces them per API class and they are not globally unique in the generated output. This is NOT a document Madaket serves.'
+  contact:
+    name: Madaket Health
+    url: https://www.madakethealth.com/
+servers:
+- url: https://provider.madakethealth.com/provider-services
+  description: 'Production (probed 2026-08-25: HTTP 503)'
+security:
+- api_key: []
+  auth_token: []
+tags:
+- name: LiabilityAction
+paths:
+  /api/v2.0/liability-action/filter:
+    post:
+      tags:
+      - LiabilityAction
+      summary: list all LiabilityAction resources using the given filter criteria
+      operationId: liabilityActionFilter
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LiabilityAction'
+        '401':
+          description: Authentication failed - missing or invalid api_key / auth_token
+        '404':
+          description: Resource not found
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LiabilityActionAuthorizedFilterQuery'
+  /api/v2.0/provider/{providerGuid}/liability-action:
+    get:
+      tags:
+      - LiabilityAction
+      summary: list all LiabilityAction resources that belong to the given Provider
+      operationId: liabilityActionList
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LiabilityAction'
+        '401':
+          description: Authentication failed - missing or invalid api_key / auth_token
+        '404':
+          description: Resource not found
+      parameters:
+      - name: providerGuid
+        in: path
+        required: true
+        schema:
+          type: string
+  /api/v2.0/liability-action/{id}:
+    get:
+      tags:
+      - LiabilityAction
+      summary: get a specific LiabilityAction using its unique ID
+      operationId: liabilityActionLoad
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LiabilityAction'
+        '401':
+          description: Authentication failed - missing or invalid api_key / auth_token
+        '404':
+          description: Resource not found
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+  /api/v2.0/liability-action/search:
+    post:
+      tags:
+      - LiabilityAction
+      summary: search through all LiabilityAction resources using the given search criteria
+      operationId: liabilityActionSearch
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LiabilityAction'
+        '401':
+          description: Authentication failed - missing or invalid api_key / auth_token
+        '404':
+          description: Resource not found
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LiabilityActionAuthorizedSearchQuery'
+components:
+  schemas:
+    LiabilityActionAuthorizedFilterQuery:
+      type: object
+      properties:
+        id:
+          type: array
+          items:
+            type: string
+        maxResults:
+          type: number
+        firstResult:
+          type: number
+        sortField:
+          type: string
+        sortOrder:
+          type: string
+          enum:
+          - ASC
+          - DESC
+        carrier:
+          type: array
+          items:
+            $ref: '#/components/schemas/InsuranceCarrier'
+        providerGuid:
+          type: array
+          items:
+            type: string
+    InsuranceCarrier:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        address:
+          $ref: '#/components/schemas/ReferenceAddress'
+        description:
+          type: string
+    ReferenceAddress:
+      type: object
+      properties:
+        street1:
+          type: string
+        street2:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+          enum:
+          - AK
+          - AL
+          - AR
+          - AS
+          - AZ
+          - CA
+          - CO
+          - CT
+          - DC
+          - DE
+          - FL
+          - FM
+          - GA
+          - GU
+          - HI
+          - IA
+          - ID
+          - IL
+          - IN
+          - KS
+          - KY
+          - LA
+          - MA
+          - MD
+          - ME
+          - MH
+          - MI
+          - MN
+          - MO
+          - MP
+          - MS
+          - MT
+          - NC
+          - ND
+          - NE
+          - NH
+          - NJ
+          - NM
+          - NV
+          - NY
+          - OH
+          - OK
+          - OR
+          - PA
+          - PR
+          - PW
+          - RI
+          - SC
+          - SD
+          - TN
+          - TX
+          - UNKNOWN
+          - UT
+          - VA
+          - VI
+          - VT
+          - WA
+          - WI
+          - WV
+          - WY
+        zip:
+          type: string
+        zipExtension:
+          type: string
+        county:
+          type: string
+        province:
+          type: string
+        country:
+          type: string
+          enum:
+          - AD
+          - AE
+          - AF
+          - AG
+          - AI
+          - AL
+          - AM
+          - AO
+          - AQ
+          - AR
+          - AS
+          - AT
+          - AU
+          - AW
+          - AZ
+          - BA
+          - BB
+          - BD
+          - BE
+          - BF
+          - BG
+          - BH
+          - BI
+          - BJ
+          - BL
+          - BM
+          - BN
+          - BO
+          - BQ
+          - BR
+          - BS
+          - BT
+          - BV
+          - BW
+          - BY
+          - BZ
+          - CA
+          - CC
+          - CD
+          - CF
+          - CG
+          - CH
+          - CI
+          - CK
+          - CL
+          - CM
+          - CN
+          - CO
+          - CR
+          - CU
+          - CV
+          - CW
+          - CX
+          - CY
+          - CZ
+          - DE
+          - DJ
+          - DK
+          - DM
+          - DO
+          - DZ
+          - EC
+          - EE
+          - EG
+          - EH
+          - ER
+          - ES
+          - ET
+          - FI
+          - FJ
+          - FK
+          - FM
+          - FO
+          - FR
+          - GA
+          - GB
+          - GD
+          - GE
+          - GF
+          - GG
+          - GH
+          - GI
+          - GL
+          - GM
+          - GN
+          - GP
+          - GQ
+          - GR
+          - GS
+          - GT
+          - GU
+          - GW
+          - GY
+          - HK
+          - HM
+          - HN
+          - HR
+          - HT
+          - HU
+          - ID
+          - IE
+          - IL
+          - IM
+          - IN
+          - IO
+          - IQ
+          - IR
+          - IS
+          - IT
+          - JE
+          - JM
+          - JO
+          - JP
+          - KE
+          - KG
+          - KH
+          - KI
+          - KM
+          - KN
+          - KP
+          - KR
+          - KW
+          - KY
+          - KZ
+          - LA
+          - LB
+          - LC
+          - LI
+          - LK
+          - LR
+          - LS
+          - LT
+          - LU
+          - LV
+          - LY
+          - MA
+          - MC
+          - MD
+          - ME
+          - MF
+          - MG
+          - MH
+          - MK
+          - ML
+          - MM
+          - MN
+          - MO
+          - MP
+          - MQ
+          - MR
+          - MS
+          - MT
+          - MU
+          - MV
+          - MW
+          - MX
+          - MY
+          - MZ
+          - NA
+          - NC
+          - NE
+          - NF
+          - NG
+          - NI
+          - NL
+          - 'NO'
+          - NP
+          - NR
+          - NU
+          - NZ
+          - OM
+          - PA
+          - PE
+          - PF
+          - PG
+          - PH
+          - PK
+          - PL
+          - PM
+          - PN
+          - PR
+          - PS
+          - PT
+          - PW
+          - PY
+          - QA
+          - RE
+          - RO
+          - RS
+          - RU
+          - RW
+          - SA
+          - SB
+          - SC
+          - SD
+          - SE
+          - SG
+          - SH
+          - SI
+          - SJ
+          - SK
+          - SL
+          - SM
+          - SN
+          - SO
+          - SR
+          - SS
+          - ST
+          - SV
+          - SX
+          - SY
+          - SZ
+          - TC
+          - TD
+          - TF
+          - TG
+          - TH
+          - TJ
+          - TK
+          - TL
+          - TM
+          - TN
+          - TO
+          - TR
+          - TT
+          - TV
+          - TW
+          - TZ
+          - UA
+          - UG
+          - UM
+          - US
+          - UY
+          - UZ
+          - VA
+          - VC
+          - VE
+          - VG
+          - VI
+          - VN
+          - VU
+          - WF
+          - WS
+          - XK
+          - YE
+          - YT
+          - ZA
+          - ZM
+          - ZW
+        phone:
+          type: string
+        phoneExtension:
+          type: string
+        phoneAfterHours:
+          type: string
+        phoneExtensionAfterHours:
+          type: string
+        fax:
+          type: string
+        email:
+          type: string
+        pager:
+          type: string
+        preferredCorrespondence:
+          type: string
+          enum:
+          - EMAIL
+          - FAX
+          - MAIL
+          - PHONE
+          - UNSPECIFIED
+    LiabilityActionAuthorizedSearchQuery:
+      type: object
+      properties:
+        id:
+          type: array
+          items:
+            type: string
+        maxResults:
+          type: number
+        firstResult:
+          type: number
+        sortField:
+          type: string
+        sortOrder:
+          type: string
+          enum:
+          - ASC
+          - DESC
+    LiabilityAction:
+      type: object
+      properties:
+        id:
+          type: string
+        createdTime:
+          type: string
+          format: date-time
+        providerGuid:
+          type: string
+        source:
+          type: string
+        sourceTimestamp:
+          type: string
+          format: date-time
+        policyNumber:
+          type: string
+        carrier:
+          $ref: '#/components/schemas/InsuranceCarrier'
+        startDate:
+          type: string
+          format: date-time
+        endDate:
+          type: string
+          format: date-time
+        circumstancesDescription:
+          type: string
+  securitySchemes:
+    api_key:
+      type: apiKey
+      in: query
+      name: api_key
+      description: Madaket-issued API key. Issued on request; contact Madaket.
+    auth_token:
+      type: apiKey
+      in: query
+      name: auth_token
+      description: URL-safe Base64 of SHA-256(api_key + api_secret + yyyy-mm-dd-HH-M GMT window). Valid up to 10 minutes.

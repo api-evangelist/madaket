@@ -1,0 +1,86 @@
+openapi: 3.2.0
+info:
+  title: Madaket Health Provider Specialty Taxonomy API
+  version: '2.0'
+  description: 'RESTful JSON endpoints published by Madaket Health for clean, high-quality US healthcare provider data — provider demographics, licensure, credentialing, education, sanctions and payer records.
+
+
+    PROVENANCE: this description was RECONSTRUCTED by API Evangelist from Madaket''s own first-party npm client @madaket/provider-api-client-js@0.0.3 (swagger-codegen 2.2.3 output), because Madaket''s published Swagger URL https://provider.madakethealth.com/provider-services/api-spec/api-spec.json returned HTTP 503 when probed on 2026-08-25. Paths, verbs, summaries, parameters, request/response models and security schemes are taken verbatim from that generated client. operationIds were normalized to <tag><Operation> because swagger-codegen namespaces them per API class and they are not globally unique in the generated output. This is NOT a document Madaket serves.'
+  contact:
+    name: Madaket Health
+    url: https://www.madakethealth.com/
+servers:
+- url: https://provider.madakethealth.com/provider-services
+  description: 'Production (probed 2026-08-25: HTTP 503)'
+security:
+- api_key: []
+  auth_token: []
+tags:
+- name: SpecialtyTaxonomy
+paths:
+  /api/v2.0/specialty-taxonomy/{code}:
+    get:
+      tags:
+      - SpecialtyTaxonomy
+      summary: get information about a given SpecialtyTaxonomy code
+      operationId: specialtyTaxonomyDescribe
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Specialty'
+        '401':
+          description: Authentication failed - missing or invalid api_key / auth_token
+        '404':
+          description: Resource not found
+      parameters:
+      - name: code
+        in: path
+        required: true
+        schema:
+          type: string
+  /api/v2.0/specialty-taxonomy:
+    get:
+      tags:
+      - SpecialtyTaxonomy
+      summary: list all available SpecialtyTaxonomy codes with groups, classifications, and specialization information
+      operationId: specialtyTaxonomyListAll
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Specialty'
+        '401':
+          description: Authentication failed - missing or invalid api_key / auth_token
+        '404':
+          description: Resource not found
+components:
+  schemas:
+    Specialty:
+      type: object
+      properties:
+        code:
+          type: string
+        grouping:
+          type: string
+        classification:
+          type: string
+        specialization:
+          type: string
+  securitySchemes:
+    api_key:
+      type: apiKey
+      in: query
+      name: api_key
+      description: Madaket-issued API key. Issued on request; contact Madaket.
+    auth_token:
+      type: apiKey
+      in: query
+      name: auth_token
+      description: URL-safe Base64 of SHA-256(api_key + api_secret + yyyy-mm-dd-HH-M GMT window). Valid up to 10 minutes.

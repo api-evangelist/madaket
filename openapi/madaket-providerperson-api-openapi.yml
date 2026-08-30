@@ -1,0 +1,202 @@
+openapi: 3.2.0
+info:
+  title: Madaket Health Provider Provider Person API
+  version: '2.0'
+  description: 'RESTful JSON endpoints published by Madaket Health for clean, high-quality US healthcare provider data — provider demographics, licensure, credentialing, education, sanctions and payer records.
+
+
+    PROVENANCE: this description was RECONSTRUCTED by API Evangelist from Madaket''s own first-party npm client @madaket/provider-api-client-js@0.0.3 (swagger-codegen 2.2.3 output), because Madaket''s published Swagger URL https://provider.madakethealth.com/provider-services/api-spec/api-spec.json returned HTTP 503 when probed on 2026-08-25. Paths, verbs, summaries, parameters, request/response models and security schemes are taken verbatim from that generated client. operationIds were normalized to <tag><Operation> because swagger-codegen namespaces them per API class and they are not globally unique in the generated output. This is NOT a document Madaket serves.'
+  contact:
+    name: Madaket Health
+    url: https://www.madakethealth.com/
+servers:
+- url: https://provider.madakethealth.com/provider-services
+  description: 'Production (probed 2026-08-25: HTTP 503)'
+security:
+- api_key: []
+  auth_token: []
+tags:
+- name: ProviderPerson
+paths:
+  /api/v2.0/provider-person/filter:
+    post:
+      tags:
+      - ProviderPerson
+      summary: list all ProviderPerson resources using the given filter criteria
+      operationId: providerPersonFilter
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ProviderPerson'
+        '401':
+          description: Authentication failed - missing or invalid api_key / auth_token
+        '404':
+          description: Resource not found
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProviderPersonAuthorizedFilterQuery'
+  /api/v2.0/provider/{providerGuid}/provider-person:
+    get:
+      tags:
+      - ProviderPerson
+      summary: list all ProviderPerson resources that belong to the given Provider
+      operationId: providerPersonList
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ProviderPerson'
+        '401':
+          description: Authentication failed - missing or invalid api_key / auth_token
+        '404':
+          description: Resource not found
+      parameters:
+      - name: providerGuid
+        in: path
+        required: true
+        schema:
+          type: string
+  /api/v2.0/provider-person/{id}:
+    get:
+      tags:
+      - ProviderPerson
+      summary: get a specific ProviderPerson using its unique ID
+      operationId: providerPersonLoad
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProviderPerson'
+        '401':
+          description: Authentication failed - missing or invalid api_key / auth_token
+        '404':
+          description: Resource not found
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+  /api/v2.0/provider-person/search:
+    post:
+      tags:
+      - ProviderPerson
+      summary: search through all ProviderPerson resources using the given search criteria
+      operationId: providerPersonSearch
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ProviderPerson'
+        '401':
+          description: Authentication failed - missing or invalid api_key / auth_token
+        '404':
+          description: Resource not found
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProviderPersonAuthorizedSearchQuery'
+components:
+  schemas:
+    ProviderPersonAuthorizedFilterQuery:
+      type: object
+      properties:
+        id:
+          type: array
+          items:
+            type: string
+        maxResults:
+          type: number
+        firstResult:
+          type: number
+        sortField:
+          type: string
+        sortOrder:
+          type: string
+          enum:
+          - ASC
+          - DESC
+        providerGuid:
+          type: array
+          items:
+            type: string
+    ProviderPersonAuthorizedSearchQuery:
+      type: object
+      properties:
+        id:
+          type: array
+          items:
+            type: string
+        maxResults:
+          type: number
+        firstResult:
+          type: number
+        sortField:
+          type: string
+        sortOrder:
+          type: string
+          enum:
+          - ASC
+          - DESC
+    ProviderPerson:
+      type: object
+      properties:
+        id:
+          type: string
+        createdTime:
+          type: string
+          format: date-time
+        providerGuid:
+          type: string
+        source:
+          type: string
+        sourceTimestamp:
+          type: string
+          format: date-time
+        prefix:
+          type: string
+        firstName:
+          type: string
+        middleName:
+          type: string
+        lastName:
+          type: string
+        suffix:
+          type: string
+        otherNameStart:
+          type: string
+          format: date-time
+        otherNameEnd:
+          type: string
+          format: date-time
+  securitySchemes:
+    api_key:
+      type: apiKey
+      in: query
+      name: api_key
+      description: Madaket-issued API key. Issued on request; contact Madaket.
+    auth_token:
+      type: apiKey
+      in: query
+      name: auth_token
+      description: URL-safe Base64 of SHA-256(api_key + api_secret + yyyy-mm-dd-HH-M GMT window). Valid up to 10 minutes.
