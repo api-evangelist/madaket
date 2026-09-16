@@ -443,6 +443,8 @@ apis:
   humanURL: https://www.madakethealth.com/platform/provider-directory-data-management
   baseURL: https://provider.madakethealth.com/provider-services
   tags:
+  - Insurance Carrier
+  tags_raw:
   - InsuranceCarrier
   properties:
   - type: OpenAPI
