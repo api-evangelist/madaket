@@ -361,6 +361,8 @@ apis:
   humanURL: https://www.madakethealth.com/platform/provider-directory-data-management
   baseURL: https://provider.madakethealth.com/provider-services
   tags:
+  - Hospitals
+  tags_raw:
   - Hospital
   properties:
   - type: OpenAPI
@@ -726,6 +728,8 @@ apis:
   humanURL: https://www.madakethealth.com/platform/provider-directory-data-management
   baseURL: https://provider.madakethealth.com/provider-services
   tags:
+  - Providers
+  tags_raw:
   - Provider
   properties:
   - type: OpenAPI
