@@ -1,0 +1,295 @@
+slug: madaket
+provider: Madaket
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Transportation & Logistics
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 26
+edges:
+- tag: HospitalPrivilege
+  spec_file: madaket-hospitalprivilege-api-openapi.yml
+  capability_id: BC-2890.20
+  capability_id_l1: BC-2890
+  capability_name: Privileging Management
+  confidence: 0.88
+  evidence: GET /api/v2.0/provider/{providerGuid}/hospital-privilege — 'list all HospitalPrivilege resources
+    that belong to the given Provider'
+  reason: Records of clinical privileges held by a practitioner at hospitals map directly to privileging
+    management.
+  recovered_from: vertical-healthcare-providers-edges.json
+- tag: GraduateEducation
+  spec_file: madaket-graduateeducation-api-openapi.yml
+  capability_id: BC-2890.10
+  capability_id_l1: BC-2890
+  capability_name: Practitioner Credentialing
+  confidence: 0.85
+  evidence: list all GraduateEducation resources that belong to the given Provider; schemas GraduateEducation,
+    University, Degree
+  reason: Graduate medical education (residency/training) records per provider are credentialing primary-source-verification
+    data elements.
+  recovered_from: healthcare-vertical-edges.json
+- tag: ProfessionalLicense
+  spec_file: madaket-professionallicense-api-openapi.yml
+  capability_id: BC-2890.10
+  capability_id_l1: BC-2890
+  capability_name: Practitioner Credentialing
+  confidence: 0.85
+  evidence: list all ProfessionalLicense resources that belong to the given Provider
+  reason: Practitioner professional licensure records on the provider file — core credentialing/primary-source-verification
+    data, consistent with the vendor's 'licensing and credentialing' scope.
+  recovered_from: healthcare-vertical-edges.json
+- tag: AdverseAction
+  spec_file: madaket-adverseaction-api-openapi.yml
+  capability_id: BC-2890.10
+  capability_id_l1: BC-2890
+  capability_name: Practitioner Credentialing
+  confidence: 0.82
+  evidence: '''list all AdverseAction resources that belong to the given Provider''; vendor description:
+    ''provider demographics, licensure, credentialing, education, sanctions and payer records'''
+  reason: Adverse actions/sanctions attached to a provider record are core primary-source-verification
+    inputs to practitioner credentialing, which is Madaket's stated PDM/credentialing business.
+  recovered_from: healthcare-vertical-edges.json
+- tag: ProviderCertification
+  spec_file: madaket-providercertification-api-openapi.yml
+  capability_id: BC-2890.10
+  capability_id_l1: BC-2890
+  capability_name: Practitioner Credentialing
+  confidence: 0.82
+  evidence: list all ProviderCertification resources that belong to the given Provider
+  reason: Board/professional certification records attached to practitioners, a standard credentialing
+    verification element in this provider-data-management API.
+  recovered_from: healthcare-vertical-edges.json
+- tag: CdsLicense
+  spec_file: madaket-cdslicense-api-openapi.yml
+  capability_id: BC-2890.10
+  capability_id_l1: BC-2890
+  capability_name: Practitioner Credentialing
+  confidence: 0.8
+  evidence: GET /api/v2.0/provider/{providerGuid}/cds-license 'list all CdsLicense resources that belong
+    to the given Provider'
+  reason: Controlled-substance licence records held per practitioner are primary-source licensure data
+    used in credentialing.
+  recovered_from: vertical-healthcare-providers-edges.json
+- tag: Internship
+  spec_file: madaket-internship-api-openapi.yml
+  capability_id: BC-2890.10
+  capability_id_l1: BC-2890
+  capability_name: Practitioner Credentialing
+  confidence: 0.8
+  evidence: GET /api/v2.0/provider/{providerGuid}/internship — 'list all Internship resources that belong
+    to the given Provider'; schemas University, Institution
+  reason: Practitioner internship training history is credentialing/education verification data in the
+    provider data management platform.
+  recovered_from: vertical-healthcare-providers-edges.json
+- tag: MedicaidRecord
+  spec_file: madaket-medicaidrecord-api-openapi.yml
+  capability_id: BC-2890.50
+  capability_id_l1: BC-2890
+  capability_name: Provider Enrolment Management
+  confidence: 0.8
+  evidence: GET /api/v2.0/provider/{providerGuid}/medicaid-record; vendor 'automates payer enrollment,
+    EDI enrollment, credentialing'
+  reason: Per-provider Medicaid programme records represent enrolment of providers with government programmes.
+  recovered_from: healthcare-vertical-edges.json
+- tag: MedicalDegree
+  spec_file: madaket-medicaldegree-api-openapi.yml
+  capability_id: BC-2890.10
+  capability_id_l1: BC-2890
+  capability_name: Practitioner Credentialing
+  confidence: 0.8
+  evidence: GET /api/v2.0/provider/{providerGuid}/medical-degree; schemas MedicalDegree, University, Degree
+  reason: Practitioner education/degree records held against the provider — core credentialing data requiring
+    primary source verification.
+  recovered_from: healthcare-vertical-edges.json
+- tag: MedicareRecord
+  spec_file: madaket-medicarerecord-api-openapi.yml
+  capability_id: BC-2890.50
+  capability_id_l1: BC-2890
+  capability_name: Provider Enrolment Management
+  confidence: 0.8
+  evidence: GET /api/v2.0/provider/{providerGuid}/medicare-record; schemas MedicareRecord, MedicareRecordAuthorizedFilterQuery
+  reason: Per-provider Medicare programme records represent provider enrolment with government payer programmes
+    in Madaket's payer-enrollment platform.
+  recovered_from: healthcare-vertical-edges.json
+- tag: ProviderCredentialingContact
+  spec_file: madaket-providercredentialingcontact-api-openapi.yml
+  capability_id: BC-2890.10
+  capability_id_l1: BC-2890
+  capability_name: Practitioner Credentialing
+  confidence: 0.8
+  evidence: list all ProviderCredentialingContact resources that belong to the given Provider
+  reason: Explicitly credentialing contact records for a practitioner — the contact used in the credentialing/verification
+    process.
+  recovered_from: healthcare-vertical-edges.json
+- tag: ProviderUsmle
+  spec_file: madaket-providerusmle-api-openapi.yml
+  capability_id: BC-2890.10
+  capability_id_l1: BC-2890
+  capability_name: Practitioner Credentialing
+  confidence: 0.8
+  evidence: '"list all ProviderUsmle resources that belong to the given Provider"'
+  reason: USMLE licensing-examination records held per practitioner are a canonical primary-source-verified
+    credentialing element in a provider data management platform.
+  recovered_from: healthcare-vertical-edges.json
+- tag: Residency
+  spec_file: madaket-residency-api-openapi.yml
+  capability_id: BC-2890.10
+  capability_id_l1: BC-2890
+  capability_name: Practitioner Credentialing
+  confidence: 0.8
+  evidence: '"list all Residency resources that belong to the given Provider"; schemas "Institution, University,
+    ProviderFileStub"'
+  reason: Postgraduate residency training history per practitioner, with institution/university records
+    — education verification within practitioner credentialing.
+  recovered_from: healthcare-vertical-edges.json
+- tag: CriminalAction
+  spec_file: madaket-criminalaction-api-openapi.yml
+  capability_id: BC-2890.10
+  capability_id_l1: BC-2890
+  capability_name: Practitioner Credentialing
+  confidence: 0.78
+  evidence: list all CriminalAction resources that belong to the given Provider; provider data ... 'credentialing,
+    education, sanctions'
+  reason: Criminal/sanction action records attached to a practitioner are standard credentialing primary-source-verification
+    data elements, not enterprise legal or compliance matters.
+  recovered_from: healthcare-vertical-edges.json
+- tag: OtherProfessionalTraining
+  spec_file: madaket-otherprofessionaltraining-api-openapi.yml
+  capability_id: BC-2890.10
+  capability_id_l1: BC-2890
+  capability_name: Practitioner Credentialing
+  confidence: 0.78
+  evidence: 'list all OtherProfessionalTraining resources that belong to the given Provider ... schemas:
+    Institution, University'
+  reason: Provider training/education history tied to a Provider record, with Institution/University schemas
+    — this is credentialing education data used for primary source verification, not employee learning
+    administration.
+  recovered_from: healthcare-vertical-edges.json
+- tag: ProviderEcfmg
+  spec_file: madaket-providerecfmg-api-openapi.yml
+  capability_id: BC-2890.10
+  capability_id_l1: BC-2890
+  capability_name: Practitioner Credentialing
+  confidence: 0.78
+  evidence: '''list all ProviderEcfmg resources that belong to the given Provider''; description cites
+    ''provider demographics, licensure, credentialing, education, sanctions'''
+  reason: ECFMG certification of foreign medical graduates is a primary-source-verified credentialing
+    element held per provider, squarely practitioner credentialing.
+  recovered_from: vertical-healthcare-providers-edges.json
+- tag: EmploymentGap
+  spec_file: madaket-employmentgap-api-openapi.yml
+  capability_id: BC-2890.10
+  capability_id_l1: BC-2890
+  capability_name: Practitioner Credentialing
+  confidence: 0.75
+  evidence: list all EmploymentGap resources that belong to the given Provider
+  reason: Employment gap explanation is a standard practitioner credentialing application element (work
+    history verification), not HR employee records for the buyer's workforce.
+  recovered_from: healthcare-vertical-edges.json
+- tag: ProviderReference
+  spec_file: madaket-providerreference-api-openapi.yml
+  capability_id: BC-2890.10
+  capability_id_l1: BC-2890
+  capability_name: Practitioner Credentialing
+  confidence: 0.75
+  evidence: '"list all ProviderReference resources that belong to the given Provider"; schemas "Institution,
+    ReferenceAddress, Contact"'
+  reason: Professional peer references with institution and contact details are a standard credentialing
+    application element subject to primary source verification.
+  recovered_from: healthcare-vertical-edges.json
+- tag: DriversLicense
+  spec_file: madaket-driverslicense-api-openapi.yml
+  capability_id: BC-2890.10
+  capability_id_l1: BC-2890
+  capability_name: Practitioner Credentialing
+  confidence: 0.72
+  evidence: list all DriversLicense resources that belong to the given Provider; schemas DriversLicense,
+    ProviderFileStub
+  reason: Provider-scoped identity documents with attached files are credentialing dossier elements (identity
+    verification) in this PDM platform.
+  recovered_from: healthcare-vertical-edges.json
+- tag: ProviderSpecialty
+  spec_file: madaket-providerspecialty-api-openapi.yml
+  capability_id: BC-2890.10
+  capability_id_l1: BC-2890
+  capability_name: Practitioner Credentialing
+  confidence: 0.72
+  evidence: 'schemas: ''ProviderSpecialty'', ''Board''; ''list all ProviderSpecialty resources that belong
+    to the given Provider'''
+  reason: Specialty and certifying board data per practitioner is core credentialing/verification content
+    on a provider data management platform.
+  recovered_from: vertical-healthcare-providers-edges.json
+- tag: CommercialPayer
+  spec_file: madaket-commercialpayer-api-openapi.yml
+  capability_id: BC-2890.50
+  capability_id_l1: BC-2890
+  capability_name: Provider Enrolment Management
+  confidence: 0.7
+  evidence: 'GET /api/v2.0/provider/{providerGuid}/commercial-payer ''list all CommercialPayer resources
+    that belong to the given Provider''; vendor: ''automates payer enrollment'''
+  reason: Payer records attached to a provider support enrolment of providers with payers; matches Provider
+    Enrolment Management.
+  recovered_from: vertical-healthcare-providers-edges.json
+- tag: DisclosureStatement
+  spec_file: madaket-disclosurestatement-api-openapi.yml
+  capability_id: BC-2890.10
+  capability_id_l1: BC-2890
+  capability_name: Practitioner Credentialing
+  confidence: 0.7
+  evidence: list all DisclosureStatement resources using the given filter criteria; schema DisclosureStatement
+  reason: Disclosure statements are the attestation questions in practitioner credentialing applications
+    on this provider data platform; no other reading of the surface fits, though the tag has no provider-scoped
+    route.
+  recovered_from: healthcare-vertical-edges.json
+- tag: IndividualNpiLetter
+  spec_file: madaket-individualnpiletter-api-openapi.yml
+  capability_id: BC-2890
+  capability_id_l1: BC-2890
+  capability_name: Medical Staff & Credentialing Management
+  confidence: 0.7
+  evidence: GET /api/v2.0/provider/{providerGuid}/individual-npi-letter; schemas IndividualNpiLetter,
+    ProviderFileStub
+  reason: NPI confirmation letters attached to a practitioner record are credentialing/enrolment documentation
+    in Madaket's provider data platform ('automates payer enrollment ... credentialing'); which sub-capability
+    (credentialing vs provider enrolment) is ambiguous, so L1 only.
+  recovered_from: healthcare-vertical-edges.json
+- tag: LicenseAuthority
+  spec_file: madaket-licenseauthority-api-openapi.yml
+  capability_id: BC-2890.10
+  capability_id_l1: BC-2890
+  capability_name: Practitioner Credentialing
+  confidence: 0.7
+  evidence: schemas LicenseAuthority, LicenseAuthoritySearchQuery; vendor description 'licensure, credentialing'
+  reason: Reference master of state licensing authorities underpinning practitioner licence primary-source
+    verification in Madaket's credentialing dataset.
+  recovered_from: vertical-healthcare-providers-edges.json
+- tag: MalpracticeClaim
+  spec_file: madaket-malpracticeclaim-api-openapi.yml
+  capability_id: BC-2890.10
+  capability_id_l1: BC-2890
+  capability_name: Practitioner Credentialing
+  confidence: 0.7
+  evidence: GET /api/v2.0/provider/{providerGuid}/malpractice-claims — 'list all MalpracticeClaim resources
+    that belong to the given Provider'
+  reason: Malpractice claim history attached to an individual practitioner is standard credentialing/primary-source-verification
+    data in a provider data management platform, not payer claims processing.
+  recovered_from: healthcare-vertical-edges.json
+- tag: Provider
+  spec_file: madaket-provider-api-openapi.yml
+  capability_id: BC-610.20
+  capability_id_l1: BC-610
+  capability_name: Master Data Management
+  confidence: 0.7
+  evidence: '"request refresh of Provider data from available primary sources"; "Retrieve provider information
+    from NPPES"; "Get full Provider Details using its unique Madaket ID"; "search available Providers,
+    returning ranked results"'
+  reason: 'Core entity API: aggregation from primary sources, cross-registry lookup and a full golden-record
+    view keyed on a Madaket ID — that is master data management over a provider domain entity. Not a customer
+    CRM and no T&L capability fits.'
