@@ -2,10 +2,7 @@ openapi: 3.2.0
 info:
   title: Madaket Health Provider Dea License API
   version: '2.0'
-  description: 'RESTful JSON endpoints published by Madaket Health for clean, high-quality US healthcare provider data — provider demographics, licensure, credentialing, education, sanctions and payer records.
-
-
-    PROVENANCE: this description was RECONSTRUCTED by API Evangelist from Madaket''s own first-party npm client @madaket/provider-api-client-js@0.0.3 (swagger-codegen 2.2.3 output), because Madaket''s published Swagger URL https://provider.madakethealth.com/provider-services/api-spec/api-spec.json returned HTTP 503 when probed on 2026-08-25. Paths, verbs, summaries, parameters, request/response models and security schemes are taken verbatim from that generated client. operationIds were normalized to <tag><Operation> because swagger-codegen namespaces them per API class and they are not globally unique in the generated output. This is NOT a document Madaket serves.'
+  description: RESTful JSON endpoints published by Madaket Health for clean, high-quality US healthcare provider data — provider demographics, licensure, credentialing, education, sanctions and payer records.
   contact:
     name: Madaket Health
     url: https://www.madakethealth.com/
@@ -118,6 +115,94 @@ paths:
               $ref: '#/components/schemas/DeaLicenseAuthorizedSearchQuery'
 components:
   schemas:
+    ProviderFileStub:
+      type: object
+      properties:
+        id:
+          type: string
+        createdTime:
+          type: string
+          format: date-time
+        name:
+          type: string
+        extension:
+          type: string
+        mimeType:
+          type: string
+        size:
+          type: number
+        fileAttachmentGuid:
+          type: string
+        documentType:
+          type: string
+          enum:
+          - AdverseAction
+          - Application
+          - Application_Release
+          - Application_Report_Csv
+          - Application_Report_Txt
+          - Board_Certification
+          - CAQH_UPLOAD
+          - CDS
+          - CLIA_Certification
+          - Certificate_for_Conducting_Xray_and_or_Laboratory_Services
+          - Certificate_of_Advanced_Nurse_Practitioners
+          - Certificate_or_Letter_Certifying_Formal_Post_Graduate_Training
+          - Certificates_of_Completion
+          - Chemical_Substances_or_Alcohol_Abuse
+          - Correspondence
+          - Criminal_Actions
+          - DD214__Record_of_Military_Service
+          - DEA
+          - DEA_Waiver
+          - DPS
+          - Diploma
+          - Diplomate_of_National_Board_of_Medical_Examiners_Certificate
+          - Disclosure
+          - Disclosure_of_Ownership
+          - Drivers_License
+          - ECFMG
+          - Exam_Certification
+          - Graduate_Diploma
+          - Hospital_Letter__Verification_of_Hospital_Credentialing__or_Alternative_Pathways
+          - Individual_Npi_Letter
+          - Letter_of_Self_Insurance_Explanation_of_No_Insurance
+          - Liability_Insurance
+          - License_Application
+          - License_Attachment
+          - Malpractice_Claim_Information_Document_for_Nevada_State
+          - Malpractice_Explanation
+          - Malpractice_Insurance
+          - Maryland_State_License_Certificate
+          - Medical_Condition
+          - Medical_Degree
+          - National_Provider_Identification_Certificate
+          - Opt_Out
+          - Other
+          - Other_Certificate
+          - Photo
+          - Problem_Resolution_System_Letter
+          - Professional_Liability_Actions
+          - Professional_Liability_Insurance
+          - Radiology_Certification
+          - Reference_Letter
+          - Resume
+          - Schedule_AP1
+          - Schedule_B_Professional_Liability_Claims_Information_Form_for_Georgia_State
+          - Schedule_C_Regulation_Acknowledgement
+          - Scholar_Visa_IAP_66
+          - Section_D___Attestation_Questions
+          - Social_Security_Card
+          - State_Application_Addendum
+          - State_Authorization
+          - State_License
+          - State_License_MD
+          - State_Release
+          - TB_Skin_Test
+          - Therapeutic_Diagnostic_Pharmaceutical_Agents_License
+          - Visa_Document
+          - W_9
+          - Workers_Compensation_Certificate_of_Coverage
     DeaLicense:
       type: object
       properties:
@@ -283,94 +368,6 @@ components:
           enum:
           - ASC
           - DESC
-    ProviderFileStub:
-      type: object
-      properties:
-        id:
-          type: string
-        createdTime:
-          type: string
-          format: date-time
-        name:
-          type: string
-        extension:
-          type: string
-        mimeType:
-          type: string
-        size:
-          type: number
-        fileAttachmentGuid:
-          type: string
-        documentType:
-          type: string
-          enum:
-          - AdverseAction
-          - Application
-          - Application_Release
-          - Application_Report_Csv
-          - Application_Report_Txt
-          - Board_Certification
-          - CAQH_UPLOAD
-          - CDS
-          - CLIA_Certification
-          - Certificate_for_Conducting_Xray_and_or_Laboratory_Services
-          - Certificate_of_Advanced_Nurse_Practitioners
-          - Certificate_or_Letter_Certifying_Formal_Post_Graduate_Training
-          - Certificates_of_Completion
-          - Chemical_Substances_or_Alcohol_Abuse
-          - Correspondence
-          - Criminal_Actions
-          - DD214__Record_of_Military_Service
-          - DEA
-          - DEA_Waiver
-          - DPS
-          - Diploma
-          - Diplomate_of_National_Board_of_Medical_Examiners_Certificate
-          - Disclosure
-          - Disclosure_of_Ownership
-          - Drivers_License
-          - ECFMG
-          - Exam_Certification
-          - Graduate_Diploma
-          - Hospital_Letter__Verification_of_Hospital_Credentialing__or_Alternative_Pathways
-          - Individual_Npi_Letter
-          - Letter_of_Self_Insurance_Explanation_of_No_Insurance
-          - Liability_Insurance
-          - License_Application
-          - License_Attachment
-          - Malpractice_Claim_Information_Document_for_Nevada_State
-          - Malpractice_Explanation
-          - Malpractice_Insurance
-          - Maryland_State_License_Certificate
-          - Medical_Condition
-          - Medical_Degree
-          - National_Provider_Identification_Certificate
-          - Opt_Out
-          - Other
-          - Other_Certificate
-          - Photo
-          - Problem_Resolution_System_Letter
-          - Professional_Liability_Actions
-          - Professional_Liability_Insurance
-          - Radiology_Certification
-          - Reference_Letter
-          - Resume
-          - Schedule_AP1
-          - Schedule_B_Professional_Liability_Claims_Information_Form_for_Georgia_State
-          - Schedule_C_Regulation_Acknowledgement
-          - Scholar_Visa_IAP_66
-          - Section_D___Attestation_Questions
-          - Social_Security_Card
-          - State_Application_Addendum
-          - State_Authorization
-          - State_License
-          - State_License_MD
-          - State_Release
-          - TB_Skin_Test
-          - Therapeutic_Diagnostic_Pharmaceutical_Agents_License
-          - Visa_Document
-          - W_9
-          - Workers_Compensation_Certificate_of_Coverage
   securitySchemes:
     api_key:
       type: apiKey

@@ -2,10 +2,7 @@ openapi: 3.2.0
 info:
   title: Madaket Health Provider Work Entry API
   version: '2.0'
-  description: 'RESTful JSON endpoints published by Madaket Health for clean, high-quality US healthcare provider data — provider demographics, licensure, credentialing, education, sanctions and payer records.
-
-
-    PROVENANCE: this description was RECONSTRUCTED by API Evangelist from Madaket''s own first-party npm client @madaket/provider-api-client-js@0.0.3 (swagger-codegen 2.2.3 output), because Madaket''s published Swagger URL https://provider.madakethealth.com/provider-services/api-spec/api-spec.json returned HTTP 503 when probed on 2026-08-25. Paths, verbs, summaries, parameters, request/response models and security schemes are taken verbatim from that generated client. operationIds were normalized to <tag><Operation> because swagger-codegen namespaces them per API class and they are not globally unique in the generated output. This is NOT a document Madaket serves.'
+  description: RESTful JSON endpoints published by Madaket Health for clean, high-quality US healthcare provider data — provider demographics, licensure, credentialing, education, sanctions and payer records.
   contact:
     name: Madaket Health
     url: https://www.madakethealth.com/
@@ -127,89 +124,6 @@ components:
           type: string
         description:
           type: string
-    WorkEntry:
-      type: object
-      properties:
-        id:
-          type: string
-        createdTime:
-          type: string
-          format: date-time
-        providerGuid:
-          type: string
-        source:
-          type: string
-        sourceTimestamp:
-          type: string
-          format: date-time
-        title:
-          type: string
-        startDate:
-          type: string
-          format: date-time
-        endDate:
-          type: string
-          format: date-time
-        institution:
-          $ref: '#/components/schemas/Institution'
-        department:
-          $ref: '#/components/schemas/PracticeDepartment'
-        current:
-          type: boolean
-        staffCategory:
-          type: string
-        affiliationDescription:
-          type: string
-        reasonForDiscontinuance:
-          type: string
-        supervisorName:
-          type: string
-        contact:
-          $ref: '#/components/schemas/Contact'
-        eligibleForRehire:
-          type: boolean
-        staffPositionCategory:
-          type: string
-    Institution:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        address:
-          $ref: '#/components/schemas/ReferenceAddress'
-        url:
-          type: string
-        type:
-          type: string
-          enum:
-          - Hospital
-          - MedicalGroup
-          - PracticeLocation
-          - University
-        originalId:
-          type: string
-        description:
-          type: string
-    WorkEntryAuthorizedSearchQuery:
-      type: object
-      properties:
-        id:
-          type: array
-          items:
-            type: string
-        maxResults:
-          type: number
-        firstResult:
-          type: number
-        sortField:
-          type: string
-        sortOrder:
-          type: string
-          enum:
-          - ASC
-          - DESC
     ReferenceAddress:
       type: object
       properties:
@@ -564,6 +478,28 @@ components:
           - MAIL
           - PHONE
           - UNSPECIFIED
+    Institution:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        address:
+          $ref: '#/components/schemas/ReferenceAddress'
+        url:
+          type: string
+        type:
+          type: string
+          enum:
+          - Hospital
+          - MedicalGroup
+          - PracticeLocation
+          - University
+        originalId:
+          type: string
+        description:
+          type: string
     Contact:
       type: object
       properties:
@@ -963,6 +899,67 @@ components:
           type: array
           items:
             type: string
+    WorkEntryAuthorizedSearchQuery:
+      type: object
+      properties:
+        id:
+          type: array
+          items:
+            type: string
+        maxResults:
+          type: number
+        firstResult:
+          type: number
+        sortField:
+          type: string
+        sortOrder:
+          type: string
+          enum:
+          - ASC
+          - DESC
+    WorkEntry:
+      type: object
+      properties:
+        id:
+          type: string
+        createdTime:
+          type: string
+          format: date-time
+        providerGuid:
+          type: string
+        source:
+          type: string
+        sourceTimestamp:
+          type: string
+          format: date-time
+        title:
+          type: string
+        startDate:
+          type: string
+          format: date-time
+        endDate:
+          type: string
+          format: date-time
+        institution:
+          $ref: '#/components/schemas/Institution'
+        department:
+          $ref: '#/components/schemas/PracticeDepartment'
+        current:
+          type: boolean
+        staffCategory:
+          type: string
+        affiliationDescription:
+          type: string
+        reasonForDiscontinuance:
+          type: string
+        supervisorName:
+          type: string
+        contact:
+          $ref: '#/components/schemas/Contact'
+        eligibleForRehire:
+          type: boolean
+        staffPositionCategory:
+          type: string
   securitySchemes:
     api_key:
       type: apiKey

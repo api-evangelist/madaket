@@ -2,10 +2,7 @@ openapi: 3.2.0
 info:
   title: Madaket Health Provider Race API
   version: '2.0'
-  description: 'RESTful JSON endpoints published by Madaket Health for clean, high-quality US healthcare provider data — provider demographics, licensure, credentialing, education, sanctions and payer records.
-
-
-    PROVENANCE: this description was RECONSTRUCTED by API Evangelist from Madaket''s own first-party npm client @madaket/provider-api-client-js@0.0.3 (swagger-codegen 2.2.3 output), because Madaket''s published Swagger URL https://provider.madakethealth.com/provider-services/api-spec/api-spec.json returned HTTP 503 when probed on 2026-08-25. Paths, verbs, summaries, parameters, request/response models and security schemes are taken verbatim from that generated client. operationIds were normalized to <tag><Operation> because swagger-codegen namespaces them per API class and they are not globally unique in the generated output. This is NOT a document Madaket serves.'
+  description: RESTful JSON endpoints published by Madaket Health for clean, high-quality US healthcare provider data — provider demographics, licensure, credentialing, education, sanctions and payer records.
   contact:
     name: Madaket Health
     url: https://www.madakethealth.com/
@@ -93,16 +90,7 @@ paths:
               $ref: '#/components/schemas/RaceSearchQuery'
 components:
   schemas:
-    Race:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        description:
-          type: string
-    RaceFilterQuery:
+    RaceSearchQuery:
       type: object
       properties:
         id:
@@ -124,7 +112,16 @@ components:
           type: array
           items:
             type: string
-    RaceSearchQuery:
+    Race:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+    RaceFilterQuery:
       type: object
       properties:
         id:

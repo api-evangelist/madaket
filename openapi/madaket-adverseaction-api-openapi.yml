@@ -2,10 +2,7 @@ openapi: 3.2.0
 info:
   title: Madaket Health Provider Adverse Action API
   version: '2.0'
-  description: 'RESTful JSON endpoints published by Madaket Health for clean, high-quality US healthcare provider data — provider demographics, licensure, credentialing, education, sanctions and payer records.
-
-
-    PROVENANCE: this description was RECONSTRUCTED by API Evangelist from Madaket''s own first-party npm client @madaket/provider-api-client-js@0.0.3 (swagger-codegen 2.2.3 output), because Madaket''s published Swagger URL https://provider.madakethealth.com/provider-services/api-spec/api-spec.json returned HTTP 503 when probed on 2026-08-25. Paths, verbs, summaries, parameters, request/response models and security schemes are taken verbatim from that generated client. operationIds were normalized to <tag><Operation> because swagger-codegen namespaces them per API class and they are not globally unique in the generated output. This is NOT a document Madaket serves.'
+  description: RESTful JSON endpoints published by Madaket Health for clean, high-quality US healthcare provider data — provider demographics, licensure, credentialing, education, sanctions and payer records.
   contact:
     name: Madaket Health
     url: https://www.madakethealth.com/
@@ -136,6 +133,75 @@ components:
           enum:
           - ASC
           - DESC
+    AdverseAction:
+      type: object
+      properties:
+        id:
+          type: string
+        createdTime:
+          type: string
+          format: date-time
+        providerGuid:
+          type: string
+        source:
+          type: string
+        sourceTimestamp:
+          type: string
+          format: date-time
+        actionAuthority:
+          type: string
+          enum:
+          - OIG
+        actionType:
+          type: string
+        actionDate:
+          type: string
+          format: date-time
+        waiverDate:
+          type: string
+          format: date-time
+        waiverState:
+          type: string
+        reinstatementDate:
+          type: string
+          format: date-time
+        actionExplanation:
+          type: string
+        occuranceDate:
+          type: string
+          format: date-time
+        occuranceExplanation:
+          type: string
+        currentStatus:
+          type: string
+        actionDocument:
+          $ref: '#/components/schemas/ProviderFileStub'
+    AdverseActionAuthorizedFilterQuery:
+      type: object
+      properties:
+        id:
+          type: array
+          items:
+            type: string
+        maxResults:
+          type: number
+        firstResult:
+          type: number
+        sortField:
+          type: string
+        sortOrder:
+          type: string
+          enum:
+          - ASC
+          - DESC
+        currentStatus:
+          type: array
+          items:
+            type: string
+        providerGuid:
+          type: array
+          items:
+            type: string
     ProviderFileStub:
       type: object
       properties:
@@ -224,75 +290,6 @@ components:
           - Visa_Document
           - W_9
           - Workers_Compensation_Certificate_of_Coverage
-    AdverseActionAuthorizedFilterQuery:
-      type: object
-      properties:
-        id:
-          type: array
-          items:
-            type: string
-        maxResults:
-          type: number
-        firstResult:
-          type: number
-        sortField:
-          type: string
-        sortOrder:
-          type: string
-          enum:
-          - ASC
-          - DESC
-        currentStatus:
-          type: array
-          items:
-            type: string
-        providerGuid:
-          type: array
-          items:
-            type: string
-    AdverseAction:
-      type: object
-      properties:
-        id:
-          type: string
-        createdTime:
-          type: string
-          format: date-time
-        providerGuid:
-          type: string
-        source:
-          type: string
-        sourceTimestamp:
-          type: string
-          format: date-time
-        actionAuthority:
-          type: string
-          enum:
-          - OIG
-        actionType:
-          type: string
-        actionDate:
-          type: string
-          format: date-time
-        waiverDate:
-          type: string
-          format: date-time
-        waiverState:
-          type: string
-        reinstatementDate:
-          type: string
-          format: date-time
-        actionExplanation:
-          type: string
-        occuranceDate:
-          type: string
-          format: date-time
-        occuranceExplanation:
-          type: string
-        currentStatus:
-          type: string
-        actionDocument:
-          $ref: '#/components/schemas/ProviderFileStub'
   securitySchemes:
     api_key:
       type: apiKey

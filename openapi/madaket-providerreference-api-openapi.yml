@@ -2,10 +2,7 @@ openapi: 3.2.0
 info:
   title: Madaket Health Provider Provider Reference API
   version: '2.0'
-  description: 'RESTful JSON endpoints published by Madaket Health for clean, high-quality US healthcare provider data — provider demographics, licensure, credentialing, education, sanctions and payer records.
-
-
-    PROVENANCE: this description was RECONSTRUCTED by API Evangelist from Madaket''s own first-party npm client @madaket/provider-api-client-js@0.0.3 (swagger-codegen 2.2.3 output), because Madaket''s published Swagger URL https://provider.madakethealth.com/provider-services/api-spec/api-spec.json returned HTTP 503 when probed on 2026-08-25. Paths, verbs, summaries, parameters, request/response models and security schemes are taken verbatim from that generated client. operationIds were normalized to <tag><Operation> because swagger-codegen namespaces them per API class and they are not globally unique in the generated output. This is NOT a document Madaket serves.'
+  description: RESTful JSON endpoints published by Madaket Health for clean, high-quality US healthcare provider data — provider demographics, licensure, credentialing, education, sanctions and payer records.
   contact:
     name: Madaket Health
     url: https://www.madakethealth.com/
@@ -118,72 +115,6 @@ paths:
               $ref: '#/components/schemas/ProviderReferenceAuthorizedSearchQuery'
 components:
   schemas:
-    ProviderReferenceAuthorizedFilterQuery:
-      type: object
-      properties:
-        id:
-          type: array
-          items:
-            type: string
-        maxResults:
-          type: number
-        firstResult:
-          type: number
-        sortField:
-          type: string
-        sortOrder:
-          type: string
-          enum:
-          - ASC
-          - DESC
-        providerGuid:
-          type: array
-          items:
-            type: string
-        referenceProviderGuid:
-          type: array
-          items:
-            type: string
-    ProviderReferenceAuthorizedSearchQuery:
-      type: object
-      properties:
-        id:
-          type: array
-          items:
-            type: string
-        maxResults:
-          type: number
-        firstResult:
-          type: number
-        sortField:
-          type: string
-        sortOrder:
-          type: string
-          enum:
-          - ASC
-          - DESC
-    Institution:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        address:
-          $ref: '#/components/schemas/ReferenceAddress'
-        url:
-          type: string
-        type:
-          type: string
-          enum:
-          - Hospital
-          - MedicalGroup
-          - PracticeLocation
-          - University
-        originalId:
-          type: string
-        description:
-          type: string
     ReferenceAddress:
       type: object
       properties:
@@ -538,6 +469,54 @@ components:
           - MAIL
           - PHONE
           - UNSPECIFIED
+    Institution:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        address:
+          $ref: '#/components/schemas/ReferenceAddress'
+        url:
+          type: string
+        type:
+          type: string
+          enum:
+          - Hospital
+          - MedicalGroup
+          - PracticeLocation
+          - University
+        originalId:
+          type: string
+        description:
+          type: string
+    ProviderReferenceAuthorizedFilterQuery:
+      type: object
+      properties:
+        id:
+          type: array
+          items:
+            type: string
+        maxResults:
+          type: number
+        firstResult:
+          type: number
+        sortField:
+          type: string
+        sortOrder:
+          type: string
+          enum:
+          - ASC
+          - DESC
+        providerGuid:
+          type: array
+          items:
+            type: string
+        referenceProviderGuid:
+          type: array
+          items:
+            type: string
     Contact:
       type: object
       properties:
@@ -969,6 +948,24 @@ components:
           - UNKNOWN
         contact:
           $ref: '#/components/schemas/Contact'
+    ProviderReferenceAuthorizedSearchQuery:
+      type: object
+      properties:
+        id:
+          type: array
+          items:
+            type: string
+        maxResults:
+          type: number
+        firstResult:
+          type: number
+        sortField:
+          type: string
+        sortOrder:
+          type: string
+          enum:
+          - ASC
+          - DESC
   securitySchemes:
     api_key:
       type: apiKey

@@ -2,10 +2,7 @@ openapi: 3.2.0
 info:
   title: Madaket Health Provider Other Professional Training API
   version: '2.0'
-  description: 'RESTful JSON endpoints published by Madaket Health for clean, high-quality US healthcare provider data — provider demographics, licensure, credentialing, education, sanctions and payer records.
-
-
-    PROVENANCE: this description was RECONSTRUCTED by API Evangelist from Madaket''s own first-party npm client @madaket/provider-api-client-js@0.0.3 (swagger-codegen 2.2.3 output), because Madaket''s published Swagger URL https://provider.madakethealth.com/provider-services/api-spec/api-spec.json returned HTTP 503 when probed on 2026-08-25. Paths, verbs, summaries, parameters, request/response models and security schemes are taken verbatim from that generated client. operationIds were normalized to <tag><Operation> because swagger-codegen namespaces them per API class and they are not globally unique in the generated output. This is NOT a document Madaket serves.'
+  description: RESTful JSON endpoints published by Madaket Health for clean, high-quality US healthcare provider data — provider demographics, licensure, credentialing, education, sanctions and payer records.
   contact:
     name: Madaket Health
     url: https://www.madakethealth.com/
@@ -95,7 +92,7 @@ paths:
     post:
       tags:
       - OtherProfessionalTraining
-      summary: search through all OtherProfessionalTraining resources using the given search criteria
+      summary: search through all OtherProfessionalTraining resources using the given search…
       operationId: otherProfessionalTrainingSearch
       responses:
         '200':
@@ -118,471 +115,6 @@ paths:
               $ref: '#/components/schemas/OtherProfessionalTrainingAuthorizedSearchQuery'
 components:
   schemas:
-    Address:
-      type: object
-      properties:
-        id:
-          type: string
-        createdTime:
-          type: string
-          format: date-time
-        street1:
-          type: string
-        street2:
-          type: string
-        city:
-          type: string
-        state:
-          type: string
-          enum:
-          - AK
-          - AL
-          - AR
-          - AS
-          - AZ
-          - CA
-          - CO
-          - CT
-          - DC
-          - DE
-          - FL
-          - FM
-          - GA
-          - GU
-          - HI
-          - IA
-          - ID
-          - IL
-          - IN
-          - KS
-          - KY
-          - LA
-          - MA
-          - MD
-          - ME
-          - MH
-          - MI
-          - MN
-          - MO
-          - MP
-          - MS
-          - MT
-          - NC
-          - ND
-          - NE
-          - NH
-          - NJ
-          - NM
-          - NV
-          - NY
-          - OH
-          - OK
-          - OR
-          - PA
-          - PR
-          - PW
-          - RI
-          - SC
-          - SD
-          - TN
-          - TX
-          - UNKNOWN
-          - UT
-          - VA
-          - VI
-          - VT
-          - WA
-          - WI
-          - WV
-          - WY
-        zip:
-          type: string
-        zipExtension:
-          type: string
-        county:
-          type: string
-        province:
-          type: string
-        country:
-          type: string
-          enum:
-          - AD
-          - AE
-          - AF
-          - AG
-          - AI
-          - AL
-          - AM
-          - AO
-          - AQ
-          - AR
-          - AS
-          - AT
-          - AU
-          - AW
-          - AZ
-          - BA
-          - BB
-          - BD
-          - BE
-          - BF
-          - BG
-          - BH
-          - BI
-          - BJ
-          - BL
-          - BM
-          - BN
-          - BO
-          - BQ
-          - BR
-          - BS
-          - BT
-          - BV
-          - BW
-          - BY
-          - BZ
-          - CA
-          - CC
-          - CD
-          - CF
-          - CG
-          - CH
-          - CI
-          - CK
-          - CL
-          - CM
-          - CN
-          - CO
-          - CR
-          - CU
-          - CV
-          - CW
-          - CX
-          - CY
-          - CZ
-          - DE
-          - DJ
-          - DK
-          - DM
-          - DO
-          - DZ
-          - EC
-          - EE
-          - EG
-          - EH
-          - ER
-          - ES
-          - ET
-          - FI
-          - FJ
-          - FK
-          - FM
-          - FO
-          - FR
-          - GA
-          - GB
-          - GD
-          - GE
-          - GF
-          - GG
-          - GH
-          - GI
-          - GL
-          - GM
-          - GN
-          - GP
-          - GQ
-          - GR
-          - GS
-          - GT
-          - GU
-          - GW
-          - GY
-          - HK
-          - HM
-          - HN
-          - HR
-          - HT
-          - HU
-          - ID
-          - IE
-          - IL
-          - IM
-          - IN
-          - IO
-          - IQ
-          - IR
-          - IS
-          - IT
-          - JE
-          - JM
-          - JO
-          - JP
-          - KE
-          - KG
-          - KH
-          - KI
-          - KM
-          - KN
-          - KP
-          - KR
-          - KW
-          - KY
-          - KZ
-          - LA
-          - LB
-          - LC
-          - LI
-          - LK
-          - LR
-          - LS
-          - LT
-          - LU
-          - LV
-          - LY
-          - MA
-          - MC
-          - MD
-          - ME
-          - MF
-          - MG
-          - MH
-          - MK
-          - ML
-          - MM
-          - MN
-          - MO
-          - MP
-          - MQ
-          - MR
-          - MS
-          - MT
-          - MU
-          - MV
-          - MW
-          - MX
-          - MY
-          - MZ
-          - NA
-          - NC
-          - NE
-          - NF
-          - NG
-          - NI
-          - NL
-          - 'NO'
-          - NP
-          - NR
-          - NU
-          - NZ
-          - OM
-          - PA
-          - PE
-          - PF
-          - PG
-          - PH
-          - PK
-          - PL
-          - PM
-          - PN
-          - PR
-          - PS
-          - PT
-          - PW
-          - PY
-          - QA
-          - RE
-          - RO
-          - RS
-          - RU
-          - RW
-          - SA
-          - SB
-          - SC
-          - SD
-          - SE
-          - SG
-          - SH
-          - SI
-          - SJ
-          - SK
-          - SL
-          - SM
-          - SN
-          - SO
-          - SR
-          - SS
-          - ST
-          - SV
-          - SX
-          - SY
-          - SZ
-          - TC
-          - TD
-          - TF
-          - TG
-          - TH
-          - TJ
-          - TK
-          - TL
-          - TM
-          - TN
-          - TO
-          - TR
-          - TT
-          - TV
-          - TW
-          - TZ
-          - UA
-          - UG
-          - UM
-          - US
-          - UY
-          - UZ
-          - VA
-          - VC
-          - VE
-          - VG
-          - VI
-          - VN
-          - VU
-          - WF
-          - WS
-          - XK
-          - YE
-          - YT
-          - ZA
-          - ZM
-          - ZW
-        phone:
-          type: string
-        phoneExtension:
-          type: string
-        phoneAfterHours:
-          type: string
-        phoneExtensionAfterHours:
-          type: string
-        fax:
-          type: string
-        email:
-          type: string
-        pager:
-          type: string
-        preferredCorrespondence:
-          type: string
-          enum:
-          - EMAIL
-          - FAX
-          - MAIL
-          - PHONE
-          - UNSPECIFIED
-    ProviderFileStub:
-      type: object
-      properties:
-        id:
-          type: string
-        createdTime:
-          type: string
-          format: date-time
-        name:
-          type: string
-        extension:
-          type: string
-        mimeType:
-          type: string
-        size:
-          type: number
-        fileAttachmentGuid:
-          type: string
-        documentType:
-          type: string
-          enum:
-          - AdverseAction
-          - Application
-          - Application_Release
-          - Application_Report_Csv
-          - Application_Report_Txt
-          - Board_Certification
-          - CAQH_UPLOAD
-          - CDS
-          - CLIA_Certification
-          - Certificate_for_Conducting_Xray_and_or_Laboratory_Services
-          - Certificate_of_Advanced_Nurse_Practitioners
-          - Certificate_or_Letter_Certifying_Formal_Post_Graduate_Training
-          - Certificates_of_Completion
-          - Chemical_Substances_or_Alcohol_Abuse
-          - Correspondence
-          - Criminal_Actions
-          - DD214__Record_of_Military_Service
-          - DEA
-          - DEA_Waiver
-          - DPS
-          - Diploma
-          - Diplomate_of_National_Board_of_Medical_Examiners_Certificate
-          - Disclosure
-          - Disclosure_of_Ownership
-          - Drivers_License
-          - ECFMG
-          - Exam_Certification
-          - Graduate_Diploma
-          - Hospital_Letter__Verification_of_Hospital_Credentialing__or_Alternative_Pathways
-          - Individual_Npi_Letter
-          - Letter_of_Self_Insurance_Explanation_of_No_Insurance
-          - Liability_Insurance
-          - License_Application
-          - License_Attachment
-          - Malpractice_Claim_Information_Document_for_Nevada_State
-          - Malpractice_Explanation
-          - Malpractice_Insurance
-          - Maryland_State_License_Certificate
-          - Medical_Condition
-          - Medical_Degree
-          - National_Provider_Identification_Certificate
-          - Opt_Out
-          - Other
-          - Other_Certificate
-          - Photo
-          - Problem_Resolution_System_Letter
-          - Professional_Liability_Actions
-          - Professional_Liability_Insurance
-          - Radiology_Certification
-          - Reference_Letter
-          - Resume
-          - Schedule_AP1
-          - Schedule_B_Professional_Liability_Claims_Information_Form_for_Georgia_State
-          - Schedule_C_Regulation_Acknowledgement
-          - Scholar_Visa_IAP_66
-          - Section_D___Attestation_Questions
-          - Social_Security_Card
-          - State_Application_Addendum
-          - State_Authorization
-          - State_License
-          - State_License_MD
-          - State_Release
-          - TB_Skin_Test
-          - Therapeutic_Diagnostic_Pharmaceutical_Agents_License
-          - Visa_Document
-          - W_9
-          - Workers_Compensation_Certificate_of_Coverage
-    OtherProfessionalTrainingAuthorizedSearchQuery:
-      type: object
-      properties:
-        id:
-          type: array
-          items:
-            type: string
-        maxResults:
-          type: number
-        firstResult:
-          type: number
-        sortField:
-          type: string
-        sortOrder:
-          type: string
-          enum:
-          - ASC
-          - DESC
     OtherProfessionalTraining:
       type: object
       properties:
@@ -1499,54 +1031,6 @@ components:
           - UNKOWN
         trainingAddress:
           $ref: '#/components/schemas/Address'
-    OtherProfessionalTrainingAuthorizedFilterQuery:
-      type: object
-      properties:
-        id:
-          type: array
-          items:
-            type: string
-        maxResults:
-          type: number
-        firstResult:
-          type: number
-        sortField:
-          type: string
-        sortOrder:
-          type: string
-          enum:
-          - ASC
-          - DESC
-        affiliatedUniversity:
-          type: array
-          items:
-            $ref: '#/components/schemas/University'
-        providerGuid:
-          type: array
-          items:
-            type: string
-    Institution:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        address:
-          $ref: '#/components/schemas/ReferenceAddress'
-        url:
-          type: string
-        type:
-          type: string
-          enum:
-          - Hospital
-          - MedicalGroup
-          - PracticeLocation
-          - University
-        originalId:
-          type: string
-        description:
-          type: string
     ReferenceAddress:
       type: object
       properties:
@@ -1901,6 +1385,405 @@ components:
           - MAIL
           - PHONE
           - UNSPECIFIED
+    OtherProfessionalTrainingAuthorizedSearchQuery:
+      type: object
+      properties:
+        id:
+          type: array
+          items:
+            type: string
+        maxResults:
+          type: number
+        firstResult:
+          type: number
+        sortField:
+          type: string
+        sortOrder:
+          type: string
+          enum:
+          - ASC
+          - DESC
+    Address:
+      type: object
+      properties:
+        id:
+          type: string
+        createdTime:
+          type: string
+          format: date-time
+        street1:
+          type: string
+        street2:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+          enum:
+          - AK
+          - AL
+          - AR
+          - AS
+          - AZ
+          - CA
+          - CO
+          - CT
+          - DC
+          - DE
+          - FL
+          - FM
+          - GA
+          - GU
+          - HI
+          - IA
+          - ID
+          - IL
+          - IN
+          - KS
+          - KY
+          - LA
+          - MA
+          - MD
+          - ME
+          - MH
+          - MI
+          - MN
+          - MO
+          - MP
+          - MS
+          - MT
+          - NC
+          - ND
+          - NE
+          - NH
+          - NJ
+          - NM
+          - NV
+          - NY
+          - OH
+          - OK
+          - OR
+          - PA
+          - PR
+          - PW
+          - RI
+          - SC
+          - SD
+          - TN
+          - TX
+          - UNKNOWN
+          - UT
+          - VA
+          - VI
+          - VT
+          - WA
+          - WI
+          - WV
+          - WY
+        zip:
+          type: string
+        zipExtension:
+          type: string
+        county:
+          type: string
+        province:
+          type: string
+        country:
+          type: string
+          enum:
+          - AD
+          - AE
+          - AF
+          - AG
+          - AI
+          - AL
+          - AM
+          - AO
+          - AQ
+          - AR
+          - AS
+          - AT
+          - AU
+          - AW
+          - AZ
+          - BA
+          - BB
+          - BD
+          - BE
+          - BF
+          - BG
+          - BH
+          - BI
+          - BJ
+          - BL
+          - BM
+          - BN
+          - BO
+          - BQ
+          - BR
+          - BS
+          - BT
+          - BV
+          - BW
+          - BY
+          - BZ
+          - CA
+          - CC
+          - CD
+          - CF
+          - CG
+          - CH
+          - CI
+          - CK
+          - CL
+          - CM
+          - CN
+          - CO
+          - CR
+          - CU
+          - CV
+          - CW
+          - CX
+          - CY
+          - CZ
+          - DE
+          - DJ
+          - DK
+          - DM
+          - DO
+          - DZ
+          - EC
+          - EE
+          - EG
+          - EH
+          - ER
+          - ES
+          - ET
+          - FI
+          - FJ
+          - FK
+          - FM
+          - FO
+          - FR
+          - GA
+          - GB
+          - GD
+          - GE
+          - GF
+          - GG
+          - GH
+          - GI
+          - GL
+          - GM
+          - GN
+          - GP
+          - GQ
+          - GR
+          - GS
+          - GT
+          - GU
+          - GW
+          - GY
+          - HK
+          - HM
+          - HN
+          - HR
+          - HT
+          - HU
+          - ID
+          - IE
+          - IL
+          - IM
+          - IN
+          - IO
+          - IQ
+          - IR
+          - IS
+          - IT
+          - JE
+          - JM
+          - JO
+          - JP
+          - KE
+          - KG
+          - KH
+          - KI
+          - KM
+          - KN
+          - KP
+          - KR
+          - KW
+          - KY
+          - KZ
+          - LA
+          - LB
+          - LC
+          - LI
+          - LK
+          - LR
+          - LS
+          - LT
+          - LU
+          - LV
+          - LY
+          - MA
+          - MC
+          - MD
+          - ME
+          - MF
+          - MG
+          - MH
+          - MK
+          - ML
+          - MM
+          - MN
+          - MO
+          - MP
+          - MQ
+          - MR
+          - MS
+          - MT
+          - MU
+          - MV
+          - MW
+          - MX
+          - MY
+          - MZ
+          - NA
+          - NC
+          - NE
+          - NF
+          - NG
+          - NI
+          - NL
+          - 'NO'
+          - NP
+          - NR
+          - NU
+          - NZ
+          - OM
+          - PA
+          - PE
+          - PF
+          - PG
+          - PH
+          - PK
+          - PL
+          - PM
+          - PN
+          - PR
+          - PS
+          - PT
+          - PW
+          - PY
+          - QA
+          - RE
+          - RO
+          - RS
+          - RU
+          - RW
+          - SA
+          - SB
+          - SC
+          - SD
+          - SE
+          - SG
+          - SH
+          - SI
+          - SJ
+          - SK
+          - SL
+          - SM
+          - SN
+          - SO
+          - SR
+          - SS
+          - ST
+          - SV
+          - SX
+          - SY
+          - SZ
+          - TC
+          - TD
+          - TF
+          - TG
+          - TH
+          - TJ
+          - TK
+          - TL
+          - TM
+          - TN
+          - TO
+          - TR
+          - TT
+          - TV
+          - TW
+          - TZ
+          - UA
+          - UG
+          - UM
+          - US
+          - UY
+          - UZ
+          - VA
+          - VC
+          - VE
+          - VG
+          - VI
+          - VN
+          - VU
+          - WF
+          - WS
+          - XK
+          - YE
+          - YT
+          - ZA
+          - ZM
+          - ZW
+        phone:
+          type: string
+        phoneExtension:
+          type: string
+        phoneAfterHours:
+          type: string
+        phoneExtensionAfterHours:
+          type: string
+        fax:
+          type: string
+        email:
+          type: string
+        pager:
+          type: string
+        preferredCorrespondence:
+          type: string
+          enum:
+          - EMAIL
+          - FAX
+          - MAIL
+          - PHONE
+          - UNSPECIFIED
+    Institution:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        address:
+          $ref: '#/components/schemas/ReferenceAddress'
+        url:
+          type: string
+        type:
+          type: string
+          enum:
+          - Hospital
+          - MedicalGroup
+          - PracticeLocation
+          - University
+        originalId:
+          type: string
+        description:
+          type: string
     University:
       type: object
       properties:
@@ -1912,6 +1795,120 @@ components:
           $ref: '#/components/schemas/ReferenceAddress'
         description:
           type: string
+    ProviderFileStub:
+      type: object
+      properties:
+        id:
+          type: string
+        createdTime:
+          type: string
+          format: date-time
+        name:
+          type: string
+        extension:
+          type: string
+        mimeType:
+          type: string
+        size:
+          type: number
+        fileAttachmentGuid:
+          type: string
+        documentType:
+          type: string
+          enum:
+          - AdverseAction
+          - Application
+          - Application_Release
+          - Application_Report_Csv
+          - Application_Report_Txt
+          - Board_Certification
+          - CAQH_UPLOAD
+          - CDS
+          - CLIA_Certification
+          - Certificate_for_Conducting_Xray_and_or_Laboratory_Services
+          - Certificate_of_Advanced_Nurse_Practitioners
+          - Certificate_or_Letter_Certifying_Formal_Post_Graduate_Training
+          - Certificates_of_Completion
+          - Chemical_Substances_or_Alcohol_Abuse
+          - Correspondence
+          - Criminal_Actions
+          - DD214__Record_of_Military_Service
+          - DEA
+          - DEA_Waiver
+          - DPS
+          - Diploma
+          - Diplomate_of_National_Board_of_Medical_Examiners_Certificate
+          - Disclosure
+          - Disclosure_of_Ownership
+          - Drivers_License
+          - ECFMG
+          - Exam_Certification
+          - Graduate_Diploma
+          - Hospital_Letter__Verification_of_Hospital_Credentialing__or_Alternative_Pathways
+          - Individual_Npi_Letter
+          - Letter_of_Self_Insurance_Explanation_of_No_Insurance
+          - Liability_Insurance
+          - License_Application
+          - License_Attachment
+          - Malpractice_Claim_Information_Document_for_Nevada_State
+          - Malpractice_Explanation
+          - Malpractice_Insurance
+          - Maryland_State_License_Certificate
+          - Medical_Condition
+          - Medical_Degree
+          - National_Provider_Identification_Certificate
+          - Opt_Out
+          - Other
+          - Other_Certificate
+          - Photo
+          - Problem_Resolution_System_Letter
+          - Professional_Liability_Actions
+          - Professional_Liability_Insurance
+          - Radiology_Certification
+          - Reference_Letter
+          - Resume
+          - Schedule_AP1
+          - Schedule_B_Professional_Liability_Claims_Information_Form_for_Georgia_State
+          - Schedule_C_Regulation_Acknowledgement
+          - Scholar_Visa_IAP_66
+          - Section_D___Attestation_Questions
+          - Social_Security_Card
+          - State_Application_Addendum
+          - State_Authorization
+          - State_License
+          - State_License_MD
+          - State_Release
+          - TB_Skin_Test
+          - Therapeutic_Diagnostic_Pharmaceutical_Agents_License
+          - Visa_Document
+          - W_9
+          - Workers_Compensation_Certificate_of_Coverage
+    OtherProfessionalTrainingAuthorizedFilterQuery:
+      type: object
+      properties:
+        id:
+          type: array
+          items:
+            type: string
+        maxResults:
+          type: number
+        firstResult:
+          type: number
+        sortField:
+          type: string
+        sortOrder:
+          type: string
+          enum:
+          - ASC
+          - DESC
+        affiliatedUniversity:
+          type: array
+          items:
+            $ref: '#/components/schemas/University'
+        providerGuid:
+          type: array
+          items:
+            type: string
   securitySchemes:
     api_key:
       type: apiKey
