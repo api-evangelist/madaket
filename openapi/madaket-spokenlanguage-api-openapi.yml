@@ -90,18 +90,7 @@ paths:
               $ref: '#/components/schemas/SpokenLanguageSearchQuery'
 components:
   schemas:
-    SpokenLanguage:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        code:
-          type: string
-        description:
-          type: string
-    SpokenLanguageSearchQuery:
+    SpokenLanguageFilterQuery:
       type: object
       properties:
         id:
@@ -123,7 +112,18 @@ components:
           type: array
           items:
             type: string
-    SpokenLanguageFilterQuery:
+    SpokenLanguage:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        code:
+          type: string
+        description:
+          type: string
+    SpokenLanguageSearchQuery:
       type: object
       properties:
         id:

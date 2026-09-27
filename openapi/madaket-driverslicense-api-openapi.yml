@@ -115,24 +115,6 @@ paths:
               $ref: '#/components/schemas/DriversLicenseAuthorizedSearchQuery'
 components:
   schemas:
-    DriversLicenseAuthorizedSearchQuery:
-      type: object
-      properties:
-        id:
-          type: array
-          items:
-            type: string
-        maxResults:
-          type: number
-        firstResult:
-          type: number
-        sortField:
-          type: string
-        sortOrder:
-          type: string
-          enum:
-          - ASC
-          - DESC
     ProviderFileStub:
       type: object
       properties:
@@ -221,23 +203,6 @@ components:
           - Visa_Document
           - W_9
           - Workers_Compensation_Certificate_of_Coverage
-    DriversLicense:
-      type: object
-      properties:
-        id:
-          type: string
-        createdTime:
-          type: string
-          format: date-time
-        providerGuid:
-          type: string
-        source:
-          type: string
-        sourceTimestamp:
-          type: string
-          format: date-time
-        driversLicense:
-          $ref: '#/components/schemas/ProviderFileStub'
     DriversLicenseAuthorizedFilterQuery:
       type: object
       properties:
@@ -260,6 +225,41 @@ components:
           type: array
           items:
             type: string
+    DriversLicense:
+      type: object
+      properties:
+        id:
+          type: string
+        createdTime:
+          type: string
+          format: date-time
+        providerGuid:
+          type: string
+        source:
+          type: string
+        sourceTimestamp:
+          type: string
+          format: date-time
+        driversLicense:
+          $ref: '#/components/schemas/ProviderFileStub'
+    DriversLicenseAuthorizedSearchQuery:
+      type: object
+      properties:
+        id:
+          type: array
+          items:
+            type: string
+        maxResults:
+          type: number
+        firstResult:
+          type: number
+        sortField:
+          type: string
+        sortOrder:
+          type: string
+          enum:
+          - ASC
+          - DESC
   securitySchemes:
     api_key:
       type: apiKey

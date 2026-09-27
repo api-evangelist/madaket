@@ -101,7 +101,7 @@ components:
           type: string
         specialization:
           type: string
-    SpecialtySearchQuery:
+    SpecialtyFilterQuery:
       type: object
       properties:
         id:
@@ -123,7 +123,7 @@ components:
           type: array
           items:
             type: string
-    SpecialtyFilterQuery:
+    SpecialtySearchQuery:
       type: object
       properties:
         id:

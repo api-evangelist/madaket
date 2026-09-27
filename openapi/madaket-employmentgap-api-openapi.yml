@@ -115,6 +115,28 @@ paths:
               $ref: '#/components/schemas/EmploymentGapAuthorizedSearchQuery'
 components:
   schemas:
+    EmploymentGapAuthorizedFilterQuery:
+      type: object
+      properties:
+        id:
+          type: array
+          items:
+            type: string
+        maxResults:
+          type: number
+        firstResult:
+          type: number
+        sortField:
+          type: string
+        sortOrder:
+          type: string
+          enum:
+          - ASC
+          - DESC
+        providerGuid:
+          type: array
+          items:
+            type: string
     EmploymentGap:
       type: object
       properties:
@@ -156,28 +178,6 @@ components:
           enum:
           - ASC
           - DESC
-    EmploymentGapAuthorizedFilterQuery:
-      type: object
-      properties:
-        id:
-          type: array
-          items:
-            type: string
-        maxResults:
-          type: number
-        firstResult:
-          type: number
-        sortField:
-          type: string
-        sortOrder:
-          type: string
-          enum:
-          - ASC
-          - DESC
-        providerGuid:
-          type: array
-          items:
-            type: string
   securitySchemes:
     api_key:
       type: apiKey

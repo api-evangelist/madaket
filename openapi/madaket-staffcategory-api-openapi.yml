@@ -90,15 +90,6 @@ paths:
               $ref: '#/components/schemas/StaffCategorySearchQuery'
 components:
   schemas:
-    StaffCategory:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        description:
-          type: string
     StaffCategoryFilterQuery:
       type: object
       properties:
@@ -121,6 +112,15 @@ components:
           type: array
           items:
             type: string
+    StaffCategory:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
     StaffCategorySearchQuery:
       type: object
       properties:

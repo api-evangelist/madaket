@@ -199,6 +199,24 @@ components:
           type: string
         isMedicaidProvider:
           type: boolean
+    MedicaidRecordAuthorizedSearchQuery:
+      type: object
+      properties:
+        id:
+          type: array
+          items:
+            type: string
+        maxResults:
+          type: number
+        firstResult:
+          type: number
+        sortField:
+          type: string
+        sortOrder:
+          type: string
+          enum:
+          - ASC
+          - DESC
     MedicaidRecordAuthorizedFilterQuery:
       type: object
       properties:
@@ -233,24 +251,6 @@ components:
           type: array
           items:
             type: string
-    MedicaidRecordAuthorizedSearchQuery:
-      type: object
-      properties:
-        id:
-          type: array
-          items:
-            type: string
-        maxResults:
-          type: number
-        firstResult:
-          type: number
-        sortField:
-          type: string
-        sortOrder:
-          type: string
-          enum:
-          - ASC
-          - DESC
   securitySchemes:
     api_key:
       type: apiKey

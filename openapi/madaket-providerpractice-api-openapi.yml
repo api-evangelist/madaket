@@ -115,6 +115,828 @@ paths:
               $ref: '#/components/schemas/ProviderPracticeAuthorizedSearchQuery'
 components:
   schemas:
+    PracticeDepartment:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+    ProviderPractice:
+      type: object
+      properties:
+        id:
+          type: string
+        createdTime:
+          type: string
+          format: date-time
+        providerGuid:
+          type: string
+        source:
+          type: string
+        sourceTimestamp:
+          type: string
+          format: date-time
+        practiceLocationGuid:
+          type: string
+        providerPracticeGeneralInformation:
+          $ref: '#/components/schemas/ProviderPracticeGeneralInformation'
+        providerPracticeHours:
+          $ref: '#/components/schemas/ProviderPracticeHours'
+        providerPracticeCoverageContact:
+          $ref: '#/components/schemas/ProviderPracticeCoverageContact'
+        providerPracticeLimitation:
+          $ref: '#/components/schemas/ProviderPracticeLimitation'
+    ProviderPracticeLimitation:
+      type: object
+      properties:
+        id:
+          type: string
+        practiceGuid:
+          type: string
+        practiceLimitation:
+          type: boolean
+        genderLimitations:
+          type: boolean
+        ageLimitation:
+          type: boolean
+        minimumAge:
+          type: string
+        maximumAge:
+          type: string
+        otherLimitations:
+          type: string
+    ProviderPracticeHours:
+      type: object
+      properties:
+        id:
+          type: string
+        practiceGuid:
+          type: string
+        mondayStartTime:
+          type: string
+          enum:
+          - EIGHT_AM
+          - EIGHT_PM
+          - EIGHT_THIRTY_AM
+          - EIGHT_THIRTY_PM
+          - ELEVEN_AM
+          - ELEVEN_PM
+          - ELEVEN_THIRTY_AM
+          - ELEVEN_THIRTY_PM
+          - FIVE_AM
+          - FIVE_PM
+          - FIVE_THIRTY_AM
+          - FIVE_THIRTY_PM
+          - FOUR_AM
+          - FOUR_PM
+          - FOUR_THIRTY_AM
+          - FOUR_THIRTY_PM
+          - NINE_AM
+          - NINE_PM
+          - NINE_THIRTY_AM
+          - NINE_THIRTY_PM
+          - NONE
+          - ONE_AM
+          - ONE_PM
+          - ONE_THIRTY_AM
+          - ONE_THIRTY_PM
+          - SEVEN_AM
+          - SEVEN_PM
+          - SEVEN_THIRTY_AM
+          - SEVEN_THIRTY_PM
+          - SIX_AM
+          - SIX_PM
+          - SIX_THIRTY_AM
+          - SIX_THIRTY_PM
+          - TEN_AM
+          - TEN_PM
+          - TEN_THIRTY_AM
+          - TEN_THIRTY_PM
+          - THREE_AM
+          - THREE_PM
+          - THREE_THIRTY_AM
+          - THREE_THIRTY_PM
+          - TWELEVE_AM
+          - TWELEVE_PM
+          - TWELEVE_THIRTY_AM
+          - TWELEVE_THIRTY_PM
+          - TWO_AM
+          - TWO_PM
+          - TWO_THIRTY_AM
+          - TWO_THIRTY_PM
+        mondayEndTime:
+          type: string
+          enum:
+          - EIGHT_AM
+          - EIGHT_PM
+          - EIGHT_THIRTY_AM
+          - EIGHT_THIRTY_PM
+          - ELEVEN_AM
+          - ELEVEN_PM
+          - ELEVEN_THIRTY_AM
+          - ELEVEN_THIRTY_PM
+          - FIVE_AM
+          - FIVE_PM
+          - FIVE_THIRTY_AM
+          - FIVE_THIRTY_PM
+          - FOUR_AM
+          - FOUR_PM
+          - FOUR_THIRTY_AM
+          - FOUR_THIRTY_PM
+          - NINE_AM
+          - NINE_PM
+          - NINE_THIRTY_AM
+          - NINE_THIRTY_PM
+          - NONE
+          - ONE_AM
+          - ONE_PM
+          - ONE_THIRTY_AM
+          - ONE_THIRTY_PM
+          - SEVEN_AM
+          - SEVEN_PM
+          - SEVEN_THIRTY_AM
+          - SEVEN_THIRTY_PM
+          - SIX_AM
+          - SIX_PM
+          - SIX_THIRTY_AM
+          - SIX_THIRTY_PM
+          - TEN_AM
+          - TEN_PM
+          - TEN_THIRTY_AM
+          - TEN_THIRTY_PM
+          - THREE_AM
+          - THREE_PM
+          - THREE_THIRTY_AM
+          - THREE_THIRTY_PM
+          - TWELEVE_AM
+          - TWELEVE_PM
+          - TWELEVE_THIRTY_AM
+          - TWELEVE_THIRTY_PM
+          - TWO_AM
+          - TWO_PM
+          - TWO_THIRTY_AM
+          - TWO_THIRTY_PM
+        tuesdayStartTime:
+          type: string
+          enum:
+          - EIGHT_AM
+          - EIGHT_PM
+          - EIGHT_THIRTY_AM
+          - EIGHT_THIRTY_PM
+          - ELEVEN_AM
+          - ELEVEN_PM
+          - ELEVEN_THIRTY_AM
+          - ELEVEN_THIRTY_PM
+          - FIVE_AM
+          - FIVE_PM
+          - FIVE_THIRTY_AM
+          - FIVE_THIRTY_PM
+          - FOUR_AM
+          - FOUR_PM
+          - FOUR_THIRTY_AM
+          - FOUR_THIRTY_PM
+          - NINE_AM
+          - NINE_PM
+          - NINE_THIRTY_AM
+          - NINE_THIRTY_PM
+          - NONE
+          - ONE_AM
+          - ONE_PM
+          - ONE_THIRTY_AM
+          - ONE_THIRTY_PM
+          - SEVEN_AM
+          - SEVEN_PM
+          - SEVEN_THIRTY_AM
+          - SEVEN_THIRTY_PM
+          - SIX_AM
+          - SIX_PM
+          - SIX_THIRTY_AM
+          - SIX_THIRTY_PM
+          - TEN_AM
+          - TEN_PM
+          - TEN_THIRTY_AM
+          - TEN_THIRTY_PM
+          - THREE_AM
+          - THREE_PM
+          - THREE_THIRTY_AM
+          - THREE_THIRTY_PM
+          - TWELEVE_AM
+          - TWELEVE_PM
+          - TWELEVE_THIRTY_AM
+          - TWELEVE_THIRTY_PM
+          - TWO_AM
+          - TWO_PM
+          - TWO_THIRTY_AM
+          - TWO_THIRTY_PM
+        tuesdayEndTime:
+          type: string
+          enum:
+          - EIGHT_AM
+          - EIGHT_PM
+          - EIGHT_THIRTY_AM
+          - EIGHT_THIRTY_PM
+          - ELEVEN_AM
+          - ELEVEN_PM
+          - ELEVEN_THIRTY_AM
+          - ELEVEN_THIRTY_PM
+          - FIVE_AM
+          - FIVE_PM
+          - FIVE_THIRTY_AM
+          - FIVE_THIRTY_PM
+          - FOUR_AM
+          - FOUR_PM
+          - FOUR_THIRTY_AM
+          - FOUR_THIRTY_PM
+          - NINE_AM
+          - NINE_PM
+          - NINE_THIRTY_AM
+          - NINE_THIRTY_PM
+          - NONE
+          - ONE_AM
+          - ONE_PM
+          - ONE_THIRTY_AM
+          - ONE_THIRTY_PM
+          - SEVEN_AM
+          - SEVEN_PM
+          - SEVEN_THIRTY_AM
+          - SEVEN_THIRTY_PM
+          - SIX_AM
+          - SIX_PM
+          - SIX_THIRTY_AM
+          - SIX_THIRTY_PM
+          - TEN_AM
+          - TEN_PM
+          - TEN_THIRTY_AM
+          - TEN_THIRTY_PM
+          - THREE_AM
+          - THREE_PM
+          - THREE_THIRTY_AM
+          - THREE_THIRTY_PM
+          - TWELEVE_AM
+          - TWELEVE_PM
+          - TWELEVE_THIRTY_AM
+          - TWELEVE_THIRTY_PM
+          - TWO_AM
+          - TWO_PM
+          - TWO_THIRTY_AM
+          - TWO_THIRTY_PM
+        wednesdayStartTime:
+          type: string
+          enum:
+          - EIGHT_AM
+          - EIGHT_PM
+          - EIGHT_THIRTY_AM
+          - EIGHT_THIRTY_PM
+          - ELEVEN_AM
+          - ELEVEN_PM
+          - ELEVEN_THIRTY_AM
+          - ELEVEN_THIRTY_PM
+          - FIVE_AM
+          - FIVE_PM
+          - FIVE_THIRTY_AM
+          - FIVE_THIRTY_PM
+          - FOUR_AM
+          - FOUR_PM
+          - FOUR_THIRTY_AM
+          - FOUR_THIRTY_PM
+          - NINE_AM
+          - NINE_PM
+          - NINE_THIRTY_AM
+          - NINE_THIRTY_PM
+          - NONE
+          - ONE_AM
+          - ONE_PM
+          - ONE_THIRTY_AM
+          - ONE_THIRTY_PM
+          - SEVEN_AM
+          - SEVEN_PM
+          - SEVEN_THIRTY_AM
+          - SEVEN_THIRTY_PM
+          - SIX_AM
+          - SIX_PM
+          - SIX_THIRTY_AM
+          - SIX_THIRTY_PM
+          - TEN_AM
+          - TEN_PM
+          - TEN_THIRTY_AM
+          - TEN_THIRTY_PM
+          - THREE_AM
+          - THREE_PM
+          - THREE_THIRTY_AM
+          - THREE_THIRTY_PM
+          - TWELEVE_AM
+          - TWELEVE_PM
+          - TWELEVE_THIRTY_AM
+          - TWELEVE_THIRTY_PM
+          - TWO_AM
+          - TWO_PM
+          - TWO_THIRTY_AM
+          - TWO_THIRTY_PM
+        wednesdayEndTime:
+          type: string
+          enum:
+          - EIGHT_AM
+          - EIGHT_PM
+          - EIGHT_THIRTY_AM
+          - EIGHT_THIRTY_PM
+          - ELEVEN_AM
+          - ELEVEN_PM
+          - ELEVEN_THIRTY_AM
+          - ELEVEN_THIRTY_PM
+          - FIVE_AM
+          - FIVE_PM
+          - FIVE_THIRTY_AM
+          - FIVE_THIRTY_PM
+          - FOUR_AM
+          - FOUR_PM
+          - FOUR_THIRTY_AM
+          - FOUR_THIRTY_PM
+          - NINE_AM
+          - NINE_PM
+          - NINE_THIRTY_AM
+          - NINE_THIRTY_PM
+          - NONE
+          - ONE_AM
+          - ONE_PM
+          - ONE_THIRTY_AM
+          - ONE_THIRTY_PM
+          - SEVEN_AM
+          - SEVEN_PM
+          - SEVEN_THIRTY_AM
+          - SEVEN_THIRTY_PM
+          - SIX_AM
+          - SIX_PM
+          - SIX_THIRTY_AM
+          - SIX_THIRTY_PM
+          - TEN_AM
+          - TEN_PM
+          - TEN_THIRTY_AM
+          - TEN_THIRTY_PM
+          - THREE_AM
+          - THREE_PM
+          - THREE_THIRTY_AM
+          - THREE_THIRTY_PM
+          - TWELEVE_AM
+          - TWELEVE_PM
+          - TWELEVE_THIRTY_AM
+          - TWELEVE_THIRTY_PM
+          - TWO_AM
+          - TWO_PM
+          - TWO_THIRTY_AM
+          - TWO_THIRTY_PM
+        thursdayStartTime:
+          type: string
+          enum:
+          - EIGHT_AM
+          - EIGHT_PM
+          - EIGHT_THIRTY_AM
+          - EIGHT_THIRTY_PM
+          - ELEVEN_AM
+          - ELEVEN_PM
+          - ELEVEN_THIRTY_AM
+          - ELEVEN_THIRTY_PM
+          - FIVE_AM
+          - FIVE_PM
+          - FIVE_THIRTY_AM
+          - FIVE_THIRTY_PM
+          - FOUR_AM
+          - FOUR_PM
+          - FOUR_THIRTY_AM
+          - FOUR_THIRTY_PM
+          - NINE_AM
+          - NINE_PM
+          - NINE_THIRTY_AM
+          - NINE_THIRTY_PM
+          - NONE
+          - ONE_AM
+          - ONE_PM
+          - ONE_THIRTY_AM
+          - ONE_THIRTY_PM
+          - SEVEN_AM
+          - SEVEN_PM
+          - SEVEN_THIRTY_AM
+          - SEVEN_THIRTY_PM
+          - SIX_AM
+          - SIX_PM
+          - SIX_THIRTY_AM
+          - SIX_THIRTY_PM
+          - TEN_AM
+          - TEN_PM
+          - TEN_THIRTY_AM
+          - TEN_THIRTY_PM
+          - THREE_AM
+          - THREE_PM
+          - THREE_THIRTY_AM
+          - THREE_THIRTY_PM
+          - TWELEVE_AM
+          - TWELEVE_PM
+          - TWELEVE_THIRTY_AM
+          - TWELEVE_THIRTY_PM
+          - TWO_AM
+          - TWO_PM
+          - TWO_THIRTY_AM
+          - TWO_THIRTY_PM
+        thursdayEndTime:
+          type: string
+          enum:
+          - EIGHT_AM
+          - EIGHT_PM
+          - EIGHT_THIRTY_AM
+          - EIGHT_THIRTY_PM
+          - ELEVEN_AM
+          - ELEVEN_PM
+          - ELEVEN_THIRTY_AM
+          - ELEVEN_THIRTY_PM
+          - FIVE_AM
+          - FIVE_PM
+          - FIVE_THIRTY_AM
+          - FIVE_THIRTY_PM
+          - FOUR_AM
+          - FOUR_PM
+          - FOUR_THIRTY_AM
+          - FOUR_THIRTY_PM
+          - NINE_AM
+          - NINE_PM
+          - NINE_THIRTY_AM
+          - NINE_THIRTY_PM
+          - NONE
+          - ONE_AM
+          - ONE_PM
+          - ONE_THIRTY_AM
+          - ONE_THIRTY_PM
+          - SEVEN_AM
+          - SEVEN_PM
+          - SEVEN_THIRTY_AM
+          - SEVEN_THIRTY_PM
+          - SIX_AM
+          - SIX_PM
+          - SIX_THIRTY_AM
+          - SIX_THIRTY_PM
+          - TEN_AM
+          - TEN_PM
+          - TEN_THIRTY_AM
+          - TEN_THIRTY_PM
+          - THREE_AM
+          - THREE_PM
+          - THREE_THIRTY_AM
+          - THREE_THIRTY_PM
+          - TWELEVE_AM
+          - TWELEVE_PM
+          - TWELEVE_THIRTY_AM
+          - TWELEVE_THIRTY_PM
+          - TWO_AM
+          - TWO_PM
+          - TWO_THIRTY_AM
+          - TWO_THIRTY_PM
+        fridayStartTime:
+          type: string
+          enum:
+          - EIGHT_AM
+          - EIGHT_PM
+          - EIGHT_THIRTY_AM
+          - EIGHT_THIRTY_PM
+          - ELEVEN_AM
+          - ELEVEN_PM
+          - ELEVEN_THIRTY_AM
+          - ELEVEN_THIRTY_PM
+          - FIVE_AM
+          - FIVE_PM
+          - FIVE_THIRTY_AM
+          - FIVE_THIRTY_PM
+          - FOUR_AM
+          - FOUR_PM
+          - FOUR_THIRTY_AM
+          - FOUR_THIRTY_PM
+          - NINE_AM
+          - NINE_PM
+          - NINE_THIRTY_AM
+          - NINE_THIRTY_PM
+          - NONE
+          - ONE_AM
+          - ONE_PM
+          - ONE_THIRTY_AM
+          - ONE_THIRTY_PM
+          - SEVEN_AM
+          - SEVEN_PM
+          - SEVEN_THIRTY_AM
+          - SEVEN_THIRTY_PM
+          - SIX_AM
+          - SIX_PM
+          - SIX_THIRTY_AM
+          - SIX_THIRTY_PM
+          - TEN_AM
+          - TEN_PM
+          - TEN_THIRTY_AM
+          - TEN_THIRTY_PM
+          - THREE_AM
+          - THREE_PM
+          - THREE_THIRTY_AM
+          - THREE_THIRTY_PM
+          - TWELEVE_AM
+          - TWELEVE_PM
+          - TWELEVE_THIRTY_AM
+          - TWELEVE_THIRTY_PM
+          - TWO_AM
+          - TWO_PM
+          - TWO_THIRTY_AM
+          - TWO_THIRTY_PM
+        fridayEndTime:
+          type: string
+          enum:
+          - EIGHT_AM
+          - EIGHT_PM
+          - EIGHT_THIRTY_AM
+          - EIGHT_THIRTY_PM
+          - ELEVEN_AM
+          - ELEVEN_PM
+          - ELEVEN_THIRTY_AM
+          - ELEVEN_THIRTY_PM
+          - FIVE_AM
+          - FIVE_PM
+          - FIVE_THIRTY_AM
+          - FIVE_THIRTY_PM
+          - FOUR_AM
+          - FOUR_PM
+          - FOUR_THIRTY_AM
+          - FOUR_THIRTY_PM
+          - NINE_AM
+          - NINE_PM
+          - NINE_THIRTY_AM
+          - NINE_THIRTY_PM
+          - NONE
+          - ONE_AM
+          - ONE_PM
+          - ONE_THIRTY_AM
+          - ONE_THIRTY_PM
+          - SEVEN_AM
+          - SEVEN_PM
+          - SEVEN_THIRTY_AM
+          - SEVEN_THIRTY_PM
+          - SIX_AM
+          - SIX_PM
+          - SIX_THIRTY_AM
+          - SIX_THIRTY_PM
+          - TEN_AM
+          - TEN_PM
+          - TEN_THIRTY_AM
+          - TEN_THIRTY_PM
+          - THREE_AM
+          - THREE_PM
+          - THREE_THIRTY_AM
+          - THREE_THIRTY_PM
+          - TWELEVE_AM
+          - TWELEVE_PM
+          - TWELEVE_THIRTY_AM
+          - TWELEVE_THIRTY_PM
+          - TWO_AM
+          - TWO_PM
+          - TWO_THIRTY_AM
+          - TWO_THIRTY_PM
+        saturdayStartTime:
+          type: string
+          enum:
+          - EIGHT_AM
+          - EIGHT_PM
+          - EIGHT_THIRTY_AM
+          - EIGHT_THIRTY_PM
+          - ELEVEN_AM
+          - ELEVEN_PM
+          - ELEVEN_THIRTY_AM
+          - ELEVEN_THIRTY_PM
+          - FIVE_AM
+          - FIVE_PM
+          - FIVE_THIRTY_AM
+          - FIVE_THIRTY_PM
+          - FOUR_AM
+          - FOUR_PM
+          - FOUR_THIRTY_AM
+          - FOUR_THIRTY_PM
+          - NINE_AM
+          - NINE_PM
+          - NINE_THIRTY_AM
+          - NINE_THIRTY_PM
+          - NONE
+          - ONE_AM
+          - ONE_PM
+          - ONE_THIRTY_AM
+          - ONE_THIRTY_PM
+          - SEVEN_AM
+          - SEVEN_PM
+          - SEVEN_THIRTY_AM
+          - SEVEN_THIRTY_PM
+          - SIX_AM
+          - SIX_PM
+          - SIX_THIRTY_AM
+          - SIX_THIRTY_PM
+          - TEN_AM
+          - TEN_PM
+          - TEN_THIRTY_AM
+          - TEN_THIRTY_PM
+          - THREE_AM
+          - THREE_PM
+          - THREE_THIRTY_AM
+          - THREE_THIRTY_PM
+          - TWELEVE_AM
+          - TWELEVE_PM
+          - TWELEVE_THIRTY_AM
+          - TWELEVE_THIRTY_PM
+          - TWO_AM
+          - TWO_PM
+          - TWO_THIRTY_AM
+          - TWO_THIRTY_PM
+        saturdayEndTime:
+          type: string
+          enum:
+          - EIGHT_AM
+          - EIGHT_PM
+          - EIGHT_THIRTY_AM
+          - EIGHT_THIRTY_PM
+          - ELEVEN_AM
+          - ELEVEN_PM
+          - ELEVEN_THIRTY_AM
+          - ELEVEN_THIRTY_PM
+          - FIVE_AM
+          - FIVE_PM
+          - FIVE_THIRTY_AM
+          - FIVE_THIRTY_PM
+          - FOUR_AM
+          - FOUR_PM
+          - FOUR_THIRTY_AM
+          - FOUR_THIRTY_PM
+          - NINE_AM
+          - NINE_PM
+          - NINE_THIRTY_AM
+          - NINE_THIRTY_PM
+          - NONE
+          - ONE_AM
+          - ONE_PM
+          - ONE_THIRTY_AM
+          - ONE_THIRTY_PM
+          - SEVEN_AM
+          - SEVEN_PM
+          - SEVEN_THIRTY_AM
+          - SEVEN_THIRTY_PM
+          - SIX_AM
+          - SIX_PM
+          - SIX_THIRTY_AM
+          - SIX_THIRTY_PM
+          - TEN_AM
+          - TEN_PM
+          - TEN_THIRTY_AM
+          - TEN_THIRTY_PM
+          - THREE_AM
+          - THREE_PM
+          - THREE_THIRTY_AM
+          - THREE_THIRTY_PM
+          - TWELEVE_AM
+          - TWELEVE_PM
+          - TWELEVE_THIRTY_AM
+          - TWELEVE_THIRTY_PM
+          - TWO_AM
+          - TWO_PM
+          - TWO_THIRTY_AM
+          - TWO_THIRTY_PM
+        sundayStartTime:
+          type: string
+          enum:
+          - EIGHT_AM
+          - EIGHT_PM
+          - EIGHT_THIRTY_AM
+          - EIGHT_THIRTY_PM
+          - ELEVEN_AM
+          - ELEVEN_PM
+          - ELEVEN_THIRTY_AM
+          - ELEVEN_THIRTY_PM
+          - FIVE_AM
+          - FIVE_PM
+          - FIVE_THIRTY_AM
+          - FIVE_THIRTY_PM
+          - FOUR_AM
+          - FOUR_PM
+          - FOUR_THIRTY_AM
+          - FOUR_THIRTY_PM
+          - NINE_AM
+          - NINE_PM
+          - NINE_THIRTY_AM
+          - NINE_THIRTY_PM
+          - NONE
+          - ONE_AM
+          - ONE_PM
+          - ONE_THIRTY_AM
+          - ONE_THIRTY_PM
+          - SEVEN_AM
+          - SEVEN_PM
+          - SEVEN_THIRTY_AM
+          - SEVEN_THIRTY_PM
+          - SIX_AM
+          - SIX_PM
+          - SIX_THIRTY_AM
+          - SIX_THIRTY_PM
+          - TEN_AM
+          - TEN_PM
+          - TEN_THIRTY_AM
+          - TEN_THIRTY_PM
+          - THREE_AM
+          - THREE_PM
+          - THREE_THIRTY_AM
+          - THREE_THIRTY_PM
+          - TWELEVE_AM
+          - TWELEVE_PM
+          - TWELEVE_THIRTY_AM
+          - TWELEVE_THIRTY_PM
+          - TWO_AM
+          - TWO_PM
+          - TWO_THIRTY_AM
+          - TWO_THIRTY_PM
+        sundayEndTime:
+          type: string
+          enum:
+          - EIGHT_AM
+          - EIGHT_PM
+          - EIGHT_THIRTY_AM
+          - EIGHT_THIRTY_PM
+          - ELEVEN_AM
+          - ELEVEN_PM
+          - ELEVEN_THIRTY_AM
+          - ELEVEN_THIRTY_PM
+          - FIVE_AM
+          - FIVE_PM
+          - FIVE_THIRTY_AM
+          - FIVE_THIRTY_PM
+          - FOUR_AM
+          - FOUR_PM
+          - FOUR_THIRTY_AM
+          - FOUR_THIRTY_PM
+          - NINE_AM
+          - NINE_PM
+          - NINE_THIRTY_AM
+          - NINE_THIRTY_PM
+          - NONE
+          - ONE_AM
+          - ONE_PM
+          - ONE_THIRTY_AM
+          - ONE_THIRTY_PM
+          - SEVEN_AM
+          - SEVEN_PM
+          - SEVEN_THIRTY_AM
+          - SEVEN_THIRTY_PM
+          - SIX_AM
+          - SIX_PM
+          - SIX_THIRTY_AM
+          - SIX_THIRTY_PM
+          - TEN_AM
+          - TEN_PM
+          - TEN_THIRTY_AM
+          - TEN_THIRTY_PM
+          - THREE_AM
+          - THREE_PM
+          - THREE_THIRTY_AM
+          - THREE_THIRTY_PM
+          - TWELEVE_AM
+          - TWELEVE_PM
+          - TWELEVE_THIRTY_AM
+          - TWELEVE_THIRTY_PM
+          - TWO_AM
+          - TWO_PM
+          - TWO_THIRTY_AM
+          - TWO_THIRTY_PM
+        acceptingNewPatients:
+          type: boolean
+        acceptingNewPatientsWithChangeOfPayor:
+          type: boolean
+        acceptingAllNewPatients:
+          type: boolean
+        acceptingNewMedicarePatients:
+          type: boolean
+        acceptingNewMedicaidPatients:
+          type: boolean
+        acceptingPhysicianReferralPatients:
+          type: boolean
+        referralAcceptanceCriteria:
+          type: string
+        variesByHealthPlan:
+          type: boolean
+    ProviderPracticeAuthorizedSearchQuery:
+      type: object
+      properties:
+        id:
+          type: array
+          items:
+            type: string
+        maxResults:
+          type: number
+        firstResult:
+          type: number
+        sortField:
+          type: string
+        sortOrder:
+          type: string
+          enum:
+          - ASC
+          - DESC
     ProviderPracticeAuthorizedFilterQuery:
       type: object
       properties:
@@ -141,52 +963,25 @@ components:
           type: array
           items:
             type: string
-    PracticeDepartment:
+    ProviderPracticeGeneralInformation:
       type: object
       properties:
         id:
           type: string
-        name:
+        practiceDepartment:
+          $ref: '#/components/schemas/PracticeDepartment'
+        startDate:
           type: string
-        description:
-          type: string
-    ProviderPracticeAuthorizedSearchQuery:
-      type: object
-      properties:
-        id:
-          type: array
-          items:
-            type: string
-        maxResults:
-          type: number
-        firstResult:
-          type: number
-        sortField:
-          type: string
-        sortOrder:
+          format: date-time
+        practicingLocation:
+          type: boolean
+        practiceLocationAffiliation:
           type: string
           enum:
-          - ASC
-          - DESC
-    ProviderPracticeLimitation:
-      type: object
-      properties:
-        id:
-          type: string
-        practiceGuid:
-          type: string
-        practiceLimitation:
-          type: boolean
-        genderLimitations:
-          type: boolean
-        ageLimitation:
-          type: boolean
-        minimumAge:
-          type: string
-        maximumAge:
-          type: string
-        otherLimitations:
-          type: string
+          - ATLEAST_ONE_DAY_PER_MONTH
+          - ATLEAST_ONE_DAY_PER_WEEK
+          - FILL_IN
+          - OTHER_SERVICES
     ProviderPracticeCoverageContact:
       type: object
       properties:
@@ -1155,801 +1950,6 @@ components:
           - _385HR2065X
           - _390200000X
           - _405300000X
-    ProviderPracticeGeneralInformation:
-      type: object
-      properties:
-        id:
-          type: string
-        practiceDepartment:
-          $ref: '#/components/schemas/PracticeDepartment'
-        startDate:
-          type: string
-          format: date-time
-        practicingLocation:
-          type: boolean
-        practiceLocationAffiliation:
-          type: string
-          enum:
-          - ATLEAST_ONE_DAY_PER_MONTH
-          - ATLEAST_ONE_DAY_PER_WEEK
-          - FILL_IN
-          - OTHER_SERVICES
-    ProviderPractice:
-      type: object
-      properties:
-        id:
-          type: string
-        createdTime:
-          type: string
-          format: date-time
-        providerGuid:
-          type: string
-        source:
-          type: string
-        sourceTimestamp:
-          type: string
-          format: date-time
-        practiceLocationGuid:
-          type: string
-        providerPracticeGeneralInformation:
-          $ref: '#/components/schemas/ProviderPracticeGeneralInformation'
-        providerPracticeHours:
-          $ref: '#/components/schemas/ProviderPracticeHours'
-        providerPracticeCoverageContact:
-          $ref: '#/components/schemas/ProviderPracticeCoverageContact'
-        providerPracticeLimitation:
-          $ref: '#/components/schemas/ProviderPracticeLimitation'
-    ProviderPracticeHours:
-      type: object
-      properties:
-        id:
-          type: string
-        practiceGuid:
-          type: string
-        mondayStartTime:
-          type: string
-          enum:
-          - EIGHT_AM
-          - EIGHT_PM
-          - EIGHT_THIRTY_AM
-          - EIGHT_THIRTY_PM
-          - ELEVEN_AM
-          - ELEVEN_PM
-          - ELEVEN_THIRTY_AM
-          - ELEVEN_THIRTY_PM
-          - FIVE_AM
-          - FIVE_PM
-          - FIVE_THIRTY_AM
-          - FIVE_THIRTY_PM
-          - FOUR_AM
-          - FOUR_PM
-          - FOUR_THIRTY_AM
-          - FOUR_THIRTY_PM
-          - NINE_AM
-          - NINE_PM
-          - NINE_THIRTY_AM
-          - NINE_THIRTY_PM
-          - NONE
-          - ONE_AM
-          - ONE_PM
-          - ONE_THIRTY_AM
-          - ONE_THIRTY_PM
-          - SEVEN_AM
-          - SEVEN_PM
-          - SEVEN_THIRTY_AM
-          - SEVEN_THIRTY_PM
-          - SIX_AM
-          - SIX_PM
-          - SIX_THIRTY_AM
-          - SIX_THIRTY_PM
-          - TEN_AM
-          - TEN_PM
-          - TEN_THIRTY_AM
-          - TEN_THIRTY_PM
-          - THREE_AM
-          - THREE_PM
-          - THREE_THIRTY_AM
-          - THREE_THIRTY_PM
-          - TWELEVE_AM
-          - TWELEVE_PM
-          - TWELEVE_THIRTY_AM
-          - TWELEVE_THIRTY_PM
-          - TWO_AM
-          - TWO_PM
-          - TWO_THIRTY_AM
-          - TWO_THIRTY_PM
-        mondayEndTime:
-          type: string
-          enum:
-          - EIGHT_AM
-          - EIGHT_PM
-          - EIGHT_THIRTY_AM
-          - EIGHT_THIRTY_PM
-          - ELEVEN_AM
-          - ELEVEN_PM
-          - ELEVEN_THIRTY_AM
-          - ELEVEN_THIRTY_PM
-          - FIVE_AM
-          - FIVE_PM
-          - FIVE_THIRTY_AM
-          - FIVE_THIRTY_PM
-          - FOUR_AM
-          - FOUR_PM
-          - FOUR_THIRTY_AM
-          - FOUR_THIRTY_PM
-          - NINE_AM
-          - NINE_PM
-          - NINE_THIRTY_AM
-          - NINE_THIRTY_PM
-          - NONE
-          - ONE_AM
-          - ONE_PM
-          - ONE_THIRTY_AM
-          - ONE_THIRTY_PM
-          - SEVEN_AM
-          - SEVEN_PM
-          - SEVEN_THIRTY_AM
-          - SEVEN_THIRTY_PM
-          - SIX_AM
-          - SIX_PM
-          - SIX_THIRTY_AM
-          - SIX_THIRTY_PM
-          - TEN_AM
-          - TEN_PM
-          - TEN_THIRTY_AM
-          - TEN_THIRTY_PM
-          - THREE_AM
-          - THREE_PM
-          - THREE_THIRTY_AM
-          - THREE_THIRTY_PM
-          - TWELEVE_AM
-          - TWELEVE_PM
-          - TWELEVE_THIRTY_AM
-          - TWELEVE_THIRTY_PM
-          - TWO_AM
-          - TWO_PM
-          - TWO_THIRTY_AM
-          - TWO_THIRTY_PM
-        tuesdayStartTime:
-          type: string
-          enum:
-          - EIGHT_AM
-          - EIGHT_PM
-          - EIGHT_THIRTY_AM
-          - EIGHT_THIRTY_PM
-          - ELEVEN_AM
-          - ELEVEN_PM
-          - ELEVEN_THIRTY_AM
-          - ELEVEN_THIRTY_PM
-          - FIVE_AM
-          - FIVE_PM
-          - FIVE_THIRTY_AM
-          - FIVE_THIRTY_PM
-          - FOUR_AM
-          - FOUR_PM
-          - FOUR_THIRTY_AM
-          - FOUR_THIRTY_PM
-          - NINE_AM
-          - NINE_PM
-          - NINE_THIRTY_AM
-          - NINE_THIRTY_PM
-          - NONE
-          - ONE_AM
-          - ONE_PM
-          - ONE_THIRTY_AM
-          - ONE_THIRTY_PM
-          - SEVEN_AM
-          - SEVEN_PM
-          - SEVEN_THIRTY_AM
-          - SEVEN_THIRTY_PM
-          - SIX_AM
-          - SIX_PM
-          - SIX_THIRTY_AM
-          - SIX_THIRTY_PM
-          - TEN_AM
-          - TEN_PM
-          - TEN_THIRTY_AM
-          - TEN_THIRTY_PM
-          - THREE_AM
-          - THREE_PM
-          - THREE_THIRTY_AM
-          - THREE_THIRTY_PM
-          - TWELEVE_AM
-          - TWELEVE_PM
-          - TWELEVE_THIRTY_AM
-          - TWELEVE_THIRTY_PM
-          - TWO_AM
-          - TWO_PM
-          - TWO_THIRTY_AM
-          - TWO_THIRTY_PM
-        tuesdayEndTime:
-          type: string
-          enum:
-          - EIGHT_AM
-          - EIGHT_PM
-          - EIGHT_THIRTY_AM
-          - EIGHT_THIRTY_PM
-          - ELEVEN_AM
-          - ELEVEN_PM
-          - ELEVEN_THIRTY_AM
-          - ELEVEN_THIRTY_PM
-          - FIVE_AM
-          - FIVE_PM
-          - FIVE_THIRTY_AM
-          - FIVE_THIRTY_PM
-          - FOUR_AM
-          - FOUR_PM
-          - FOUR_THIRTY_AM
-          - FOUR_THIRTY_PM
-          - NINE_AM
-          - NINE_PM
-          - NINE_THIRTY_AM
-          - NINE_THIRTY_PM
-          - NONE
-          - ONE_AM
-          - ONE_PM
-          - ONE_THIRTY_AM
-          - ONE_THIRTY_PM
-          - SEVEN_AM
-          - SEVEN_PM
-          - SEVEN_THIRTY_AM
-          - SEVEN_THIRTY_PM
-          - SIX_AM
-          - SIX_PM
-          - SIX_THIRTY_AM
-          - SIX_THIRTY_PM
-          - TEN_AM
-          - TEN_PM
-          - TEN_THIRTY_AM
-          - TEN_THIRTY_PM
-          - THREE_AM
-          - THREE_PM
-          - THREE_THIRTY_AM
-          - THREE_THIRTY_PM
-          - TWELEVE_AM
-          - TWELEVE_PM
-          - TWELEVE_THIRTY_AM
-          - TWELEVE_THIRTY_PM
-          - TWO_AM
-          - TWO_PM
-          - TWO_THIRTY_AM
-          - TWO_THIRTY_PM
-        wednesdayStartTime:
-          type: string
-          enum:
-          - EIGHT_AM
-          - EIGHT_PM
-          - EIGHT_THIRTY_AM
-          - EIGHT_THIRTY_PM
-          - ELEVEN_AM
-          - ELEVEN_PM
-          - ELEVEN_THIRTY_AM
-          - ELEVEN_THIRTY_PM
-          - FIVE_AM
-          - FIVE_PM
-          - FIVE_THIRTY_AM
-          - FIVE_THIRTY_PM
-          - FOUR_AM
-          - FOUR_PM
-          - FOUR_THIRTY_AM
-          - FOUR_THIRTY_PM
-          - NINE_AM
-          - NINE_PM
-          - NINE_THIRTY_AM
-          - NINE_THIRTY_PM
-          - NONE
-          - ONE_AM
-          - ONE_PM
-          - ONE_THIRTY_AM
-          - ONE_THIRTY_PM
-          - SEVEN_AM
-          - SEVEN_PM
-          - SEVEN_THIRTY_AM
-          - SEVEN_THIRTY_PM
-          - SIX_AM
-          - SIX_PM
-          - SIX_THIRTY_AM
-          - SIX_THIRTY_PM
-          - TEN_AM
-          - TEN_PM
-          - TEN_THIRTY_AM
-          - TEN_THIRTY_PM
-          - THREE_AM
-          - THREE_PM
-          - THREE_THIRTY_AM
-          - THREE_THIRTY_PM
-          - TWELEVE_AM
-          - TWELEVE_PM
-          - TWELEVE_THIRTY_AM
-          - TWELEVE_THIRTY_PM
-          - TWO_AM
-          - TWO_PM
-          - TWO_THIRTY_AM
-          - TWO_THIRTY_PM
-        wednesdayEndTime:
-          type: string
-          enum:
-          - EIGHT_AM
-          - EIGHT_PM
-          - EIGHT_THIRTY_AM
-          - EIGHT_THIRTY_PM
-          - ELEVEN_AM
-          - ELEVEN_PM
-          - ELEVEN_THIRTY_AM
-          - ELEVEN_THIRTY_PM
-          - FIVE_AM
-          - FIVE_PM
-          - FIVE_THIRTY_AM
-          - FIVE_THIRTY_PM
-          - FOUR_AM
-          - FOUR_PM
-          - FOUR_THIRTY_AM
-          - FOUR_THIRTY_PM
-          - NINE_AM
-          - NINE_PM
-          - NINE_THIRTY_AM
-          - NINE_THIRTY_PM
-          - NONE
-          - ONE_AM
-          - ONE_PM
-          - ONE_THIRTY_AM
-          - ONE_THIRTY_PM
-          - SEVEN_AM
-          - SEVEN_PM
-          - SEVEN_THIRTY_AM
-          - SEVEN_THIRTY_PM
-          - SIX_AM
-          - SIX_PM
-          - SIX_THIRTY_AM
-          - SIX_THIRTY_PM
-          - TEN_AM
-          - TEN_PM
-          - TEN_THIRTY_AM
-          - TEN_THIRTY_PM
-          - THREE_AM
-          - THREE_PM
-          - THREE_THIRTY_AM
-          - THREE_THIRTY_PM
-          - TWELEVE_AM
-          - TWELEVE_PM
-          - TWELEVE_THIRTY_AM
-          - TWELEVE_THIRTY_PM
-          - TWO_AM
-          - TWO_PM
-          - TWO_THIRTY_AM
-          - TWO_THIRTY_PM
-        thursdayStartTime:
-          type: string
-          enum:
-          - EIGHT_AM
-          - EIGHT_PM
-          - EIGHT_THIRTY_AM
-          - EIGHT_THIRTY_PM
-          - ELEVEN_AM
-          - ELEVEN_PM
-          - ELEVEN_THIRTY_AM
-          - ELEVEN_THIRTY_PM
-          - FIVE_AM
-          - FIVE_PM
-          - FIVE_THIRTY_AM
-          - FIVE_THIRTY_PM
-          - FOUR_AM
-          - FOUR_PM
-          - FOUR_THIRTY_AM
-          - FOUR_THIRTY_PM
-          - NINE_AM
-          - NINE_PM
-          - NINE_THIRTY_AM
-          - NINE_THIRTY_PM
-          - NONE
-          - ONE_AM
-          - ONE_PM
-          - ONE_THIRTY_AM
-          - ONE_THIRTY_PM
-          - SEVEN_AM
-          - SEVEN_PM
-          - SEVEN_THIRTY_AM
-          - SEVEN_THIRTY_PM
-          - SIX_AM
-          - SIX_PM
-          - SIX_THIRTY_AM
-          - SIX_THIRTY_PM
-          - TEN_AM
-          - TEN_PM
-          - TEN_THIRTY_AM
-          - TEN_THIRTY_PM
-          - THREE_AM
-          - THREE_PM
-          - THREE_THIRTY_AM
-          - THREE_THIRTY_PM
-          - TWELEVE_AM
-          - TWELEVE_PM
-          - TWELEVE_THIRTY_AM
-          - TWELEVE_THIRTY_PM
-          - TWO_AM
-          - TWO_PM
-          - TWO_THIRTY_AM
-          - TWO_THIRTY_PM
-        thursdayEndTime:
-          type: string
-          enum:
-          - EIGHT_AM
-          - EIGHT_PM
-          - EIGHT_THIRTY_AM
-          - EIGHT_THIRTY_PM
-          - ELEVEN_AM
-          - ELEVEN_PM
-          - ELEVEN_THIRTY_AM
-          - ELEVEN_THIRTY_PM
-          - FIVE_AM
-          - FIVE_PM
-          - FIVE_THIRTY_AM
-          - FIVE_THIRTY_PM
-          - FOUR_AM
-          - FOUR_PM
-          - FOUR_THIRTY_AM
-          - FOUR_THIRTY_PM
-          - NINE_AM
-          - NINE_PM
-          - NINE_THIRTY_AM
-          - NINE_THIRTY_PM
-          - NONE
-          - ONE_AM
-          - ONE_PM
-          - ONE_THIRTY_AM
-          - ONE_THIRTY_PM
-          - SEVEN_AM
-          - SEVEN_PM
-          - SEVEN_THIRTY_AM
-          - SEVEN_THIRTY_PM
-          - SIX_AM
-          - SIX_PM
-          - SIX_THIRTY_AM
-          - SIX_THIRTY_PM
-          - TEN_AM
-          - TEN_PM
-          - TEN_THIRTY_AM
-          - TEN_THIRTY_PM
-          - THREE_AM
-          - THREE_PM
-          - THREE_THIRTY_AM
-          - THREE_THIRTY_PM
-          - TWELEVE_AM
-          - TWELEVE_PM
-          - TWELEVE_THIRTY_AM
-          - TWELEVE_THIRTY_PM
-          - TWO_AM
-          - TWO_PM
-          - TWO_THIRTY_AM
-          - TWO_THIRTY_PM
-        fridayStartTime:
-          type: string
-          enum:
-          - EIGHT_AM
-          - EIGHT_PM
-          - EIGHT_THIRTY_AM
-          - EIGHT_THIRTY_PM
-          - ELEVEN_AM
-          - ELEVEN_PM
-          - ELEVEN_THIRTY_AM
-          - ELEVEN_THIRTY_PM
-          - FIVE_AM
-          - FIVE_PM
-          - FIVE_THIRTY_AM
-          - FIVE_THIRTY_PM
-          - FOUR_AM
-          - FOUR_PM
-          - FOUR_THIRTY_AM
-          - FOUR_THIRTY_PM
-          - NINE_AM
-          - NINE_PM
-          - NINE_THIRTY_AM
-          - NINE_THIRTY_PM
-          - NONE
-          - ONE_AM
-          - ONE_PM
-          - ONE_THIRTY_AM
-          - ONE_THIRTY_PM
-          - SEVEN_AM
-          - SEVEN_PM
-          - SEVEN_THIRTY_AM
-          - SEVEN_THIRTY_PM
-          - SIX_AM
-          - SIX_PM
-          - SIX_THIRTY_AM
-          - SIX_THIRTY_PM
-          - TEN_AM
-          - TEN_PM
-          - TEN_THIRTY_AM
-          - TEN_THIRTY_PM
-          - THREE_AM
-          - THREE_PM
-          - THREE_THIRTY_AM
-          - THREE_THIRTY_PM
-          - TWELEVE_AM
-          - TWELEVE_PM
-          - TWELEVE_THIRTY_AM
-          - TWELEVE_THIRTY_PM
-          - TWO_AM
-          - TWO_PM
-          - TWO_THIRTY_AM
-          - TWO_THIRTY_PM
-        fridayEndTime:
-          type: string
-          enum:
-          - EIGHT_AM
-          - EIGHT_PM
-          - EIGHT_THIRTY_AM
-          - EIGHT_THIRTY_PM
-          - ELEVEN_AM
-          - ELEVEN_PM
-          - ELEVEN_THIRTY_AM
-          - ELEVEN_THIRTY_PM
-          - FIVE_AM
-          - FIVE_PM
-          - FIVE_THIRTY_AM
-          - FIVE_THIRTY_PM
-          - FOUR_AM
-          - FOUR_PM
-          - FOUR_THIRTY_AM
-          - FOUR_THIRTY_PM
-          - NINE_AM
-          - NINE_PM
-          - NINE_THIRTY_AM
-          - NINE_THIRTY_PM
-          - NONE
-          - ONE_AM
-          - ONE_PM
-          - ONE_THIRTY_AM
-          - ONE_THIRTY_PM
-          - SEVEN_AM
-          - SEVEN_PM
-          - SEVEN_THIRTY_AM
-          - SEVEN_THIRTY_PM
-          - SIX_AM
-          - SIX_PM
-          - SIX_THIRTY_AM
-          - SIX_THIRTY_PM
-          - TEN_AM
-          - TEN_PM
-          - TEN_THIRTY_AM
-          - TEN_THIRTY_PM
-          - THREE_AM
-          - THREE_PM
-          - THREE_THIRTY_AM
-          - THREE_THIRTY_PM
-          - TWELEVE_AM
-          - TWELEVE_PM
-          - TWELEVE_THIRTY_AM
-          - TWELEVE_THIRTY_PM
-          - TWO_AM
-          - TWO_PM
-          - TWO_THIRTY_AM
-          - TWO_THIRTY_PM
-        saturdayStartTime:
-          type: string
-          enum:
-          - EIGHT_AM
-          - EIGHT_PM
-          - EIGHT_THIRTY_AM
-          - EIGHT_THIRTY_PM
-          - ELEVEN_AM
-          - ELEVEN_PM
-          - ELEVEN_THIRTY_AM
-          - ELEVEN_THIRTY_PM
-          - FIVE_AM
-          - FIVE_PM
-          - FIVE_THIRTY_AM
-          - FIVE_THIRTY_PM
-          - FOUR_AM
-          - FOUR_PM
-          - FOUR_THIRTY_AM
-          - FOUR_THIRTY_PM
-          - NINE_AM
-          - NINE_PM
-          - NINE_THIRTY_AM
-          - NINE_THIRTY_PM
-          - NONE
-          - ONE_AM
-          - ONE_PM
-          - ONE_THIRTY_AM
-          - ONE_THIRTY_PM
-          - SEVEN_AM
-          - SEVEN_PM
-          - SEVEN_THIRTY_AM
-          - SEVEN_THIRTY_PM
-          - SIX_AM
-          - SIX_PM
-          - SIX_THIRTY_AM
-          - SIX_THIRTY_PM
-          - TEN_AM
-          - TEN_PM
-          - TEN_THIRTY_AM
-          - TEN_THIRTY_PM
-          - THREE_AM
-          - THREE_PM
-          - THREE_THIRTY_AM
-          - THREE_THIRTY_PM
-          - TWELEVE_AM
-          - TWELEVE_PM
-          - TWELEVE_THIRTY_AM
-          - TWELEVE_THIRTY_PM
-          - TWO_AM
-          - TWO_PM
-          - TWO_THIRTY_AM
-          - TWO_THIRTY_PM
-        saturdayEndTime:
-          type: string
-          enum:
-          - EIGHT_AM
-          - EIGHT_PM
-          - EIGHT_THIRTY_AM
-          - EIGHT_THIRTY_PM
-          - ELEVEN_AM
-          - ELEVEN_PM
-          - ELEVEN_THIRTY_AM
-          - ELEVEN_THIRTY_PM
-          - FIVE_AM
-          - FIVE_PM
-          - FIVE_THIRTY_AM
-          - FIVE_THIRTY_PM
-          - FOUR_AM
-          - FOUR_PM
-          - FOUR_THIRTY_AM
-          - FOUR_THIRTY_PM
-          - NINE_AM
-          - NINE_PM
-          - NINE_THIRTY_AM
-          - NINE_THIRTY_PM
-          - NONE
-          - ONE_AM
-          - ONE_PM
-          - ONE_THIRTY_AM
-          - ONE_THIRTY_PM
-          - SEVEN_AM
-          - SEVEN_PM
-          - SEVEN_THIRTY_AM
-          - SEVEN_THIRTY_PM
-          - SIX_AM
-          - SIX_PM
-          - SIX_THIRTY_AM
-          - SIX_THIRTY_PM
-          - TEN_AM
-          - TEN_PM
-          - TEN_THIRTY_AM
-          - TEN_THIRTY_PM
-          - THREE_AM
-          - THREE_PM
-          - THREE_THIRTY_AM
-          - THREE_THIRTY_PM
-          - TWELEVE_AM
-          - TWELEVE_PM
-          - TWELEVE_THIRTY_AM
-          - TWELEVE_THIRTY_PM
-          - TWO_AM
-          - TWO_PM
-          - TWO_THIRTY_AM
-          - TWO_THIRTY_PM
-        sundayStartTime:
-          type: string
-          enum:
-          - EIGHT_AM
-          - EIGHT_PM
-          - EIGHT_THIRTY_AM
-          - EIGHT_THIRTY_PM
-          - ELEVEN_AM
-          - ELEVEN_PM
-          - ELEVEN_THIRTY_AM
-          - ELEVEN_THIRTY_PM
-          - FIVE_AM
-          - FIVE_PM
-          - FIVE_THIRTY_AM
-          - FIVE_THIRTY_PM
-          - FOUR_AM
-          - FOUR_PM
-          - FOUR_THIRTY_AM
-          - FOUR_THIRTY_PM
-          - NINE_AM
-          - NINE_PM
-          - NINE_THIRTY_AM
-          - NINE_THIRTY_PM
-          - NONE
-          - ONE_AM
-          - ONE_PM
-          - ONE_THIRTY_AM
-          - ONE_THIRTY_PM
-          - SEVEN_AM
-          - SEVEN_PM
-          - SEVEN_THIRTY_AM
-          - SEVEN_THIRTY_PM
-          - SIX_AM
-          - SIX_PM
-          - SIX_THIRTY_AM
-          - SIX_THIRTY_PM
-          - TEN_AM
-          - TEN_PM
-          - TEN_THIRTY_AM
-          - TEN_THIRTY_PM
-          - THREE_AM
-          - THREE_PM
-          - THREE_THIRTY_AM
-          - THREE_THIRTY_PM
-          - TWELEVE_AM
-          - TWELEVE_PM
-          - TWELEVE_THIRTY_AM
-          - TWELEVE_THIRTY_PM
-          - TWO_AM
-          - TWO_PM
-          - TWO_THIRTY_AM
-          - TWO_THIRTY_PM
-        sundayEndTime:
-          type: string
-          enum:
-          - EIGHT_AM
-          - EIGHT_PM
-          - EIGHT_THIRTY_AM
-          - EIGHT_THIRTY_PM
-          - ELEVEN_AM
-          - ELEVEN_PM
-          - ELEVEN_THIRTY_AM
-          - ELEVEN_THIRTY_PM
-          - FIVE_AM
-          - FIVE_PM
-          - FIVE_THIRTY_AM
-          - FIVE_THIRTY_PM
-          - FOUR_AM
-          - FOUR_PM
-          - FOUR_THIRTY_AM
-          - FOUR_THIRTY_PM
-          - NINE_AM
-          - NINE_PM
-          - NINE_THIRTY_AM
-          - NINE_THIRTY_PM
-          - NONE
-          - ONE_AM
-          - ONE_PM
-          - ONE_THIRTY_AM
-          - ONE_THIRTY_PM
-          - SEVEN_AM
-          - SEVEN_PM
-          - SEVEN_THIRTY_AM
-          - SEVEN_THIRTY_PM
-          - SIX_AM
-          - SIX_PM
-          - SIX_THIRTY_AM
-          - SIX_THIRTY_PM
-          - TEN_AM
-          - TEN_PM
-          - TEN_THIRTY_AM
-          - TEN_THIRTY_PM
-          - THREE_AM
-          - THREE_PM
-          - THREE_THIRTY_AM
-          - THREE_THIRTY_PM
-          - TWELEVE_AM
-          - TWELEVE_PM
-          - TWELEVE_THIRTY_AM
-          - TWELEVE_THIRTY_PM
-          - TWO_AM
-          - TWO_PM
-          - TWO_THIRTY_AM
-          - TWO_THIRTY_PM
-        acceptingNewPatients:
-          type: boolean
-        acceptingNewPatientsWithChangeOfPayor:
-          type: boolean
-        acceptingAllNewPatients:
-          type: boolean
-        acceptingNewMedicarePatients:
-          type: boolean
-        acceptingNewMedicaidPatients:
-          type: boolean
-        acceptingPhysicianReferralPatients:
-          type: boolean
-        referralAcceptanceCriteria:
-          type: string
-        variesByHealthPlan:
-          type: boolean
   securitySchemes:
     api_key:
       type: apiKey

@@ -115,6 +115,37 @@ paths:
               $ref: '#/components/schemas/ProviderPersonAuthorizedSearchQuery'
 components:
   schemas:
+    ProviderPerson:
+      type: object
+      properties:
+        id:
+          type: string
+        createdTime:
+          type: string
+          format: date-time
+        providerGuid:
+          type: string
+        source:
+          type: string
+        sourceTimestamp:
+          type: string
+          format: date-time
+        prefix:
+          type: string
+        firstName:
+          type: string
+        middleName:
+          type: string
+        lastName:
+          type: string
+        suffix:
+          type: string
+        otherNameStart:
+          type: string
+          format: date-time
+        otherNameEnd:
+          type: string
+          format: date-time
     ProviderPersonAuthorizedSearchQuery:
       type: object
       properties:
@@ -155,37 +186,6 @@ components:
           type: array
           items:
             type: string
-    ProviderPerson:
-      type: object
-      properties:
-        id:
-          type: string
-        createdTime:
-          type: string
-          format: date-time
-        providerGuid:
-          type: string
-        source:
-          type: string
-        sourceTimestamp:
-          type: string
-          format: date-time
-        prefix:
-          type: string
-        firstName:
-          type: string
-        middleName:
-          type: string
-        lastName:
-          type: string
-        suffix:
-          type: string
-        otherNameStart:
-          type: string
-          format: date-time
-        otherNameEnd:
-          type: string
-          format: date-time
   securitySchemes:
     api_key:
       type: apiKey

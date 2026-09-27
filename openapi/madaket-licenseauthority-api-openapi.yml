@@ -90,7 +90,7 @@ paths:
               $ref: '#/components/schemas/LicenseAuthoritySearchQuery'
 components:
   schemas:
-    LicenseAuthorityFilterQuery:
+    LicenseAuthoritySearchQuery:
       type: object
       properties:
         id:
@@ -121,7 +121,7 @@ components:
           type: string
         description:
           type: string
-    LicenseAuthoritySearchQuery:
+    LicenseAuthorityFilterQuery:
       type: object
       properties:
         id:

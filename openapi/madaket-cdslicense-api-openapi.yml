@@ -115,6 +115,28 @@ paths:
               $ref: '#/components/schemas/CdsLicenseAuthorizedSearchQuery'
 components:
   schemas:
+    CdsLicenseAuthorizedSearchQuery:
+      type: object
+      properties:
+        id:
+          type: array
+          items:
+            type: string
+        maxResults:
+          type: number
+        firstResult:
+          type: number
+        sortField:
+          type: string
+        sortOrder:
+          type: string
+          enum:
+          - ASC
+          - DESC
+        cdsNumber:
+          type: array
+          items:
+            type: string
     ProviderFileStub:
       type: object
       properties:
@@ -203,6 +225,32 @@ components:
           - Visa_Document
           - W_9
           - Workers_Compensation_Certificate_of_Coverage
+    CdsLicenseAuthorizedFilterQuery:
+      type: object
+      properties:
+        id:
+          type: array
+          items:
+            type: string
+        maxResults:
+          type: number
+        firstResult:
+          type: number
+        sortField:
+          type: string
+        sortOrder:
+          type: string
+          enum:
+          - ASC
+          - DESC
+        cdsStatus:
+          type: array
+          items:
+            type: string
+        providerGuid:
+          type: array
+          items:
+            type: string
     CdsLicense:
       type: object
       properties:
@@ -321,54 +369,6 @@ components:
           type: string
           enum:
           - UNKNOWN
-    CdsLicenseAuthorizedFilterQuery:
-      type: object
-      properties:
-        id:
-          type: array
-          items:
-            type: string
-        maxResults:
-          type: number
-        firstResult:
-          type: number
-        sortField:
-          type: string
-        sortOrder:
-          type: string
-          enum:
-          - ASC
-          - DESC
-        cdsStatus:
-          type: array
-          items:
-            type: string
-        providerGuid:
-          type: array
-          items:
-            type: string
-    CdsLicenseAuthorizedSearchQuery:
-      type: object
-      properties:
-        id:
-          type: array
-          items:
-            type: string
-        maxResults:
-          type: number
-        firstResult:
-          type: number
-        sortField:
-          type: string
-        sortOrder:
-          type: string
-          enum:
-          - ASC
-          - DESC
-        cdsNumber:
-          type: array
-          items:
-            type: string
   securitySchemes:
     api_key:
       type: apiKey

@@ -112,15 +112,6 @@ components:
           type: array
           items:
             type: string
-    Race:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        description:
-          type: string
     RaceFilterQuery:
       type: object
       properties:
@@ -143,6 +134,15 @@ components:
           type: array
           items:
             type: string
+    Race:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
   securitySchemes:
     api_key:
       type: apiKey

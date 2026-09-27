@@ -90,17 +90,6 @@ paths:
               $ref: '#/components/schemas/BoardSearchQuery'
 components:
   schemas:
-    Board:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        address:
-          $ref: '#/components/schemas/ReferenceAddress'
-        description:
-          type: string
     ReferenceAddress:
       type: object
       properties:
@@ -455,7 +444,18 @@ components:
           - MAIL
           - PHONE
           - UNSPECIFIED
-    BoardFilterQuery:
+    Board:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        address:
+          $ref: '#/components/schemas/ReferenceAddress'
+        description:
+          type: string
+    BoardSearchQuery:
       type: object
       properties:
         id:
@@ -477,7 +477,7 @@ components:
           type: array
           items:
             type: string
-    BoardSearchQuery:
+    BoardFilterQuery:
       type: object
       properties:
         id:

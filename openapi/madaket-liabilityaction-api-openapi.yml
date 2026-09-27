@@ -115,6 +115,35 @@ paths:
               $ref: '#/components/schemas/LiabilityActionAuthorizedSearchQuery'
 components:
   schemas:
+    LiabilityActionAuthorizedSearchQuery:
+      type: object
+      properties:
+        id:
+          type: array
+          items:
+            type: string
+        maxResults:
+          type: number
+        firstResult:
+          type: number
+        sortField:
+          type: string
+        sortOrder:
+          type: string
+          enum:
+          - ASC
+          - DESC
+    InsuranceCarrier:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        address:
+          $ref: '#/components/schemas/ReferenceAddress'
+        description:
+          type: string
     LiabilityActionAuthorizedFilterQuery:
       type: object
       properties:
@@ -522,35 +551,6 @@ components:
           format: date-time
         circumstancesDescription:
           type: string
-    InsuranceCarrier:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        address:
-          $ref: '#/components/schemas/ReferenceAddress'
-        description:
-          type: string
-    LiabilityActionAuthorizedSearchQuery:
-      type: object
-      properties:
-        id:
-          type: array
-          items:
-            type: string
-        maxResults:
-          type: number
-        firstResult:
-          type: number
-        sortField:
-          type: string
-        sortOrder:
-          type: string
-          enum:
-          - ASC
-          - DESC
   securitySchemes:
     api_key:
       type: apiKey

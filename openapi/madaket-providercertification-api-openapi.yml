@@ -115,6 +115,36 @@ paths:
               $ref: '#/components/schemas/ProviderCertificationAuthorizedSearchQuery'
 components:
   schemas:
+    ProviderCertificationAuthorizedFilterQuery:
+      type: object
+      properties:
+        id:
+          type: array
+          items:
+            type: string
+        maxResults:
+          type: number
+        firstResult:
+          type: number
+        sortField:
+          type: string
+        sortOrder:
+          type: string
+          enum:
+          - ASC
+          - DESC
+        certificationId:
+          type: array
+          items:
+            type: string
+        providerGuid:
+          type: array
+          items:
+            type: string
+        state:
+          type: array
+          items:
+            type: string
     ProviderCertificationAuthorizedSearchQuery:
       type: object
       properties:
@@ -238,36 +268,6 @@ components:
           type: string
         certificationId:
           type: string
-    ProviderCertificationAuthorizedFilterQuery:
-      type: object
-      properties:
-        id:
-          type: array
-          items:
-            type: string
-        maxResults:
-          type: number
-        firstResult:
-          type: number
-        sortField:
-          type: string
-        sortOrder:
-          type: string
-          enum:
-          - ASC
-          - DESC
-        certificationId:
-          type: array
-          items:
-            type: string
-        providerGuid:
-          type: array
-          items:
-            type: string
-        state:
-          type: array
-          items:
-            type: string
   securitySchemes:
     api_key:
       type: apiKey

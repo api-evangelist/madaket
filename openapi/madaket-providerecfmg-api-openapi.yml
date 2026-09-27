@@ -115,6 +115,33 @@ paths:
               $ref: '#/components/schemas/ProviderEcfmgAuthorizedSearchQuery'
 components:
   schemas:
+    ProviderEcfmg:
+      type: object
+      properties:
+        id:
+          type: string
+        createdTime:
+          type: string
+          format: date-time
+        providerGuid:
+          type: string
+        source:
+          type: string
+        sourceTimestamp:
+          type: string
+          format: date-time
+        ecfmgId:
+          type: string
+        ecfmgIssueDate:
+          type: string
+          format: date-time
+        expirationDate:
+          type: string
+          format: date-time
+        certificate:
+          $ref: '#/components/schemas/ProviderFileStub'
+        workersCompensationNumber:
+          type: string
     ProviderFileStub:
       type: object
       properties:
@@ -203,33 +230,6 @@ components:
           - Visa_Document
           - W_9
           - Workers_Compensation_Certificate_of_Coverage
-    ProviderEcfmg:
-      type: object
-      properties:
-        id:
-          type: string
-        createdTime:
-          type: string
-          format: date-time
-        providerGuid:
-          type: string
-        source:
-          type: string
-        sourceTimestamp:
-          type: string
-          format: date-time
-        ecfmgId:
-          type: string
-        ecfmgIssueDate:
-          type: string
-          format: date-time
-        expirationDate:
-          type: string
-          format: date-time
-        certificate:
-          $ref: '#/components/schemas/ProviderFileStub'
-        workersCompensationNumber:
-          type: string
     ProviderEcfmgAuthorizedSearchQuery:
       type: object
       properties:

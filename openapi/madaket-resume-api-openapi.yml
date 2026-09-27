@@ -115,7 +115,7 @@ paths:
               $ref: '#/components/schemas/ResumeAuthorizedSearchQuery'
 components:
   schemas:
-    ResumeAuthorizedSearchQuery:
+    ResumeAuthorizedFilterQuery:
       type: object
       properties:
         id:
@@ -133,6 +133,10 @@ components:
           enum:
           - ASC
           - DESC
+        providerGuid:
+          type: array
+          items:
+            type: string
     ProviderFileStub:
       type: object
       properties:
@@ -238,7 +242,7 @@ components:
           format: date-time
         resume:
           $ref: '#/components/schemas/ProviderFileStub'
-    ResumeAuthorizedFilterQuery:
+    ResumeAuthorizedSearchQuery:
       type: object
       properties:
         id:
@@ -256,10 +260,6 @@ components:
           enum:
           - ASC
           - DESC
-        providerGuid:
-          type: array
-          items:
-            type: string
   securitySchemes:
     api_key:
       type: apiKey
