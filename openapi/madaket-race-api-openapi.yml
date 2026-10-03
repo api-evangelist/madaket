@@ -90,7 +90,7 @@ paths:
               $ref: '#/components/schemas/RaceSearchQuery'
 components:
   schemas:
-    RaceSearchQuery:
+    RaceFilterQuery:
       type: object
       properties:
         id:
@@ -112,7 +112,7 @@ components:
           type: array
           items:
             type: string
-    RaceFilterQuery:
+    RaceSearchQuery:
       type: object
       properties:
         id:

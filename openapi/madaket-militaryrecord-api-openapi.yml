@@ -115,85 +115,6 @@ paths:
               $ref: '#/components/schemas/MilitaryRecordAuthorizedSearchQuery'
 components:
   schemas:
-    MilitaryRecordAuthorizedFilterQuery:
-      type: object
-      properties:
-        id:
-          type: array
-          items:
-            type: string
-        maxResults:
-          type: number
-        firstResult:
-          type: number
-        sortField:
-          type: string
-        sortOrder:
-          type: string
-          enum:
-          - ASC
-          - DESC
-        providerGuid:
-          type: array
-          items:
-            type: string
-    MilitaryRecord:
-      type: object
-      properties:
-        id:
-          type: string
-        createdTime:
-          type: string
-          format: date-time
-        providerGuid:
-          type: string
-        source:
-          type: string
-        sourceTimestamp:
-          type: string
-          format: date-time
-        branch:
-          type: string
-        activeDuty:
-          type: boolean
-        currentlyReserve:
-          type: boolean
-        startDate:
-          type: string
-          format: date-time
-        endDate:
-          type: string
-          format: date-time
-        lastLocation:
-          $ref: '#/components/schemas/Address'
-        dischargeRank:
-          type: string
-        honorableDischarge:
-          type: boolean
-        honorableDischargeReason:
-          type: string
-        courtMartial:
-          type: boolean
-        courtMartialReason:
-          type: string
-    MilitaryRecordAuthorizedSearchQuery:
-      type: object
-      properties:
-        id:
-          type: array
-          items:
-            type: string
-        maxResults:
-          type: number
-        firstResult:
-          type: number
-        sortField:
-          type: string
-        sortOrder:
-          type: string
-          enum:
-          - ASC
-          - DESC
     Address:
       type: object
       properties:
@@ -553,6 +474,85 @@ components:
           - MAIL
           - PHONE
           - UNSPECIFIED
+    MilitaryRecordAuthorizedSearchQuery:
+      type: object
+      properties:
+        id:
+          type: array
+          items:
+            type: string
+        maxResults:
+          type: number
+        firstResult:
+          type: number
+        sortField:
+          type: string
+        sortOrder:
+          type: string
+          enum:
+          - ASC
+          - DESC
+    MilitaryRecordAuthorizedFilterQuery:
+      type: object
+      properties:
+        id:
+          type: array
+          items:
+            type: string
+        maxResults:
+          type: number
+        firstResult:
+          type: number
+        sortField:
+          type: string
+        sortOrder:
+          type: string
+          enum:
+          - ASC
+          - DESC
+        providerGuid:
+          type: array
+          items:
+            type: string
+    MilitaryRecord:
+      type: object
+      properties:
+        id:
+          type: string
+        createdTime:
+          type: string
+          format: date-time
+        providerGuid:
+          type: string
+        source:
+          type: string
+        sourceTimestamp:
+          type: string
+          format: date-time
+        branch:
+          type: string
+        activeDuty:
+          type: boolean
+        currentlyReserve:
+          type: boolean
+        startDate:
+          type: string
+          format: date-time
+        endDate:
+          type: string
+          format: date-time
+        lastLocation:
+          $ref: '#/components/schemas/Address'
+        dischargeRank:
+          type: string
+        honorableDischarge:
+          type: boolean
+        honorableDischargeReason:
+          type: string
+        courtMartial:
+          type: boolean
+        courtMartialReason:
+          type: string
   securitySchemes:
     api_key:
       type: apiKey

@@ -90,7 +90,16 @@ paths:
               $ref: '#/components/schemas/EthnicitySearchQuery'
 components:
   schemas:
-    EthnicitySearchQuery:
+    Ethnicity:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+    EthnicityFilterQuery:
       type: object
       properties:
         id:
@@ -112,16 +121,7 @@ components:
           type: array
           items:
             type: string
-    Ethnicity:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        description:
-          type: string
-    EthnicityFilterQuery:
+    EthnicitySearchQuery:
       type: object
       properties:
         id:

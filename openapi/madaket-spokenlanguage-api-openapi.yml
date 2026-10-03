@@ -112,17 +112,6 @@ components:
           type: array
           items:
             type: string
-    SpokenLanguage:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        code:
-          type: string
-        description:
-          type: string
     SpokenLanguageSearchQuery:
       type: object
       properties:
@@ -145,6 +134,17 @@ components:
           type: array
           items:
             type: string
+    SpokenLanguage:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        code:
+          type: string
+        description:
+          type: string
   securitySchemes:
     api_key:
       type: apiKey

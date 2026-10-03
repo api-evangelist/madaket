@@ -115,28 +115,6 @@ paths:
           type: string
 components:
   schemas:
-    ProviderFileStubAuthorizedFilterQuery:
-      type: object
-      properties:
-        id:
-          type: array
-          items:
-            type: string
-        maxResults:
-          type: number
-        firstResult:
-          type: number
-        sortField:
-          type: string
-        sortOrder:
-          type: string
-          enum:
-          - ASC
-          - DESC
-        providerGuid:
-          type: array
-          items:
-            type: string
     ProviderFileStub:
       type: object
       properties:
@@ -225,6 +203,28 @@ components:
           - Visa_Document
           - W_9
           - Workers_Compensation_Certificate_of_Coverage
+    ProviderFileStubAuthorizedFilterQuery:
+      type: object
+      properties:
+        id:
+          type: array
+          items:
+            type: string
+        maxResults:
+          type: number
+        firstResult:
+          type: number
+        sortField:
+          type: string
+        sortOrder:
+          type: string
+          enum:
+          - ASC
+          - DESC
+        providerGuid:
+          type: array
+          items:
+            type: string
     ProviderFileStubAuthorizedSearchQuery:
       type: object
       properties:

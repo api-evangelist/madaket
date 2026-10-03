@@ -90,18 +90,7 @@ paths:
           type: string
 components:
   schemas:
-    Specialty:
-      type: object
-      properties:
-        code:
-          type: string
-        grouping:
-          type: string
-        classification:
-          type: string
-        specialization:
-          type: string
-    SpecialtyFilterQuery:
+    SpecialtySearchQuery:
       type: object
       properties:
         id:
@@ -123,7 +112,18 @@ components:
           type: array
           items:
             type: string
-    SpecialtySearchQuery:
+    Specialty:
+      type: object
+      properties:
+        code:
+          type: string
+        grouping:
+          type: string
+        classification:
+          type: string
+        specialization:
+          type: string
+    SpecialtyFilterQuery:
       type: object
       properties:
         id:

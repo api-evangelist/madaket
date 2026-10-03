@@ -115,24 +115,6 @@ paths:
               $ref: '#/components/schemas/SocialSecurityCardAuthorizedSearchQuery'
 components:
   schemas:
-    SocialSecurityCardAuthorizedSearchQuery:
-      type: object
-      properties:
-        id:
-          type: array
-          items:
-            type: string
-        maxResults:
-          type: number
-        firstResult:
-          type: number
-        sortField:
-          type: string
-        sortOrder:
-          type: string
-          enum:
-          - ASC
-          - DESC
     ProviderFileStub:
       type: object
       properties:
@@ -260,6 +242,24 @@ components:
           format: date-time
         socialSecurityCard:
           $ref: '#/components/schemas/ProviderFileStub'
+    SocialSecurityCardAuthorizedSearchQuery:
+      type: object
+      properties:
+        id:
+          type: array
+          items:
+            type: string
+        maxResults:
+          type: number
+        firstResult:
+          type: number
+        sortField:
+          type: string
+        sortOrder:
+          type: string
+          enum:
+          - ASC
+          - DESC
   securitySchemes:
     api_key:
       type: apiKey

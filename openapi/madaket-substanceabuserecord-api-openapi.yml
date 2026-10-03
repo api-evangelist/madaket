@@ -115,6 +115,34 @@ paths:
               $ref: '#/components/schemas/SubstanceAbuseRecordAuthorizedSearchQuery'
 components:
   schemas:
+    SubstanceAbuseRecord:
+      type: object
+      properties:
+        id:
+          type: string
+        createdTime:
+          type: string
+          format: date-time
+        providerGuid:
+          type: string
+        source:
+          type: string
+        sourceTimestamp:
+          type: string
+          format: date-time
+        boardMandatedMonitor:
+          type: boolean
+        substanceDescription:
+          type: string
+        currentAbilityToPractice:
+          type: string
+        statusOfAbuse:
+          type: string
+        abstinentDate:
+          type: string
+          format: date-time
+        monitoringContact:
+          $ref: '#/components/schemas/Contact'
     Contact:
       type: object
       properties:
@@ -484,6 +512,24 @@ components:
           - MAIL
           - PHONE
           - UNSPECIFIED
+    SubstanceAbuseRecordAuthorizedSearchQuery:
+      type: object
+      properties:
+        id:
+          type: array
+          items:
+            type: string
+        maxResults:
+          type: number
+        firstResult:
+          type: number
+        sortField:
+          type: string
+        sortOrder:
+          type: string
+          enum:
+          - ASC
+          - DESC
     SubstanceAbuseRecordAuthorizedFilterQuery:
       type: object
       properties:
@@ -506,52 +552,6 @@ components:
           type: array
           items:
             type: string
-    SubstanceAbuseRecordAuthorizedSearchQuery:
-      type: object
-      properties:
-        id:
-          type: array
-          items:
-            type: string
-        maxResults:
-          type: number
-        firstResult:
-          type: number
-        sortField:
-          type: string
-        sortOrder:
-          type: string
-          enum:
-          - ASC
-          - DESC
-    SubstanceAbuseRecord:
-      type: object
-      properties:
-        id:
-          type: string
-        createdTime:
-          type: string
-          format: date-time
-        providerGuid:
-          type: string
-        source:
-          type: string
-        sourceTimestamp:
-          type: string
-          format: date-time
-        boardMandatedMonitor:
-          type: boolean
-        substanceDescription:
-          type: string
-        currentAbilityToPractice:
-          type: string
-        statusOfAbuse:
-          type: string
-        abstinentDate:
-          type: string
-          format: date-time
-        monitoringContact:
-          $ref: '#/components/schemas/Contact'
   securitySchemes:
     api_key:
       type: apiKey

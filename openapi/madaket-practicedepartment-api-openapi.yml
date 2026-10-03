@@ -90,15 +90,6 @@ paths:
               $ref: '#/components/schemas/PracticeDepartmentSearchQuery'
 components:
   schemas:
-    PracticeDepartment:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        description:
-          type: string
     PracticeDepartmentSearchQuery:
       type: object
       properties:
@@ -121,6 +112,15 @@ components:
           type: array
           items:
             type: string
+    PracticeDepartment:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
     PracticeDepartmentFilterQuery:
       type: object
       properties:
