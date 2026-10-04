@@ -115,24 +115,25 @@ paths:
               $ref: '#/components/schemas/ProviderPracticeAuthorizedSearchQuery'
 components:
   schemas:
-    ProviderPracticeAuthorizedSearchQuery:
+    ProviderPracticeLimitation:
       type: object
       properties:
         id:
-          type: array
-          items:
-            type: string
-        maxResults:
-          type: number
-        firstResult:
-          type: number
-        sortField:
           type: string
-        sortOrder:
+        practiceGuid:
           type: string
-          enum:
-          - ASC
-          - DESC
+        practiceLimitation:
+          type: boolean
+        genderLimitations:
+          type: boolean
+        ageLimitation:
+          type: boolean
+        minimumAge:
+          type: string
+        maximumAge:
+          type: string
+        otherLimitations:
+          type: string
     PracticeDepartment:
       type: object
       properties:
@@ -142,32 +143,6 @@ components:
           type: string
         description:
           type: string
-    ProviderPracticeAuthorizedFilterQuery:
-      type: object
-      properties:
-        id:
-          type: array
-          items:
-            type: string
-        maxResults:
-          type: number
-        firstResult:
-          type: number
-        sortField:
-          type: string
-        sortOrder:
-          type: string
-          enum:
-          - ASC
-          - DESC
-        practiceLocationGuid:
-          type: array
-          items:
-            type: string
-        providerGuid:
-          type: array
-          items:
-            type: string
     ProviderPracticeHours:
       type: object
       properties:
@@ -1887,25 +1862,50 @@ components:
           - _385HR2065X
           - _390200000X
           - _405300000X
-    ProviderPracticeGeneralInformation:
+    ProviderPracticeAuthorizedFilterQuery:
       type: object
       properties:
         id:
+          type: array
+          items:
+            type: string
+        maxResults:
+          type: number
+        firstResult:
+          type: number
+        sortField:
           type: string
-        practiceDepartment:
-          $ref: '#/components/schemas/PracticeDepartment'
-        startDate:
-          type: string
-          format: date-time
-        practicingLocation:
-          type: boolean
-        practiceLocationAffiliation:
+        sortOrder:
           type: string
           enum:
-          - ATLEAST_ONE_DAY_PER_MONTH
-          - ATLEAST_ONE_DAY_PER_WEEK
-          - FILL_IN
-          - OTHER_SERVICES
+          - ASC
+          - DESC
+        practiceLocationGuid:
+          type: array
+          items:
+            type: string
+        providerGuid:
+          type: array
+          items:
+            type: string
+    ProviderPracticeAuthorizedSearchQuery:
+      type: object
+      properties:
+        id:
+          type: array
+          items:
+            type: string
+        maxResults:
+          type: number
+        firstResult:
+          type: number
+        sortField:
+          type: string
+        sortOrder:
+          type: string
+          enum:
+          - ASC
+          - DESC
     ProviderPractice:
       type: object
       properties:
@@ -1931,25 +1931,25 @@ components:
           $ref: '#/components/schemas/ProviderPracticeCoverageContact'
         providerPracticeLimitation:
           $ref: '#/components/schemas/ProviderPracticeLimitation'
-    ProviderPracticeLimitation:
+    ProviderPracticeGeneralInformation:
       type: object
       properties:
         id:
           type: string
-        practiceGuid:
+        practiceDepartment:
+          $ref: '#/components/schemas/PracticeDepartment'
+        startDate:
           type: string
-        practiceLimitation:
+          format: date-time
+        practicingLocation:
           type: boolean
-        genderLimitations:
-          type: boolean
-        ageLimitation:
-          type: boolean
-        minimumAge:
+        practiceLocationAffiliation:
           type: string
-        maximumAge:
-          type: string
-        otherLimitations:
-          type: string
+          enum:
+          - ATLEAST_ONE_DAY_PER_MONTH
+          - ATLEAST_ONE_DAY_PER_WEEK
+          - FILL_IN
+          - OTHER_SERVICES
   securitySchemes:
     api_key:
       type: apiKey

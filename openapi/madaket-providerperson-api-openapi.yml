@@ -115,6 +115,28 @@ paths:
               $ref: '#/components/schemas/ProviderPersonAuthorizedSearchQuery'
 components:
   schemas:
+    ProviderPersonAuthorizedFilterQuery:
+      type: object
+      properties:
+        id:
+          type: array
+          items:
+            type: string
+        maxResults:
+          type: number
+        firstResult:
+          type: number
+        sortField:
+          type: string
+        sortOrder:
+          type: string
+          enum:
+          - ASC
+          - DESC
+        providerGuid:
+          type: array
+          items:
+            type: string
     ProviderPerson:
       type: object
       properties:
@@ -164,28 +186,6 @@ components:
           enum:
           - ASC
           - DESC
-    ProviderPersonAuthorizedFilterQuery:
-      type: object
-      properties:
-        id:
-          type: array
-          items:
-            type: string
-        maxResults:
-          type: number
-        firstResult:
-          type: number
-        sortField:
-          type: string
-        sortOrder:
-          type: string
-          enum:
-          - ASC
-          - DESC
-        providerGuid:
-          type: array
-          items:
-            type: string
   securitySchemes:
     api_key:
       type: apiKey

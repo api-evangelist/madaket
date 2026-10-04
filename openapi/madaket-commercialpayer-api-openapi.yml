@@ -115,24 +115,6 @@ paths:
               $ref: '#/components/schemas/CommercialPayerAuthorizedSearchQuery'
 components:
   schemas:
-    CommercialPayerAuthorizedSearchQuery:
-      type: object
-      properties:
-        id:
-          type: array
-          items:
-            type: string
-        maxResults:
-          type: number
-        firstResult:
-          type: number
-        sortField:
-          type: string
-        sortOrder:
-          type: string
-          enum:
-          - ASC
-          - DESC
     CommercialPayerAuthorizedFilterQuery:
       type: object
       properties:
@@ -184,6 +166,24 @@ components:
           type: string
         idNumber:
           type: string
+    CommercialPayerAuthorizedSearchQuery:
+      type: object
+      properties:
+        id:
+          type: array
+          items:
+            type: string
+        maxResults:
+          type: number
+        firstResult:
+          type: number
+        sortField:
+          type: string
+        sortOrder:
+          type: string
+          enum:
+          - ASC
+          - DESC
   securitySchemes:
     api_key:
       type: apiKey

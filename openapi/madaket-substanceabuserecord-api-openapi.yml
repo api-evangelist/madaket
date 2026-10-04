@@ -115,34 +115,6 @@ paths:
               $ref: '#/components/schemas/SubstanceAbuseRecordAuthorizedSearchQuery'
 components:
   schemas:
-    SubstanceAbuseRecord:
-      type: object
-      properties:
-        id:
-          type: string
-        createdTime:
-          type: string
-          format: date-time
-        providerGuid:
-          type: string
-        source:
-          type: string
-        sourceTimestamp:
-          type: string
-          format: date-time
-        boardMandatedMonitor:
-          type: boolean
-        substanceDescription:
-          type: string
-        currentAbilityToPractice:
-          type: string
-        statusOfAbuse:
-          type: string
-        abstinentDate:
-          type: string
-          format: date-time
-        monitoringContact:
-          $ref: '#/components/schemas/Contact'
     Contact:
       type: object
       properties:
@@ -512,6 +484,34 @@ components:
           - MAIL
           - PHONE
           - UNSPECIFIED
+    SubstanceAbuseRecord:
+      type: object
+      properties:
+        id:
+          type: string
+        createdTime:
+          type: string
+          format: date-time
+        providerGuid:
+          type: string
+        source:
+          type: string
+        sourceTimestamp:
+          type: string
+          format: date-time
+        boardMandatedMonitor:
+          type: boolean
+        substanceDescription:
+          type: string
+        currentAbilityToPractice:
+          type: string
+        statusOfAbuse:
+          type: string
+        abstinentDate:
+          type: string
+          format: date-time
+        monitoringContact:
+          $ref: '#/components/schemas/Contact'
     SubstanceAbuseRecordAuthorizedSearchQuery:
       type: object
       properties:

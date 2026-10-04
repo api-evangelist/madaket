@@ -115,6 +115,45 @@ paths:
               $ref: '#/components/schemas/MilitaryRecordAuthorizedSearchQuery'
 components:
   schemas:
+    MilitaryRecord:
+      type: object
+      properties:
+        id:
+          type: string
+        createdTime:
+          type: string
+          format: date-time
+        providerGuid:
+          type: string
+        source:
+          type: string
+        sourceTimestamp:
+          type: string
+          format: date-time
+        branch:
+          type: string
+        activeDuty:
+          type: boolean
+        currentlyReserve:
+          type: boolean
+        startDate:
+          type: string
+          format: date-time
+        endDate:
+          type: string
+          format: date-time
+        lastLocation:
+          $ref: '#/components/schemas/Address'
+        dischargeRank:
+          type: string
+        honorableDischarge:
+          type: boolean
+        honorableDischargeReason:
+          type: string
+        courtMartial:
+          type: boolean
+        courtMartialReason:
+          type: string
     Address:
       type: object
       properties:
@@ -514,45 +553,6 @@ components:
           type: array
           items:
             type: string
-    MilitaryRecord:
-      type: object
-      properties:
-        id:
-          type: string
-        createdTime:
-          type: string
-          format: date-time
-        providerGuid:
-          type: string
-        source:
-          type: string
-        sourceTimestamp:
-          type: string
-          format: date-time
-        branch:
-          type: string
-        activeDuty:
-          type: boolean
-        currentlyReserve:
-          type: boolean
-        startDate:
-          type: string
-          format: date-time
-        endDate:
-          type: string
-          format: date-time
-        lastLocation:
-          $ref: '#/components/schemas/Address'
-        dischargeRank:
-          type: string
-        honorableDischarge:
-          type: boolean
-        honorableDischargeReason:
-          type: string
-        courtMartial:
-          type: boolean
-        courtMartialReason:
-          type: string
   securitySchemes:
     api_key:
       type: apiKey

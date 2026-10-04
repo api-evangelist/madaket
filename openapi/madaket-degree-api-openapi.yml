@@ -90,15 +90,6 @@ paths:
               $ref: '#/components/schemas/DegreeSearchQuery'
 components:
   schemas:
-    Degree:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        description:
-          type: string
     DegreeSearchQuery:
       type: object
       properties:
@@ -121,6 +112,15 @@ components:
           type: array
           items:
             type: string
+    Degree:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
     DegreeFilterQuery:
       type: object
       properties:

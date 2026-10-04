@@ -115,6 +115,40 @@ paths:
               $ref: '#/components/schemas/MedicareRecordAuthorizedSearchQuery'
 components:
   schemas:
+    MedicareRecordAuthorizedFilterQuery:
+      type: object
+      properties:
+        id:
+          type: array
+          items:
+            type: string
+        maxResults:
+          type: number
+        firstResult:
+          type: number
+        sortField:
+          type: string
+        sortOrder:
+          type: string
+          enum:
+          - ASC
+          - DESC
+        medicareNumber:
+          type: array
+          items:
+            type: string
+        practiceLocationGuid:
+          type: array
+          items:
+            type: string
+        providerGuid:
+          type: array
+          items:
+            type: string
+        state:
+          type: array
+          items:
+            type: string
     MedicareRecordAuthorizedSearchQuery:
       type: object
       properties:
@@ -217,40 +251,6 @@ components:
           type: string
         isMedicareProvider:
           type: boolean
-    MedicareRecordAuthorizedFilterQuery:
-      type: object
-      properties:
-        id:
-          type: array
-          items:
-            type: string
-        maxResults:
-          type: number
-        firstResult:
-          type: number
-        sortField:
-          type: string
-        sortOrder:
-          type: string
-          enum:
-          - ASC
-          - DESC
-        medicareNumber:
-          type: array
-          items:
-            type: string
-        practiceLocationGuid:
-          type: array
-          items:
-            type: string
-        providerGuid:
-          type: array
-          items:
-            type: string
-        state:
-          type: array
-          items:
-            type: string
   securitySchemes:
     api_key:
       type: apiKey

@@ -115,46 +115,6 @@ paths:
               $ref: '#/components/schemas/MalpracticeClaimAuthorizedSearchQuery'
 components:
   schemas:
-    MalpracticeClaimAuthorizedSearchQuery:
-      type: object
-      properties:
-        id:
-          type: array
-          items:
-            type: string
-        maxResults:
-          type: number
-        firstResult:
-          type: number
-        sortField:
-          type: string
-        sortOrder:
-          type: string
-          enum:
-          - ASC
-          - DESC
-    MalpracticeClaimAuthorizedFilterQuery:
-      type: object
-      properties:
-        id:
-          type: array
-          items:
-            type: string
-        maxResults:
-          type: number
-        firstResult:
-          type: number
-        sortField:
-          type: string
-        sortOrder:
-          type: string
-          enum:
-          - ASC
-          - DESC
-        providerGuid:
-          type: array
-          items:
-            type: string
     MalpracticeClaim:
       type: object
       properties:
@@ -190,6 +150,46 @@ components:
           type: number
         settlementAmount:
           type: number
+    MalpracticeClaimAuthorizedFilterQuery:
+      type: object
+      properties:
+        id:
+          type: array
+          items:
+            type: string
+        maxResults:
+          type: number
+        firstResult:
+          type: number
+        sortField:
+          type: string
+        sortOrder:
+          type: string
+          enum:
+          - ASC
+          - DESC
+        providerGuid:
+          type: array
+          items:
+            type: string
+    MalpracticeClaimAuthorizedSearchQuery:
+      type: object
+      properties:
+        id:
+          type: array
+          items:
+            type: string
+        maxResults:
+          type: number
+        firstResult:
+          type: number
+        sortField:
+          type: string
+        sortOrder:
+          type: string
+          enum:
+          - ASC
+          - DESC
   securitySchemes:
     api_key:
       type: apiKey

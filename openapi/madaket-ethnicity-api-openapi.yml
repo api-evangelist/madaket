@@ -99,7 +99,7 @@ components:
           type: string
         description:
           type: string
-    EthnicityFilterQuery:
+    EthnicitySearchQuery:
       type: object
       properties:
         id:
@@ -121,7 +121,7 @@ components:
           type: array
           items:
             type: string
-    EthnicitySearchQuery:
+    EthnicityFilterQuery:
       type: object
       properties:
         id:
