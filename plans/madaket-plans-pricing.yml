@@ -45,3 +45,31 @@ plans:
 contacts:
   support: pesupport@madakethealth.com
   custom_pricing: rob@madakethealth.com
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - hybrid
+  units: []
+  plans:
+  - name: Tier 1
+    access: other
+    model: hybrid
+    model_how: derived
+    units: []
+    periods:
+    - year
+  - name: Tier 2
+    access: other
+    model: hybrid
+    model_how: derived
+    units: []
+    periods:
+    - year
+  - name: Tier 3
+    access: other
+    model: hybrid
+    model_how: derived
+    units: []
+    periods:
+    - year
